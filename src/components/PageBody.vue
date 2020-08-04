@@ -36,8 +36,8 @@ export default {
         text-align: center;
         min-height: 85vh;
         width: 90%;
-        margin-left: 7vw;
-        margin-right: auto;
+        margin-left: 7rem;
+        margin-right: 8rem;
         padding-top: 7rem;
         padding-bottom: 2rem;
         display: grid;

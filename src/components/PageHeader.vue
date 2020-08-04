@@ -8,7 +8,11 @@
             <h1 id="master">Master</h1>
         </div>
         <div class="nav">
-            <h4 class="nav-item-header">LOGIN</h4>
+            <form class="login-form">
+                <input type="username" placeholder="username"/>
+                <input type="password" placeholder="password"/>
+                <button class="nav-item-header" type="submit">Login</button>
+            </form>
         </div>
     </header>
 </template>
@@ -62,7 +66,6 @@ export default {
     }
 
     .nav-item-header {
-        padding: 1rem;
         transition: 400ms;
     }
 
@@ -73,10 +76,15 @@ export default {
         background-color: var(--bg-secondary);
     }
 
-    .nav {
-        margin-right: 3rem;
-        width: 5%;
+    .login-form {
+        align-items: center;
         display: flex;
         justify-content: space-evenly;
+        height: 1.5rem;
+    }
+
+    .nav {
+        margin-right: 15rem;
+        width: 10%;
     }
 </style>
