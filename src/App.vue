@@ -1,7 +1,5 @@
 <template>
   <div id="app" v-bind:class="[isActive ? 'dark' : 'light']">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <NavBar @toggled="handleToggle"/>
     <PageHeader/>
     <PageBody />
@@ -9,20 +7,16 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import PageHeader from './components/PageHeader.vue'
 import PageBody from './components/PageBody.vue'
 import NavBar from './components/NavBar.vue'
-// import PageFooter from './components/PageFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
     PageHeader,
     PageBody,
     NavBar
-    // PageFooter
   },
   data() {
     return {
@@ -55,6 +49,7 @@ export default {
   --text-secondary: #ececec;
   --bg-primary: #242424;
   --bg-secondary: #121212;
+  --bg-hover: rgb(26, 26, 26);
 }
 
 .light {
@@ -62,6 +57,7 @@ export default {
   --text-secondary: #000000;
   --bg-primary: #ffffff;
   --bg-secondary: #e4e4e4;
+  --bg-hover: #b6b6b6;
 }
 
 

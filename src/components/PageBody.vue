@@ -4,13 +4,13 @@
             <PlayerCard/>
         </div>
         <div class="npc">
-            <p>Current state of the story, if in battle this area will display battle information including monsters, when exploring this will include area information</p>
+            <NpcCard />
         </div>
         <div class="spells">
-            <p>Area that will allow the dungeon master to search any item or spell in the game</p>
+            <PinnedItemsAndSpells/>
         </div>
         <div class="items">
-            <p>Battle/Exploration information, Will mainly contain the current initiative and turn order.</p>
+            <InformationTab/>
         </div>
     </main>
 </template>
@@ -19,12 +19,18 @@
 <script>
 
 import PlayerCard from './PlayerCard.vue'
+import PinnedItemsAndSpells from './PinnedItemsAndSpells.vue'
+import NpcCard from './NpcCard.vue'
+import InformationTab from './InformationTab.vue'
 
 
 export default {
     name: 'PageBody',
     components: {
-        PlayerCard
+        PlayerCard,
+        PinnedItemsAndSpells,
+        NpcCard,
+        InformationTab
     }
 }
 </script>

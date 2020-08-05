@@ -9,8 +9,8 @@
         </div>
         <div class="nav">
             <form class="login-form">
-                <input type="username" placeholder="username"/>
-                <input type="password" placeholder="password"/>
+                <input class="nav-item-header" type="username" placeholder="username"/>
+                <input class="nav-item-header" type="password" placeholder="password"/>
                 <button class="nav-item-header" type="submit">Login</button>
             </form>
         </div>
@@ -66,14 +66,7 @@ export default {
     }
 
     .nav-item-header {
-        transition: 400ms;
-    }
-
-    .nav-item-header:hover {
-        transition: 400ms;
-        color: white;
-        cursor: pointer;
-        background-color: var(--bg-secondary);
+        margin: .2rem;
     }
 
     .login-form {
@@ -84,7 +77,7 @@ export default {
     }
 
     .nav {
-        margin-right: 15rem;
+        margin-right: 13rem;
         width: 10%;
     }
 </style>
