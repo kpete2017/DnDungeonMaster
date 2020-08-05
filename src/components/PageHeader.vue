@@ -9,6 +9,7 @@
         </div>
         <div class="nav">
             <form class="login-form">
+                <h3>Login:</h3>
                 <input class="nav-item-header" type="username" placeholder="username"/>
                 <input class="nav-item-header" type="password" placeholder="password"/>
                 <button class="nav-item-header" type="submit">Login</button>
