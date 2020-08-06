@@ -40,7 +40,7 @@ export default {
         background-color: var(--bg-secondary);
         color: var(--text-secondary);
         text-align: center;
-        min-height: 85vh;
+        min-height: 80vh;
         width: 90%;
         margin-left: 7rem;
         margin-right: 8rem;
@@ -50,7 +50,7 @@ export default {
         grid-template-areas: 
             "left-sidebar PC right-sidebar"
             "left-sidebar NPC right-sidebar";
-        grid-template-columns: 1fr 5fr 1fr;
+        grid-template-columns: 15rem 70rem 15rem;
         grid-template-rows: 1fr 1fr;
         grid-column-gap: 2rem;
         align-items: center;

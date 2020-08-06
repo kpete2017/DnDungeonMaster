@@ -8,12 +8,14 @@
             <h1 id="master">Master</h1>
         </div>
         <div class="nav">
-            <form class="login-form">
+            <h2>Welcome The_All_Powerful_Kyle!</h2>
+            <!-- <form class="login-form">
                 <h3>Login:</h3>
                 <input class="nav-item-header" type="username" placeholder="username"/>
                 <input class="nav-item-header" type="password" placeholder="password"/>
                 <button class="nav-item-header" type="submit">Login</button>
-            </form>
+            </form> -->
+            <h2 id="logout">Logout</h2>
         </div>
     </header>
 </template>
@@ -25,6 +27,19 @@ export default {
 </script>
 
 <style scoped>
+
+    #logout {
+        align-self: center;
+        padding: .8rem;
+        cursor: pointer;
+        position: relative;
+        background-color: var(--bg-secondary);
+    }
+
+    #logout:hover {
+        color: rgb(209, 38, 29);
+    }
+
     header {
         position: fixed;
         z-index: 2;
@@ -78,7 +93,8 @@ export default {
     }
 
     .nav {
-        margin-right: 13rem;
-        width: 10%;
+        display: flex;
+        margin-right: 5rem;
+        width: 20%;
     }
 </style>

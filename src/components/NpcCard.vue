@@ -20,7 +20,6 @@ export default {
         align-content: center;
         cursor: pointer;
         background-color: var(--bg-secondary);
-        border-radius: 25px;
         margin: 1rem;
         padding: 1rem;
         height: 20rem;
