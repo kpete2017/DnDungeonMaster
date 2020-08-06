@@ -2,14 +2,29 @@
   <div class="information-tab">
     <div class="top-third">
       <h2>Region information</h2>
-      <div class="region-info"> 
-        <p>Plane:</p>
-        <p>Continent:</p>
-        <p>Kingdom:</p>
-        <p>City:</p>
-        <p>Climate: </p>
+      <div class="region-info">
+        <div class="region-div">
+          <p>Plane:</p>
+          <p>Material</p>
+        </div> 
+        <div class="region-div">
+          <p>Continent:</p>
+          <p>Toril</p>
+        </div> 
+        <div class="region-div">
+          <p>Kingdom: </p>
+          <p>Fearun</p>
+        </div> 
+        <div class="region-div">
+          <p>City: </p>
+          <p>Waterdeep </p>
+        </div> 
+        <div class="region-div">
+          <p>Climate: </p>
+          <p>Temperate </p>
+        </div> 
       </div>
-      <button>Edit</button>
+      <button id="edit-region-button">Edit</button>
     </div>
     <div class="middle-third">
       <h2>Mode</h2>
@@ -47,6 +62,7 @@ export default {
 </script>
 
 <style>
+
   .roll-result {
     background-color: var(--bg-secondary);
     border: solid 1px var(--text-secondary);
@@ -54,9 +70,6 @@ export default {
     margin: 1rem;
   }
 
-  #roll-text {
-    margin-top: 0rem;
-  }
 
   #roll-pic {
     margin-top: .5rem;
@@ -130,6 +143,7 @@ export default {
 
   .region-info {
     margin-left: 1rem;
+    line-height: .5;
   }
 
   .mode-buttons button {
@@ -138,6 +152,17 @@ export default {
     width: 5rem;
     background-color: var(--bg-secondary);
     cursor: pointer;
+  }
+
+  .region-div {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+    margin-top: -1rem;
+  }
+
+  #edit-region-button {
+    margin: .5rem;
   }
   
 </style>

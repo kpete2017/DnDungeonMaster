@@ -40,8 +40,7 @@ export default {
         background-color: var(--bg-secondary);
         color: var(--text-secondary);
         text-align: center;
-        min-height: 80vh;
-        width: 90%;
+        width: 100%;
         margin-left: 7rem;
         margin-right: 8rem;
         padding-top: 7rem;

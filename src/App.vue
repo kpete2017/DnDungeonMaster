@@ -45,7 +45,9 @@ body {
   font-family: 'Fantasy';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-secondary)
+  background-color: var(--bg-secondary);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .dark {

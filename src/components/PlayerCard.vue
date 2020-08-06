@@ -7,14 +7,14 @@
                         <img id="player-image" height="125" width="125" src="../assets/player2.jpg" alt="Player-Image"/>
                     </div>
                     <div class="player-name"> 
-                        <h2 id=player-name>Seymore</h2>
+                        <h2 id="player-name">Seymore</h2>
+                        <h4 id="player-name">Level: 1</h4>
                         <div class="player-card-row-1">
-                            <p>Race:Genasi class: Sorcerer Alignment: Neutral-Evil </p>
+                            <p>Race:Genasi Class: Sorcerer Alignment: Neutral-Evil </p>
                         </div>
                     </div>
                 </div>
                 <div class="main-row">
-    
                     <div class="player-card-column-1">
                         <div class="ability-modifier">
                             <p>Strength:</p>
@@ -42,10 +42,32 @@
                         </div>
                     </div>
                     <div class="player-card-column-2">
-                        <p>Stats</p>
+                        <div class="ability-modifier">
+                            <p>Initiative</p>
+                            <p>3</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>P-Perception</p>
+                            <p>14</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Spell-Save DC</p>
+                            <p>14</p>
+                        </div>
                     </div>
                     <div class="player-card-column-3">
-                        <p>Stats</p>
+                        <div class="ability-modifier">
+                            <p>Armor Class</p>
+                            <p>12</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Hit Points</p>
+                            <p>30</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Speed</p>
+                            <p>20ft</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,10 +79,67 @@
                     </div>
                     <div class="player-name"> 
                         <h2>Zethea</h2>
+                        <h4 id="player-name">Level: 1</h4>
+                        <div class="player-card-row-1">
+                            <p>Race:Genasi Class: Sorcerer Alignment: Neutral-Evil </p>
+                        </div>
                     </div>
                 </div>
                 <div class="main-row">
-
+                    <div class="player-card-column-1">
+                        <div class="ability-modifier">
+                            <p>Strength:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Dexterity:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Constitution:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Intelligence:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Wisdom:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Charisma:</p>
+                            <p>10</p>
+                        </div>
+                    </div>
+                    <div class="player-card-column-2">
+                        <div class="ability-modifier">
+                            <p>Initiative</p>
+                            <p>3</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>P-Perception</p>
+                            <p>14</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Spell-Save DC</p>
+                            <p>14</p>
+                        </div>
+                    </div>
+                    <div class="player-card-column-3">
+                        <div class="ability-modifier">
+                            <p>Armor Class</p>
+                            <p>12</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Hit Points</p>
+                            <p>30</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Speed</p>
+                            <p>20ft</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -71,12 +150,69 @@
                     </div>
                     <div class="player-name"> 
                         <h2>Cornielia</h2>
+                        <h4 id="player-name">Level: 1</h4>
+                        <div class="player-card-row-1">
+                            <p>Race:Genasi Class: Sorcerer Alignment: Neutral-Evil </p>
+                        </div>
                     </div>
                 </div>
 
                 
                 <div class="main-row">
-
+                    <div class="player-card-column-1">
+                        <div class="ability-modifier">
+                            <p>Strength:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Dexterity:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Constitution:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Intelligence:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Wisdom:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Charisma:</p>
+                            <p>10</p>
+                        </div>
+                    </div>
+                    <div class="player-card-column-2">
+                        <div class="ability-modifier">
+                            <p>Initiative</p>
+                            <p>3</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>P-Perception</p>
+                            <p>14</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Spell-Save DC</p>
+                            <p>14</p>
+                        </div>
+                    </div>
+                    <div class="player-card-column-3">
+                        <div class="ability-modifier">
+                            <p>Armor Class</p>
+                            <p>12</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Hit Points</p>
+                            <p>30</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Speed</p>
+                            <p>20ft</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -87,10 +223,67 @@
                     </div>
                     <div class="player-name"> 
                         <h2>Jeff</h2>
+                        <h4 id="player-name">Level: 1</h4>
+                        <div class="player-card-row-1">
+                            <p>Race:Genasi Class: Sorcerer Alignment: Neutral-Evil </p>
+                        </div>
                     </div>
                 </div>
                 <div class="main-row">
-
+                    <div class="player-card-column-1">
+                        <div class="ability-modifier">
+                            <p>Strength:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Dexterity:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Constitution:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Intelligence:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Wisdom:</p>
+                            <p>10</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Charisma:</p>
+                            <p>10</p>
+                        </div>
+                    </div>
+                    <div class="player-card-column-2">
+                        <div class="ability-modifier">
+                            <p>Initiative</p>
+                            <p>3</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>P-Perception</p>
+                            <p>14</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Spell-Save DC</p>
+                            <p>14</p>
+                        </div>
+                    </div>
+                    <div class="player-card-column-3">
+                        <div class="ability-modifier">
+                            <p>Armor Class</p>
+                            <p>12</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Hit Points</p>
+                            <p>30</p>
+                        </div>
+                        <div class="ability-modifier">
+                            <p>Speed</p>
+                            <p>20ft</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -199,7 +392,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'PlayerCard',
     components: {
@@ -224,44 +416,42 @@ export default {
 
 <style scoped>
 
+    .player-card {
+        font-size: .9rem ;
+    }
+
     .player-card-row-1 {
         margin-left: -5rem;
     }
-
     .ability-modifier {
-        width: 7rem;
+        width: 7.4rem;
         display: flex;
         justify-content: space-between;
+        margin-left: .5rem;
+        margin-right: .5rem;
         margin-bottom: -1rem;
     }
-
     .main-row {
         width: 100%;
         display: flex;
         line-height: .7;
         justify-content: space-between;
     }
-
     #player-image {
-        margin-top: .5rem;
-
+        margin-top: 0rem;
     }
-
     #player-image-background {
         position: relative;
         bottom: 2rem;
         left: 5rem;
     }
-
     .top-row {
         display: flex;
     }
-
     .stay-square {
         height: 20rem;
         width: 15rem;
     }
-
     .player-picture {
         height: 8rem;
         width: 8rem;
@@ -270,41 +460,33 @@ export default {
         position: relative;
         grid-area: player-top;
     }
-
     #player-name {
         position: relative;
         left: -3rem;
     }
-
     .player-name {
         margin-left: 1.5rem;
         margin-top: 1rem;
         grid-area: player-top;
     }
-
     .player-list {
         display: flex;
         width: 100%;
         overflow: auto;
         margin-right: 1rem;
     }
-
     .player-card {
         overflow: auto;    
     }
-
-
     .new-player-body {
         display: grid;
         grid-template-areas: 
         "Left Right";
         grid-template-columns: 1fr 1fr;
     }
-
     .first {
         grid-area: first;
     }
-
     .input-label {
         display: flex;
         padding-left: .5rem;
@@ -313,7 +495,6 @@ export default {
         align-items: center;
         text-align: left;
     }
-
     .player-input-area {
         margin-right: 2rem;
         display: grid;
@@ -321,26 +502,24 @@ export default {
         "first second third";
         grid-template-columns: 1fr 1fr 1fr;
     }
-
     #plus-icon {
         height: 25px;
         width: 25px;
         transform: rotate(-180deg);
     }
-
     .add-player {
         align-content: center;
         cursor: pointer;
+        height: 20rem;
         background-color: var(--bg-secondary);
         margin: 1rem;
         border: solid 1px var(--bg-secondary);
         padding: 1rem;
-        padding-right: 6rem;
-        padding-left: 6rem;
+        padding-right: 12rem;
+        padding-left: 12rem;
         transition: 400ms;
-
+        border-right: solid 1rem var(--bg-primary);
     }
-
     .current-player {
         display: grid;
         grid-template-areas:
@@ -355,27 +534,23 @@ export default {
         padding-left: 3rem;
         margin: 1rem;
         height: 20rem;
-        width: 15rem;
+        width: 35rem;
         transition: 400ms;
         border: solid 1px var(--bg-secondary);
     }
-
     .main-row {
         position: relative;
         left: -2.5rem;
         width: 20rem;
     }
-
     .current-player:hover {
         border: solid 1px var(--text-primary);
         background-color: var(--bg-hover);
     }
-
     .add-player:hover {
         border: solid 1px var(--text-primary);
         background-color: var(--bg-hover);
     }
-
     .new-player {
         position: fixed;
         top: 9rem;
@@ -385,32 +560,27 @@ export default {
         background-color: var(--bg-secondary);
         border: solid 1px var(--text-primary);
     }
-
     input {
         margin-left: .5rem;
         height: 2rem;
     }
-
     .menu-bar {
         width: 100%;
         height: 2rem;
         border: solid 1px var(--text-primary);
     }
-
     #exit-button {
         position: absolute;
         right: 1rem;
         top: .5rem;
         transition: 400ms;
     }
-
     #exit-button:hover {
         color: rgb(209, 38, 29);
         transform: rotate(-180deg);
         transition: 400ms;
         cursor: pointer;
     }
-
     #close-button {
         position: absolute;
         color: var(--text-secondary);
@@ -422,7 +592,6 @@ export default {
         background-color: var(--bg-primary);
         cursor: pointer;
     }
-
     .third button {
         position: absolute;
         width: 5rem;
@@ -434,13 +603,10 @@ export default {
         background-color: var(--bg-primary);
         cursor: pointer;
     }
-
     .third button:hover {
         color: rgb(209, 38, 29);
     }
-
     #close-button:hover {
         color: rgb(209, 38, 29);
     }
-
 </style>
