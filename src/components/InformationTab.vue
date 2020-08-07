@@ -4,8 +4,8 @@
       <h2>Region information</h2>
       <div class="region-info">
         <div class="region-div">
-          <p>Plane:</p>
-          <p>Material</p>
+          <p>Plane of existence:</p>
+          <p>Boeing</p>
         </div> 
         <div class="region-div">
           <p>Continent:</p>
@@ -17,7 +17,7 @@
         </div> 
         <div class="region-div">
           <p>City: </p>
-          <p>Waterdeep </p>
+          <p>Detroit </p>
         </div> 
         <div class="region-div">
           <p>Climate: </p>

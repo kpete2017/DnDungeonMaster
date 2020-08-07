@@ -1,8 +1,11 @@
 <template>
-  <div id="app" v-bind:class="[isActive ? 'dark' : 'light']">
-    <NavBar @toggled="handleToggle"/>
-    <PageHeader/>
-    <PageBody />
+  <div id="app">
+    <Login v-if="loggedIn==false"/>
+    <div v-if="loggedIn" v-bind:class="[isActive ? 'dark' : 'light']">
+      <NavBar @toggled="handleToggle"/>
+      <PageHeader/>
+      <PageBody />
+    </div>
   </div>
 </template>
 
@@ -10,17 +13,20 @@
 import PageHeader from './components/PageHeader.vue'
 import PageBody from './components/PageBody.vue'
 import NavBar from './components/NavBar.vue'
+import Login from './components/Login.vue'
 
 export default {
   name: 'App',
   components: {
+    Login,
     PageHeader,
     PageBody,
     NavBar
   },
   data() {
     return {
-        isActive: true
+        isActive: true,
+        loggedIn: false
     }
   },
   methods: {

@@ -235,7 +235,7 @@ export default {
     .add-player {
         align-content: center;
         cursor: pointer;
-        height: 25vh;
+        height: 32vh;
         background-color: var(--bg-secondary);
         margin: .5rem;
         border: solid 1px var(--bg-secondary);
@@ -281,7 +281,7 @@ export default {
     .new-player {
         line-height: .7;
         position: fixed;
-        top: 9rem;
+        top: 4rem;
         left: 15rem;
         height: 85%;
         width: 75vw;

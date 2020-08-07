@@ -17,10 +17,10 @@ export default {
         width: 25px;
     }
     .add-npc {
+        width: 16.5vw;
         align-content: center;
         cursor: pointer;
-        height: 25vh;
-        width: 15vw;
+        height: 32vh;
         background-color: var(--bg-secondary);
         margin: .5rem;
         border: solid 1px var(--bg-secondary);

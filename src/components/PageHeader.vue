@@ -15,7 +15,7 @@
                 <input class="nav-item-header" type="password" placeholder="password"/>
                 <button class="nav-item-header" type="submit">Login</button>
             </form> -->
-            <h2 id="logout">Logout</h2>
+            <button id="logout">Logout</button>
         </div>
     </header>
 </template>
@@ -34,11 +34,12 @@ export default {
     }
 
     #logout {
-        margin-right: 0rem;
         align-self: center;
         padding: .8rem;
         cursor: pointer;
         position: relative;
+        color: var(--text-primary);
+        right: 2rem;
         background-color: var(--bg-secondary);
     }
 
@@ -47,12 +48,13 @@ export default {
     }
 
     header {
+        width: 15vw;
         position: fixed;
         z-index: 2;
         opacity: 0.9;
         padding: 1rem;
         width: 100%;
-        height: 5vh;
+        height: 6.45vh;
         align-items: center;
         display: flex;
         justify-content: space-between;
