@@ -1,18 +1,20 @@
 <template>
-    <main>
-        <div class="pc">
-            <PlayerCard/>
-        </div>
-        <div class="npc">
-            <NpcCard />
-        </div>
-        <div class="spells">
-            <PinnedItemsAndSpells/>
-        </div>
-        <div class="items">
-            <InformationTab/>
-        </div>
-    </main>
+    <div class="background">
+        <main>
+            <div class="pc">
+                <PlayerCard/>
+            </div>
+            <div class="npc">
+                <NpcCard />
+            </div>
+            <div class="spells">
+                <PinnedItemsAndSpells/>
+            </div>
+            <div class="items">
+                <InformationTab/>
+            </div>
+        </main>
+    </div>
 </template>
 
 
@@ -36,23 +38,29 @@ export default {
 </script>
 
 <style scoped>
-    main {
+
+    .background {
+        width: 100%;
+        height: 100%;
         background-color: var(--bg-secondary);
+    }
+    
+    main {
         color: var(--text-secondary);
         text-align: center;
-        width: 89%;
+        width: 90%;
         height: auto;
-        margin-left: 7rem;
-        margin-right: 8rem;
+        padding-left: 6rem;
+        padding-right: 1rem;
         padding-top: 7rem;
         padding-bottom: 2rem;
         display: grid;
         grid-template-areas: 
             "left-sidebar PC right-sidebar"
             "left-sidebar NPC right-sidebar";
-        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-columns: 1fr 2.3fr 1fr;
         grid-template-rows: 1fr 1fr;
-        grid-column-gap: 2rem;
+        grid-column-gap: 1rem;
         grid-row-gap: 2rem;
     }
 

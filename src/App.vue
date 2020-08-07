@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Login v-if="loggedIn==false"/>
+    <Login v-if="loggedIn==false" @login="handleLogin"/>
     <div v-if="loggedIn" v-bind:class="[isActive ? 'dark' : 'light']">
       <NavBar @toggled="handleToggle"/>
       <PageHeader/>
@@ -36,6 +36,9 @@ export default {
       } else {
         this.isActive = true
       }
+    },
+    handleLogin() {
+      this.loggedIn = true
     }
   }
 }
@@ -52,6 +55,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-secondary);
+  width: 100%;
 }
 
 .dark {
