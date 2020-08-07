@@ -8,7 +8,7 @@
             <h1 id="master">Master</h1>
         </div>
         <div class="nav">
-            <h2>Welcome The_All_Powerful_Kyle!</h2>
+            <h2 id="welcome">Welcome The_All_Powerful_Kyle!</h2>
             <!-- <form class="login-form">
                 <h3>Login:</h3>
                 <input class="nav-item-header" type="username" placeholder="username"/>
@@ -28,7 +28,13 @@ export default {
 
 <style scoped>
 
+    #welcome {
+        position: relative;
+        right: 5rem;
+    }
+
     #logout {
+        margin-right: 0rem;
         align-self: center;
         padding: .8rem;
         cursor: pointer;

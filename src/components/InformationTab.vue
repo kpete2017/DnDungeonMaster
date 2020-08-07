@@ -66,7 +66,6 @@ export default {
   .roll-result {
     background-color: var(--bg-secondary);
     border: solid 1px var(--text-secondary);
-    height: 7rem;
     margin: 1rem;
   }
 
@@ -122,14 +121,14 @@ export default {
   }
 
   #button1 {
-    height: 5rem;
+    height: 5vh;
     width: 10rem;
     grid-area: row1;
   }
 
   #button2 {
     width: 10rem;
-    height: 5rem;
+    height: 5vh;
     grid-area: row2;
   }
 
@@ -143,15 +142,20 @@ export default {
 
   .region-info {
     margin-left: 1rem;
-    line-height: .5;
+    line-height: .2;
   }
 
   .mode-buttons button {
     color: var(--text-secondary);
-    font-size: 1rem;
-    width: 5rem;
+    font-size: lrem;
+    width: 4rem;
     background-color: var(--bg-secondary);
     cursor: pointer;
+  }
+
+  #roll-text {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
   }
 
   .region-div {

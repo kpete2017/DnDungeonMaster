@@ -19,11 +19,13 @@ export default {
     .add-npc {
         align-content: center;
         cursor: pointer;
+        height: 25vh;
+        width: 15vw;
         background-color: var(--bg-secondary);
-        margin: 1rem;
+        margin: .5rem;
+        border: solid 1px var(--bg-secondary);
         padding: 1rem;
-        height: 20rem;
-        width: 15rem;
+        transition: 400ms;
     }
 
     .add-npc:hover {
