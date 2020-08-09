@@ -156,7 +156,7 @@ i {
 .nav-link {
   display: flex;
   align-items: center;
-  height: 5rem;
+  height: 9vh;
   color: var(--text-primary);
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);

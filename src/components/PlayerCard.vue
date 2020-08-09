@@ -298,7 +298,6 @@ export default {
     .menu-bar {
         width: 100%;
         height: 2rem;
-        border: solid 1px var(--text-primary);
     }
 
     #exit-button {
@@ -350,5 +349,6 @@ export default {
     #close-button:hover {
         color: rgb(209, 38, 29);
     }
+
 
 </style>

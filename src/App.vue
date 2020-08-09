@@ -3,7 +3,7 @@
     <Login v-if="loggedIn==false" @login="handleLogin"/>
     <div v-if="loggedIn" v-bind:class="[isActive ? 'dark' : 'light']">
       <NavBar 
-        @toggled="handleToggle" 
+        @toggled="isActive = !isActive" 
         @notes="handleNotesClick" 
         @home="handleHomeClick"
         @party="handlePartyClick"
@@ -28,7 +28,7 @@ import PageBody from './components/PageBody.vue'
 import NavBar from './components/NavBar.vue'
 import Login from './components/Login.vue'
 import Notes from './components/Notes.vue'
-import Party from './components/Party.vue'
+import Party from './components/Party'
 import Npc from './components/NPC.vue'
 import Monster from './components/Monsters.vue'
 import Compendium from './components/Compendium.vue'
@@ -60,13 +60,6 @@ export default {
     }
   },
   methods: {
-    handleToggle: function() { 
-      if(this.isActive === true) {
-        this.isActive = false 
-      } else {
-        this.isActive = true
-      }
-    },
     handleLogin: function() {
       this.loggedIn = true
     },
