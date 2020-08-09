@@ -2,9 +2,9 @@
     <div class="login-background"> 
         <form class="login-form"> 
             <h1>Login</h1>
-            <input type="username" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
-            <button @click="handleLogin" type="submit">Submit</button>
+            <input id="login-username" type="username" placeholder="Username" value="kpete2017"/>
+            <input id="login-password" type="password" placeholder="Password" value="Password"/>
+            <button id="login-submit" @click="handleLogin" type="submit">Submit</button>
         </form>
     </div>
 </template>
@@ -21,6 +21,23 @@ export default {
 </script>
 
 <style scoped>
+
+    #login-username {
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+    }
+
+    #login-password {
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+    }
+
+    #login-submit {
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+    }
+
+
     .login-background {
         position: absolute;
         left: 0;

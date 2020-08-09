@@ -9,13 +9,7 @@
         </div>
         <div class="nav">
             <h2 id="welcome">Welcome The_All_Powerful_Kyle!</h2>
-            <!-- <form class="login-form">
-                <h3>Login:</h3>
-                <input class="nav-item-header" type="username" placeholder="username"/>
-                <input class="nav-item-header" type="password" placeholder="password"/>
-                <button class="nav-item-header" type="submit">Login</button>
-            </form> -->
-            <button id="logout">Logout</button>
+            <button id="logout" @click="handleLogout">Logout</button>
         </div>
     </header>
 </template>
@@ -23,6 +17,11 @@
 <script>
 export default {
     name: 'PageHeader',
+    methods: {
+        handleLogout: function() {
+            this.$emit("logout")
+        }
+    }
 }
 </script>
 
@@ -51,7 +50,6 @@ export default {
         width: 15vw;
         position: fixed;
         z-index: 2;
-        opacity: 0.9;
         padding: 1rem;
         width: 100%;
         height: 6.45vh;

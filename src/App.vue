@@ -2,9 +2,22 @@
   <div id="app">
     <Login v-if="loggedIn==false" @login="handleLogin"/>
     <div v-if="loggedIn" v-bind:class="[isActive ? 'dark' : 'light']">
-      <NavBar @toggled="handleToggle"/>
-      <PageHeader/>
-      <PageBody />
+      <NavBar 
+        @toggled="handleToggle" 
+        @notes="handleNotesClick" 
+        @home="handleHomeClick"
+        @party="handlePartyClick"
+        @NPC="handleNPCClick"
+        @monster="handleMonsterClick"
+        @compendium="handleCompendiumClick"
+      />
+      <PageHeader @logout="handleLogout"/>
+      <PageBody v-if="PageBody"/>
+      <Notes v-if="Notes"/>
+      <Party v-if="Party" />
+      <Npc v-if="Npc"/>
+      <Monster v-if="Monster"/>
+      <Compendium v-if="Compendium"/>
     </div>
   </div>
 </template>
@@ -14,6 +27,11 @@ import PageHeader from './components/PageHeader.vue'
 import PageBody from './components/PageBody.vue'
 import NavBar from './components/NavBar.vue'
 import Login from './components/Login.vue'
+import Notes from './components/Notes.vue'
+import Party from './components/Party.vue'
+import Npc from './components/NPC.vue'
+import Monster from './components/Monsters.vue'
+import Compendium from './components/Compendium.vue'
 
 export default {
   name: 'App',
@@ -21,24 +39,87 @@ export default {
     Login,
     PageHeader,
     PageBody,
-    NavBar
+    NavBar,
+    Notes,
+    Party,
+    Npc,
+    Monster,
+    Compendium
   },
   data() {
     return {
         isActive: true,
-        loggedIn: false
+        loggedIn: false,
+        PageHeader: true,
+        PageBody: true,
+        Notes: false,
+        Party: false,
+        Npc: false,
+        Monster: false,
+        Compendium: false
     }
   },
   methods: {
-    handleToggle() { 
+    handleToggle: function() { 
       if(this.isActive === true) {
         this.isActive = false 
       } else {
         this.isActive = true
       }
     },
-    handleLogin() {
+    handleLogin: function() {
       this.loggedIn = true
+    },
+    handleLogout: function() {
+      this.loggedIn = false
+    },
+    handleHomeClick: function() {
+      this.PageBody = true
+      this.Notes = false
+      this.Party = false
+      this.Npc = false
+      this.Monster = false
+      this.Compendium = false
+    },
+    handleNotesClick: function() {
+      this.PageBody = false
+      this.Notes = true
+      this.Party = false
+      this.Npc = false
+      this.Monster = false
+      this.Compendium = false
+    },
+    handlePartyClick: function() {
+      this.PageBody = false
+      this.Notes = false
+      this.Party = true
+      this.Npc = false
+      this.Monster = false
+      this.Compendium = false
+    },
+    handleNPCClick: function() {
+      this.PageBody = false
+      this.Notes = false
+      this.Party = false
+      this.Npc = true
+      this.Monster = false
+      this.Compendium = false
+    },
+    handleMonsterClick: function() {
+      this.PageBody = false
+      this.Notes = false
+      this.Party = false
+      this.Npc = false
+      this.Monster = true
+      this.Compendium = false
+    },
+    handleCompendiumClick: function() {
+      this.PageBody = false
+      this.Notes = false
+      this.Party = false
+      this.Npc = false
+      this.Monster = false
+      this.Compendium = true
     }
   }
 }
