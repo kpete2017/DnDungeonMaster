@@ -11,11 +11,10 @@
             <div class="menu-bar">
                 <i id="exit-button" class="fa fa-times" @click="toggleAddPlayer(false)"></i>
             </div>
-            <h2>Create New Player</h2>
-            <br/>
             <form>
+                <h2>Create New Player</h2>
+                <br/>
                 <div class="new-player-body">
-                    <img id="player-image-background" height="500" width="300" src="../assets/player.jpg" alt="Player-Image"/>
                     <div class="player-input-area">
                         <div class="first"> 
                             <div class="input-label">
@@ -28,7 +27,7 @@
                             </div>
                             <div class="input-label">
                                 <h4>Level</h4>
-                                <input placeholder="Enter Level"/>
+                                <input type="number" placeholder="Enter Level"/>
                             </div>
                             <div class="input-label">
                                 <h4>Background</h4>
@@ -44,57 +43,57 @@
                             </div>
                             <div class="input-label">
                                 <h4>Experience</h4>
-                                <input placeholder="Enter Experience Points"/>
+                                <input type="number" placeholder="Enter Experience Points"/>
                             </div>
                         </div>
                         <div class="second">
                             <div class="input-label">
                                 <h4>Strength</h4>
-                                <input placeholder="Enter Strength"/>
+                                <input type="number" placeholder="Strength"/>
                             </div>
                             <div class="input-label">
                                 <h4>Dexterity</h4>
-                                <input placeholder="Enter Dexterity"/>
+                                <input type="number" placeholder="Dexterity"/>
                             </div>
                             <div class="input-label">
                                 <h4>Constitution</h4>
-                                <input placeholder="Enter Constitution"/>
+                                <input type="number" placeholder="Constitution"/>
                             </div>
                             <div class="input-label">
                                 <h4>Intelligence</h4>
-                                <input placeholder="Enter Intelligence"/>
+                                <input type="number"  placeholder="Intelligence"/>
                             </div>
                             <div class="input-label">
                                 <h4>Wisdom</h4>
-                                <input placeholder="Enter Wisdom"/>
+                                <input type="number" placeholder="Wisdom"/>
                             </div>
                             <div class="input-label">
                                 <h4>Charisma</h4>
-                                <input placeholder="Enter Charisma"/>
+                                <input type="number" placeholder="Charisma"/>
                             </div>
                         </div>
                         <div class="third">
                             <div class="input-label">
                                 <h4>Initiative</h4>
-                                <input placeholder="Enter Initiative"/>
+                                <input type="number" placeholder="Initiative"/>
                             </div>   
                             <div class="input-label">
                                 <h4>Speed</h4>
-                                <input placeholder="Enter Speed"/>
+                                <input type="number" placeholder="Speed"/>
                             </div>
                             <div class="input-label">
                                 <h4>Skills</h4>
-                                <input placeholder="Enter Skills"/>
+                                <input type="number" placeholder="Skills"/>
                             </div>
                             <div class="input-label">
                                 <h4>Armor Class</h4>
-                                <input placeholder="Enter Armor Class"/>
+                                <input placeholder="Armor Class"/>
                             </div>
                             <div class="input-label">
                                 <h4>Max Hit Points</h4>
-                                <input placeholder="Enter Max Hit Points"/>
+                                <input type="number" placeholder="Hit Points"/>
                             </div>
-                            <button id="submit-buttom" type="submit">Submit</button>
+                            <button id="submit-button" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -155,6 +154,12 @@ export default {
         justify-content: space-between;
     }
 
+    #player-image-background {
+        margin-left: 10vh;
+        height: 60vh;
+        width: 20vw;
+    }
+
     #player-image {
         margin-top: 0rem;
     }
@@ -200,10 +205,8 @@ export default {
     }
 
     .new-player-body {
-        display: grid;
-        grid-template-areas: 
-        "Left Right";
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: center;
     }
 
     .first {
@@ -214,6 +217,8 @@ export default {
         display: flex;
         padding-left: .5rem;
         margin-top: .5rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
         justify-content: space-between;
         align-items: center;
         text-align: left;
@@ -224,6 +229,7 @@ export default {
         grid-template-areas: 
         "first second third";
         grid-template-columns: 1fr 1fr 1fr;
+        margin-right: 1rem;
     }
 
     #plus-icon {
@@ -279,25 +285,48 @@ export default {
     }
 
     .new-player {
+        background-image: url("../assets/player-background.jpg");
+        background-size: cover;
         line-height: .7;
         position: fixed;
         top: 4rem;
         left: 15rem;
-        height: 85%;
-        width: 75vw;
+        height: 70%;
+        width: 70vw;
         z-index: 4;
         background-color: var(--bg-secondary);
         border: solid 1px var(--text-primary);
     }
     
-    input {
+    .first input {
         margin-left: .5rem;
         height: 1rem;
+        width: auto;
+    }
+
+    .second input {
+        margin-left: .5rem;
+        height: 1rem;
+        width: 4vw;
+    }
+
+    .third input {
+        margin-left: .5rem;
+        height: 1rem;
+        width: 4vw;
     }
 
     .menu-bar {
         width: 100%;
         height: 2rem;
+    }
+
+    form {
+        padding: 1rem;
+        background-color: #141414e5;
+        width: 50vw;
+        height: 50vh;
+        margin: 0 auto;
     }
 
     #exit-button {

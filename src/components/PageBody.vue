@@ -49,8 +49,8 @@ export default {
         color: var(--text-secondary);
         text-align: center;
         width: 90%;
-        height: auto;
-        padding-left: 6rem;
+        height: 85vh;
+        padding-left: 8rem;
         padding-right: 1rem;
         padding-top: 7rem;
         padding-bottom: 2rem;

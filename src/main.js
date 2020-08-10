@@ -1,17 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import drag from "v-drag"
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-
-// Install BootstrapVue
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
-
+import CKEditor from '@ckeditor/ckeditor5-vue';
 
 Vue.config.productionTip = false
 
 Vue.use(drag)
+
+Vue.use( CKEditor );
+
 
 new Vue({
   render: h => h(App),

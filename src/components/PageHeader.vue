@@ -9,7 +9,7 @@
         </div>
         <div class="nav">
             <h2 id="welcome">Welcome The_All_Powerful_Kyle!</h2>
-            <button id="logout" @click="handleLogout">Logout</button>
+            <button id="logout" @click="handleLogout()">Logout</button>
         </div>
     </header>
 </template>

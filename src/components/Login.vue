@@ -1,10 +1,15 @@
 <template>
-    <div class="login-background"> 
+    <div class="login-background">
         <form class="login-form"> 
             <h1>Login</h1>
             <input id="login-username" type="username" placeholder="Username" value="kpete2017"/>
             <input id="login-password" type="password" placeholder="Password" value="Password"/>
             <button id="login-submit" @click="handleLogin" type="submit">Submit</button>
+            <p>New Here?
+                <br/>
+                <br/>
+                <a>Create Account</a>
+            </p>
         </form>
     </div>
 </template>
@@ -35,10 +40,14 @@ export default {
     #login-submit {
         margin-bottom: .5rem;
         margin-top: .5rem;
+        cursor: pointer;
     }
 
 
     .login-background {
+        background-image: url("../assets/background-image1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
         position: absolute;
         left: 0;
         top: 0;
@@ -50,9 +59,9 @@ export default {
     
     .login-form {
         text-align: center;
-        background-color: #242424;
+        background-color: #242424de;
         position: relative;
-        top: 10rem;
+        top: 30vh;
         width: 20rem;
         height: 20rem;
         display: flex;
