@@ -1,6 +1,6 @@
 <template>
     <div class="npc-list">   
-        <div class="add-npc stay-square" @click="toggleAddNpc(true)">
+        <div class="add-npc" @click="toggleAddNpc(true)">
             <h4>Add Non Player Character</h4>
             <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
         </div>
@@ -9,7 +9,7 @@
                 <i id="exit-button" class="fa fa-times" @click="toggleAddNpc(false)"></i>
             </div>
             <form>
-                <h2>Create New NPC</h2>
+                <h2>Add New NPC</h2>
                 <br/>
             </form>
             <div class="new-npc-footer">
@@ -44,13 +44,13 @@ export default {
         width: 25px;
     }
     .add-npc {
+        border-radius: 18px;
         width: 16.5vw;
         align-content: center;
         cursor: pointer;
         height: 35vh;
         background-color: var(--bg-secondary);
         margin: .5rem;
-        border: solid 1px var(--bg-secondary);
         padding: 1rem;
         transition: 400ms;
     }
@@ -65,6 +65,7 @@ export default {
     }
 
     .new-npc {
+        border-radius: 18px;
         line-height: .7;
         position: fixed;
         top: 4rem;
@@ -73,7 +74,6 @@ export default {
         width: 70vw;
         z-index: 4;
         background-color: var(--bg-secondary);
-        border: solid 1px var(--text-primary);
     }
 
     #close-button {

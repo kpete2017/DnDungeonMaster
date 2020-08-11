@@ -131,6 +131,7 @@ export default {
 <style>
 
     .search-note {
+        border-radius: 18px;
         position: absolute;
         top: 7rem;
         left: 6vw;
@@ -182,6 +183,7 @@ export default {
     }
 
     .note {
+        border-radius: 18px;
         cursor: pointer;
         height: 20rem;
         width: 20rem;
@@ -198,6 +200,7 @@ export default {
     }
 
     .new-note {
+        border-radius: 18px;
         position: fixed;
         margin: 0 auto;
         top: -140vh;

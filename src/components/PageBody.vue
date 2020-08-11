@@ -49,10 +49,10 @@ export default {
         color: var(--text-secondary);
         text-align: center;
         width: 90%;
-        height: 85vh;
+        height: 86.8vh;
         padding-left: 8rem;
         padding-right: 1rem;
-        padding-top: 7rem;
+        padding-top: 6rem;
         padding-bottom: 2rem;
         display: grid;
         grid-template-areas: 
@@ -65,6 +65,8 @@ export default {
     }
 
     .pc {
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+        border-radius: 18px;
         max-width: 50vw;
         height: 99%;
         background-color: var(--bg-primary);
@@ -72,6 +74,8 @@ export default {
     }
 
     .npc {
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+        border-radius: 18px;
         max-width: 50vw;
         height: 99%;
         background-color: var(--bg-primary);
@@ -79,6 +83,8 @@ export default {
     }
 
     .spells {
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+        border-radius: 18px;
         max-width: 50vw;
         height: 100%;
         background-color: var(--bg-primary);
@@ -86,6 +92,8 @@ export default {
     }
 
     .items {
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+        border-radius: 18px;
         max-width: 50vw;
         height: 100%;
         background-color: var(--bg-primary);
