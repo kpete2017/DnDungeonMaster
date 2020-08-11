@@ -1,17 +1,20 @@
 <template>
   <div class="notes-page">
-      <div class="notes-section">
-        <div id="create-new-note" class="note" @click="toggleNewNote(true)">
-            <h1 id="new-note">Add New Note</h1>
-            <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
+        <div class="search-note">
+            <form @change.prevent="handleOnChange()">
+                <input v-model="filterTitle" class="note-search" type="text" placeholder="Search Note" />
+            </form> 
         </div>
-        <div id="create-new-note" class="note" v-for="note in notes" :key="note.title">
-            <i id="note-exit-button" class="fa fa-times" @click="toggleNewNote(false)"></i>
-            <h2 class=note-title>{{note.title}}</h2>
-            <p class="note-message">{{note.message}}</p>
+        <div class="notes-section">
+            <div id="create-new-note" class="note" @click="toggleNewNote(true)">
+                <h1 id="new-note">Add New Note</h1>
+                <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
+            </div>
+            <div id="create-new-note" class="note" v-for="note in notes" :key="note.title">
+                <Note v-bind:title="note.title" v-bind:message="note.message" @deleteNote="removeNote(note.title)"/>
+            </div>
         </div>
-      </div>
-      <div class="new-note" v-if="newNote" v-drag> 
+        <div class="new-note" v-if="newNote" v-drag> 
             <div class="menu-bar">
                 <i id="exit-button" class="fa fa-times" @click="toggleNewNote(false)"></i>
             </div>
@@ -31,48 +34,110 @@
 
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Note from './Note.vue'
 
 export default {
     name: "notes",
+    components: {
+        Note
+    },
     data() {
         return {
             newNote: false,
             editor: ClassicEditor,
             editorData: '',
             editorConfig: {
-                
             },
-            notes: [
-                { 
-                    title: "Test Note Title 1",
-                    message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies purus at turpis rutrum, a placerat ex dapibus. Aliquam semper euismod mollis. Donec ornare eget justo at ullamcorper. Fusce porta tellus nibh, id consectetur purus sodales ac. Nullam hendrerit tristique elementum. Morbi hendrerit felis nec dolor cursus, vel tristique nunc bibendum. Donec nec massa orci. Nam eget faucibus elit, et faucibus leo. Ut pretium enim id interdum lobortis."
-                },
-                { 
-                    title: "Test Note Title 2",
-                    message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies purus at turpis rutrum, a placerat ex dapibus. Aliquam semper euismod mollis. Donec ornare eget justo at ullamcorper. Fusce porta tellus nibh, id consectetur purus sodales ac. Nullam hendrerit tristique elementum. Morbi hendrerit felis nec dolor cursus, vel tristique nunc bibendum. Donec nec massa orci. Nam eget faucibus elit, et faucibus leo. Ut pretium enim id interdum lobortis."
-                }
-            ],
+            notes: [],
             newNoteTitle: "",
+            filterTitle: ""
         }
+    },
+    created: function() {
+        let exampleNote = {
+            title: "Important Campaign Details",
+            message: "Make it up as you go"
+        }
+        let exampleNote2 = {
+            title: "That one character you forgot the accent for",
+            message: "It was bad irish"
+            }
+        let exampleNote3 = {
+            title: "The random tavern your group spent wayyy to much time in ",
+            message: "The Leaks"
+        }
+        let exampleNote4 = {
+            title: "Example Title 4",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        let exampleNote5 = {
+            title: "Example Title 5",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        let exampleNote6 = {
+            title: "Example Title 6",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        let exampleNote7 = {
+            title: "Example Title 7",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        let exampleNote8 = {
+            title: "Example Title 8",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        let exampleNote9 = {
+            title: "Example Title 9",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        let exampleNote10 = {
+            title: "Example Title 10",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        let exampleNote11 = {
+            title: "Example Title 11",
+            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+        }
+        this.notes.push(exampleNote, exampleNote2, exampleNote3, exampleNote4, exampleNote5, exampleNote6, exampleNote7, exampleNote8, exampleNote9, exampleNote10, exampleNote11)
     },
     methods: {
         toggleNewNote: function(value) {
             this.newNote = value
         },
         getEditorData: function() {
-            console.log(this.newNoteTitle, this.editorData)
+            let newMessage = this.editorData.replace('<p>', '').replace('</p>', '')
             let newNote = {
                 title: this.newNoteTitle,
-                message: this.editorData
+                message: newMessage
             }
             this.notes.push(newNote)
             this.toggleNewNote(false)
+        },
+        removeNote: function(title) {
+            let index = -1;
+            console.log(index)
+            for(let i = 0; i < this.notes.length; i++) {
+                if(this.notes[i].title === title) {
+                    index = i;
+                }
+            }
+            console.log(index)
+            this.notes.splice(index, 1)
         }
     }
 }
 </script>
 
 <style>
+
+    .search-note {
+        position: absolute;
+        top: 7rem;
+        left: 6vw;
+        width: 15rem;
+        padding: 2rem;
+        background-color: var(--bg-primary);
+    }
 
     .note-message {
         text-align: left;
@@ -94,17 +159,21 @@ export default {
         top: 0;
         left: 0;
         width: 100vw;
-        max-height: 100vh;
+        max-height: 400vh;
         background-color: var(--bg-secondary);
     }
 
     .notes-section {
-        margin-top: 15vh;
-        margin-left: 2vw;
+        margin-top: 25vh;
         background-color: var(--bg-secondary);
-        min-height: 85vh;
+        min-height: 75vh;
+        max-height: 400vh;
+        margin-left: 7rem;
+        margin-bottom: 5rem;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: left;
+        flex-wrap: wrap;
+        max-width: 90vw;
     }
 
     #plus-icon {
@@ -112,19 +181,16 @@ export default {
         width: 25px;
     }
 
-    .notes-section {
-        display: flex;
-    }
-
     .note {
         cursor: pointer;
-        width: 20rem;
         height: 20rem;
-        margin-left: 6rem;
+        width: 20rem;
         color: var(--text-secondary);
         background-color: var(--bg-primary);
         padding-top: 2rem;
         border: solid 1px var(--bg-secondary);
+        margin-right: 1rem;
+        margin-top: 1rem;
     }
 
     .note:hover {
@@ -132,9 +198,9 @@ export default {
     }
 
     .new-note {
-        position: absolute;
-        top: -80vh;
+        position: fixed;
         margin: 0 auto;
+        top: -140vh;
         height: 70vh;
         width: 70vw;
         z-index: 4;

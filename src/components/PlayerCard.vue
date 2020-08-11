@@ -49,37 +49,37 @@
                         <div class="second">
                             <div class="input-label">
                                 <h4>Strength</h4>
-                                <input type="number" placeholder="Strength"/>
+                                <input value=10 type="number" placeholder="Strength"/>
                             </div>
                             <div class="input-label">
                                 <h4>Dexterity</h4>
-                                <input type="number" placeholder="Dexterity"/>
+                                <input value=10 type="number" placeholder="Dexterity"/>
                             </div>
                             <div class="input-label">
                                 <h4>Constitution</h4>
-                                <input type="number" placeholder="Constitution"/>
+                                <input value=10 type="number" placeholder="Constitution"/>
                             </div>
                             <div class="input-label">
                                 <h4>Intelligence</h4>
-                                <input type="number"  placeholder="Intelligence"/>
+                                <input value=10 type="number"  placeholder="Intelligence"/>
                             </div>
                             <div class="input-label">
                                 <h4>Wisdom</h4>
-                                <input type="number" placeholder="Wisdom"/>
+                                <input value=10 type="number" placeholder="Wisdom"/>
                             </div>
                             <div class="input-label">
                                 <h4>Charisma</h4>
-                                <input type="number" placeholder="Charisma"/>
+                                <input value=10 type="number" placeholder="Charisma"/>
                             </div>
                         </div>
                         <div class="third">
                             <div class="input-label">
                                 <h4>Initiative</h4>
-                                <input type="number" placeholder="Initiative"/>
+                                <input value=3 type="number" placeholder="Initiative"/>
                             </div>   
                             <div class="input-label">
                                 <h4>Speed</h4>
-                                <input type="number" placeholder="Speed"/>
+                                <input value=20 type="number" placeholder="Speed"/>
                             </div>
                             <div class="input-label">
                                 <h4>Skills</h4>
@@ -87,11 +87,11 @@
                             </div>
                             <div class="input-label">
                                 <h4>Armor Class</h4>
-                                <input placeholder="Armor Class"/>
+                                <input value=12 type="number" placeholder="Armor Class"/>
                             </div>
                             <div class="input-label">
-                                <h4>Max Hit Points</h4>
-                                <input type="number" placeholder="Hit Points"/>
+                                <h4>Max Hit_Points</h4>
+                                <input value=40 type="number" placeholder="Hit_Points"/>
                             </div>
                             <button id="submit-button" type="submit">Submit</button>
                         </div>
@@ -241,10 +241,9 @@ export default {
     .add-player {
         align-content: center;
         cursor: pointer;
-        height: 32vh;
+        height: 35vh;
         background-color: var(--bg-secondary);
         margin: .5rem;
-        border: solid 1px var(--bg-secondary);
         padding: 1rem;
         transition: 400ms;
     }
@@ -265,7 +264,6 @@ export default {
         height: 35vh;
         width: 35rem;
         transition: 400ms;
-        border: solid 1px var(--bg-secondary);
     }
 
     .main-row {
@@ -295,7 +293,6 @@ export default {
         width: 70vw;
         z-index: 4;
         background-color: var(--bg-secondary);
-        border: solid 1px var(--text-primary);
     }
     
     .first input {

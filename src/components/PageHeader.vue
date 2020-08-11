@@ -52,7 +52,7 @@ export default {
         z-index: 2;
         padding: 1rem;
         width: 100%;
-        height: 6.45vh;
+        height: 4.7vh;
         align-items: center;
         display: flex;
         justify-content: space-between;

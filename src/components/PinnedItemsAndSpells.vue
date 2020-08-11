@@ -1,10 +1,7 @@
 <template>
     <div class="item-spell-area">
-        <div class="search-section"> 
-            <input id="search-bar" type="search" placeholder="Search items or spells"/>
-        </div>
         <div class="pin-section"> 
-            <p>Pinned Items will go here</p>
+            <p>Pinned Items</p>
         </div>
     </div>
 </template>

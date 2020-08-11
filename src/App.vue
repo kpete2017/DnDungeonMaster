@@ -8,7 +8,7 @@
         @home="handleHomeClick"
         @party="handlePartyClick"
         @NPC="handleNPCClick"
-        @monster="handleMonsterClick"
+        @spell="handleMonsterClick"
         @compendium="handleCompendiumClick"
       />
       <PageHeader @logout="handleLogout"/>
@@ -122,6 +122,7 @@ export default {
 
 body {
   background-color: var(--bg-secondary);
+  font-family: 'Raleway';font-size: 18px;
 }
 
 #app {
@@ -139,6 +140,7 @@ body {
   --bg-secondary: #121212;
   --bg-hover: rgb(26, 26, 26);
 }
+
 
 .light {
   --text-primary: #1f1f1f;

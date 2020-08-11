@@ -69,7 +69,6 @@ export default {
         height: 99%;
         background-color: var(--bg-primary);
         grid-area: PC;
-        border: solid 1px var(--text-secondary);
     }
 
     .npc {
@@ -77,7 +76,6 @@ export default {
         height: 99%;
         background-color: var(--bg-primary);
         grid-area: NPC;
-        border: solid 1px var(--text-secondary);
     }
 
     .spells {
@@ -85,7 +83,6 @@ export default {
         height: 100%;
         background-color: var(--bg-primary);
         grid-area: left-sidebar;
-        border: solid 1px var(--text-secondary);
     }
 
     .items {
@@ -93,7 +90,6 @@ export default {
         height: 100%;
         background-color: var(--bg-primary);
         grid-area: right-sidebar;
-        border: solid 1px var(--text-secondary);
     }
 
 </style>

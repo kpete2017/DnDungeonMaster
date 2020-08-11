@@ -16,6 +16,9 @@
                 <button id="close-button" @click="toggleAddNpc(false)">close</button>
             </div>
         </div>
+        <div>
+            
+        </div>
     </div>
 </template>
 
@@ -44,7 +47,7 @@ export default {
         width: 16.5vw;
         align-content: center;
         cursor: pointer;
-        height: 32vh;
+        height: 35vh;
         background-color: var(--bg-secondary);
         margin: .5rem;
         border: solid 1px var(--bg-secondary);
@@ -62,8 +65,6 @@ export default {
     }
 
     .new-npc {
-        background-image: url("../assets/npc-background.jpg");
-        background-size: cover;
         line-height: .7;
         position: fixed;
         top: 4rem;
