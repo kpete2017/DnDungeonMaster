@@ -55,7 +55,7 @@ export default {
     },
     created: function() {
         let exampleNote = {
-            title: "Important Campaign Details",
+            title: "IMPORTANT CAMPAIGN DETAILS",
             message: "Make it up as you go"
         }
         let exampleNote2 = {
@@ -67,38 +67,14 @@ export default {
             message: "The Leaks"
         }
         let exampleNote4 = {
-            title: "Example Title 4",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+            title: "The mega demon that will destory the world",
+            message: "His name was fluffy"
         }
         let exampleNote5 = {
-            title: "Example Title 5",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
+            title: "Dont forget",
+            message: "Murder Jeff"
         }
-        let exampleNote6 = {
-            title: "Example Title 6",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
-        }
-        let exampleNote7 = {
-            title: "Example Title 7",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
-        }
-        let exampleNote8 = {
-            title: "Example Title 8",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
-        }
-        let exampleNote9 = {
-            title: "Example Title 9",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
-        }
-        let exampleNote10 = {
-            title: "Example Title 10",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
-        }
-        let exampleNote11 = {
-            title: "Example Title 11",
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut feugiat diam. Phasellus et commodo eros. Aliquam consectetur, tellus ac ullamcorper consequat, neque velit malesuada eros, sed pharetra neque magna at leo. Etiam nibh mauris, rutrum a finibus non, placerat ac leo."
-        }
-        this.notes.push(exampleNote, exampleNote2, exampleNote3, exampleNote4, exampleNote5, exampleNote6, exampleNote7, exampleNote8, exampleNote9, exampleNote10, exampleNote11)
+        this.notes.push(exampleNote, exampleNote2, exampleNote3, exampleNote4, exampleNote5)
     },
     methods: {
         toggleNewNote: function(value) {
@@ -203,10 +179,10 @@ export default {
         border-radius: 18px;
         position: fixed;
         margin: 0 auto;
-        top: -140vh;
+        top: -100vh;
         height: 70vh;
         width: 70vw;
-        z-index: 4;
+        z-index: 2;
         background-color: var(--text-secondary);
         border: solid 1px var(--text-primary);
     }

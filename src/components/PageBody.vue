@@ -49,7 +49,7 @@ export default {
         color: var(--text-secondary);
         text-align: center;
         width: 90%;
-        height: 86.8vh;
+        height: auto;
         padding-left: 8rem;
         padding-right: 1rem;
         padding-top: 6rem;
@@ -68,7 +68,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 18px;
         max-width: 50vw;
-        height: 99%;
+        height: 97%;
         background-color: var(--bg-primary);
         grid-area: PC;
     }
@@ -77,7 +77,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 18px;
         max-width: 50vw;
-        height: 99%;
+        height: 97%;
         background-color: var(--bg-primary);
         grid-area: NPC;
     }

@@ -1,23 +1,24 @@
 <template>
-  <div class="card" @click="handleClick()">
-        <div class="card-image">
-            <img src="../assets/player4.jpg" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 18px; border-top-right-radius: 18px;'/>
+  <div class="card">
+        <div class="card-image" @click="handleClick()">
+            <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 18px; border-top-right-radius: 18px;'/>
         </div>
-        <div class="card-text">
-            <span class="date">Elf Rogue Level 2</span>
-            <h2>Player 1</h2>
+        <div class="card-text" @click="handleClick()">
+            <span class="date">{{race}} | {{characterClass}} | level {{level}} </span>
+            <h2>{{name}}</h2>
+            <h4>{{subtitle}}</h4>
         </div>
         <div class="card-stats">
             <div class="stat">
-                <div class="value"><input type="number" value="30" max="999" style="width:30px"/></div>
+                <div class="value"><input type="number" :value="hitPoints" max="999" style="width:30px"/></div>
                     <div class="type">HP</div>
             </div>
             <div class="stat">
-                <div class="value">14</div>
+                <div class="value">{{armorClass}}</div>
                     <div class="type">AC</div>
             </div>
             <div class="stat">
-                <div class="value">30ft</div>
+                <div class="value">{{speed}}</div>
                     <div class="type">Speed</div>
             </div>
         </div>
@@ -26,18 +27,27 @@
 <script>
 export default {
     name: "SinglePlayerCard",
-    props: ["playerImage"],
-    computed: {
-        cssProps() {
-            return {
-                '--bg-image': this.playerImage
-            }
+    props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
+        "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
+        "hitPoints", "speed", "playerName", "image", "proficiencyBonus"],
+    created: function() {
+        this.playerImage = this.image.toString()
+    },
+    data() {
+        return {
+            viewAllStats: false,
+            allStats: [],
         }
     },
     methods: {
         handleClick: function() {
-            console.log("clicked")
+            this.$emit("create-large-player-card", this.allStats)
         }
+    },
+    mounted() {
+        this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
+        this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
+        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus]
     }
 }
 </script>
@@ -51,11 +61,10 @@ export default {
         border-radius: 18px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
-        font-family: roboto;
         text-align: center;
         transition: 0.5s ease;
         cursor: pointer;
-        margin:30px;
+        margin:25px;
     }
 
     .card-text {
@@ -104,6 +113,7 @@ export default {
     }
 
     .card:hover {
+        transform: scale(1.05);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
     }
 </style>
