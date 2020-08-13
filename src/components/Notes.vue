@@ -72,7 +72,7 @@ export default {
         }
         let exampleNote5 = {
             title: "Dont forget",
-            message: "Murder Jeff"
+            message: "Horribly Murder Jeff for showing up late"
         }
         this.notes.push(exampleNote, exampleNote2, exampleNote3, exampleNote4, exampleNote5)
     },
@@ -107,7 +107,7 @@ export default {
 <style>
 
     .search-note {
-        border-radius: 18px;
+        border-radius: 9px;
         position: absolute;
         top: 7rem;
         left: 6vw;
@@ -159,7 +159,7 @@ export default {
     }
 
     .note {
-        border-radius: 18px;
+        border-radius: 9px;
         cursor: pointer;
         height: 20rem;
         width: 20rem;
@@ -176,7 +176,7 @@ export default {
     }
 
     .new-note {
-        border-radius: 18px;
+        border-radius: 9px;
         position: fixed;
         margin: 0 auto;
         top: -100vh;

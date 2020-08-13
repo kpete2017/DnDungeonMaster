@@ -66,7 +66,7 @@ export default {
 
     .pc {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
-        border-radius: 18px;
+        border-radius: 9px;
         max-width: 50vw;
         height: 97%;
         background-color: var(--bg-primary);
@@ -75,7 +75,7 @@ export default {
 
     .npc {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
-        border-radius: 18px;
+        border-radius: 9px;
         max-width: 50vw;
         height: 97%;
         background-color: var(--bg-primary);
@@ -84,7 +84,7 @@ export default {
 
     .spells {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
-        border-radius: 18px;
+        border-radius: 9px;
         max-width: 50vw;
         height: 100%;
         background-color: var(--bg-primary);
@@ -93,7 +93,7 @@ export default {
 
     .items {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
-        border-radius: 18px;
+        border-radius: 9px;
         max-width: 50vw;
         height: 100%;
         background-color: var(--bg-primary);

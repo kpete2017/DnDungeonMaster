@@ -26,6 +26,7 @@
                     v-bind:speed="player.speed"
                     v-bind:playerName="player.player_name"
                     v-bind:image='player.image_url'
+                    v-bind:proficiencyBondus='player.proficiency_bonus'
                 />
             </div>
         </div>
@@ -169,6 +170,7 @@ export default {
 
     .party-page-custom-instance{
         cursor: pointer;
+        border-radius: 9px;
         color: var(--text-secondary);
         text-align: center;
         margin: 0 auto;
@@ -176,7 +178,7 @@ export default {
         background-color: var(--bg-primary);
         border: solid 1px var(--bg-primary);
         height: 20vh;
-        width: 80vw;
+        width: 70vw;
     }
         .new-player-body {
         display: flex;
@@ -214,7 +216,7 @@ export default {
     }
 
     .new-player {
-        border-radius: 18px;
+        border-radius: 9px;
         background-image: url("../assets/player-background.jpg");
         background-size: cover;
         line-height: .7;

@@ -177,7 +177,7 @@ export default {
     }
 
     .new-player {
-        border-radius: 18px;
+        border-radius: 9px;
         background-image: url("../assets/player-background.jpg");
         background-size: cover;
         line-height: .7;

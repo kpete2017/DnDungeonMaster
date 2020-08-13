@@ -1,26 +1,28 @@
 <template>
     <div class="npc-list">
         <div v-for="player in players" :key="player.name">
-                <SinglePlayerCard
+                <SingleNpcCard
                     v-bind:name="player.name"
-                    v-bind:subtitle="player.subtitle"
-                    v-bind:race="player.race"
-                    v-bind:characterClass="player.characterClass"
-                    v-bind:level="player.level"
-                    v-bind:strength="player.strength"
-                    v-bind:dexterity="player.dexterity"
-                    v-bind:constitution="player.constitution"
-                    v-bind:intelligence="player.intelligence"
-                    v-bind:wisdom="player.wisdom"
-                    v-bind:charisma="player.charisma"
-                    v-bind:initiative="player.initiative"
-                    v-bind:armorClass="player.armor_class"
-                    v-bind:passivePerception="player.passive_perception"
-                    v-bind:hitPoints="player.hit_points"
-                    v-bind:speed="player.speed"
-                    v-bind:playerName="player.player_name"
-                    v-bind:image='player.image_url'
-                    @create-large-player-card="handlePlayerCard"
+                    v-bind:meta="player.meta"
+                    v-bind:armorClass="player.Armor_Class"
+                    v-bind:hitPoints="player.Hit_Points"
+                    v-bind:speed="player.Speed"
+                    v-bind:strength="player.STR_mod"
+                    v-bind:dexterity="player.DEX_mod"
+                    v-bind:constitution="player.CON_mod"
+                    v-bind:intelligence="player.INT_mod"
+                    v-bind:wisdom="player.WIS_mod"
+                    v-bind:charisma="player.CHA_mod"
+                    v-bind:savingThrows="player.Saving_Throws"
+                    v-bind:skills="player.Skills"
+                    v-bind:senses="player.Senses"
+                    v-bind:languages="player.Languages"
+                    v-bind:challenge="player.Challenge"
+                    v-bind:traits="player.Traits"
+                    v-bind:actions="player.Actions"
+                    v-bind:legendaryActions="player.Legendary_Actions"
+                    v-bind:image='player.img_url'
+                    @create-large-Npc-card="handlePlayerCard"
                 />
         </div>   
         <div class="add-npc" @click="toggleAddNpc(true)">
@@ -82,16 +84,8 @@
                     <br/>
                     <br/>
                     <div class="ability-score">
-                        <h2>Initiative</h2>
-                        <h2>{{this.playerCardStats[11]}}</h2>
-                    </div>
-                    <div class="ability-score">
                         <h2>Armor Class</h2>
                         <h2>{{this.playerCardStats[12]}}</h2>
-                    </div>
-                    <div class="ability-score">
-                        <h2>Pas Perception</h2>
-                        <h2>{{this.playerCardStats[13]}}</h2>
                     </div>
                     <div class="ability-score">
                         <h2>Speed</h2>
@@ -117,7 +111,7 @@
 </template>
 
 <script>
-import SinglePlayerCard from './SinglePlayerCard.vue'
+import SingleNpcCard from './SingleNpcCard.vue'
 import PlayersJson from '../CurrentMonsters.json'
 
 export default {
@@ -132,7 +126,7 @@ export default {
         }
     },
     components: {
-        SinglePlayerCard
+        SingleNpcCard
     },
     created: function () {
         let playerList = PlayersJson
@@ -160,7 +154,7 @@ export default {
 <style scoped>
 
     .npc-list {
-        font-size: .9rem;
+        font-size: .8rem;
         display: flex;
         width: 100%;
         overflow: auto;

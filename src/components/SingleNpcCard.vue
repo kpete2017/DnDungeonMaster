@@ -4,9 +4,9 @@
             <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 9px; border-top-right-radius: 9px;'/>
         </div>
         <div class="card-text" @click="handleClick()">
-            <span class="date">{{race}} | {{characterClass}} | level {{level}} </span>
+            <span class="date"></span>
             <h2>{{name}}</h2>
-            <h4>{{subtitle}}</h4>
+            <h4>{{meta}}</h4>
         </div>
         <div class="card-stats">
             <div class="stat">
@@ -26,12 +26,15 @@
 </template>
 <script>
 export default {
-    name: "SinglePlayerCard",
-    props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
-        "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
-        "hitPoints", "speed", "playerName", "image", "proficiencyBonus"],
+    name: "SingleNpc",
+    props: ["name", "meta", "armorClass", "hitPoints", "speed", "strength", "dexterity", "constitution", "intelligence", 
+        "wisdom", "charisma", "savingThrows", "skills", "senses", 
+        "languages", "challenge", "traits", "actions", "legendaryActions", "image"],
     created: function() {
-        this.playerImage = this.image.toString()
+        if(typeof this.image === 'string') {
+            this.playerImage = this.image.toString()
+        }
+        this.playerImage = this.image
     },
     data() {
         return {
@@ -41,7 +44,7 @@ export default {
     },
     methods: {
         handleClick: function() {
-            this.$emit("create-large-player-card", this.allStats)
+            this.$emit("create-large-Npc-card", this.allStats)
         }
     },
     mounted() {

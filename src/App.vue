@@ -123,6 +123,7 @@ export default {
 body {
   background-color: var(--bg-secondary);
   font-family: 'Raleway';font-size: 18px;
+  max-height: 100vh;
 }
 
 #app {
