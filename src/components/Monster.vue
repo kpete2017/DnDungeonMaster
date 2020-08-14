@@ -3,7 +3,7 @@
         <div class="monster-instance-body"> 
             <div class="monster-instance-left-column">
                 <div class="monster-instance-top-left">
-                    <img :src="image" style='height:44vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:center; border-top-left-radius: 9px;'>
+                    <img :src="image" style='height:44vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:center; border-top-left-radius: 4.5px;'>
                 </div>
                 <div class="monster-instance-bottom-left"> 
                     <h1>{{name}}</h1>
@@ -110,7 +110,7 @@ export default {
         color: var(--text-secondary);
         font-size: .8rem ;
         margin-left: 14.6vw;
-        border-radius: 9px;
+        border-radius: 4.5px;
         height: 75vh;
         width: 70vw;
         display: grid;
@@ -128,7 +128,7 @@ export default {
         text-align: center;
         overflow: auto;
         background-color: var(--bg-secondary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         margin-top: 1rem;
@@ -139,7 +139,7 @@ export default {
         text-align: center;
         overflow: auto;
         background-color: var(--bg-secondary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         margin-top: 1rem;
@@ -167,7 +167,7 @@ export default {
 
 
     .monster-instance img {
-        border-top-left-radius: 9px;
+        border-top-left-radius: 4.5px;
     }
 
     .monster-instance-body {
@@ -181,8 +181,8 @@ export default {
         grid-area: monster-stats-footer;
         position: relative;
         bottom: 0;
-        border-bottom-left-radius: 9px;
-        border-bottom-right-radius: 9px;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
 
     }
 

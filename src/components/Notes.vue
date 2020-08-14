@@ -60,7 +60,7 @@ export default {
         }
         let exampleNote2 = {
             title: "That one character you forgot the accent for",
-            message: "It was bad irish"
+            message: "It was borderline offensive irish"
             }
         let exampleNote3 = {
             title: "The random tavern your group spent wayyy to much time in ",
@@ -107,7 +107,7 @@ export default {
 <style>
 
     .search-note {
-        border-radius: 9px;
+        border-radius: 4.5px;
         position: absolute;
         top: 7rem;
         left: 6vw;
@@ -159,7 +159,7 @@ export default {
     }
 
     .note {
-        border-radius: 9px;
+        border-radius: 4.5px;
         cursor: pointer;
         height: 20rem;
         width: 20rem;
@@ -176,7 +176,7 @@ export default {
     }
 
     .new-note {
-        border-radius: 9px;
+        border-radius: 4.5px;
         position: fixed;
         margin: 0 auto;
         top: -100vh;

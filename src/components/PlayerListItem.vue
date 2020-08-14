@@ -3,7 +3,7 @@
         <div class="player-stats-body">
             <div class="player-stats-body-left-side">
             <div class="player-stats-picture">
-                    <img :src="image" style='height:44vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 9px;'/>
+                    <img :src="image" style='height:44vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'/>
             </div>
             <div class="player-stats-body-general-information">
                     <h1>{{name}}</h1>
@@ -113,7 +113,7 @@ export default {
         grid-template-rows: 9fr 1fr;
         margin-left: 14.6vw;
         background-color: var(--bg-primary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         margin-top: 1rem;
         margin-bottom: 1rem;
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
@@ -145,7 +145,7 @@ export default {
         position: relative;
         text-align: center;
         background-color: var(--bg-secondary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: -6vw;
@@ -156,7 +156,7 @@ export default {
         position: relative;
         text-align: center;
         background-color: var(--bg-secondary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: -6vw;
@@ -184,8 +184,8 @@ export default {
     .player-stats-footer {
         grid-area: player-stats-footer;
         background-color: rgb(209, 38, 29);
-        border-bottom-left-radius: 9px;
-        border-bottom-right-radius: 9px;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
     }
 
 </style>

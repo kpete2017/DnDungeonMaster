@@ -83,7 +83,7 @@ export default {
 <style>
     .monster-page-custom-instance{
         cursor: pointer;
-        border-radius: 9px;
+        border-radius: 4.5px;
         color: var(--text-secondary);
         text-align: center;
         margin: 0 auto;

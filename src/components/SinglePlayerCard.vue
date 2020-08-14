@@ -2,7 +2,7 @@
   <div class="card">
         <i id="player-exit-button" class="fa fa-times" @click="deletePlayer()"></i>
         <div class="card-image" @click="handleClick()">
-            <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 9px; border-top-right-radius: 9px;'/>
+            <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 4.5px; border-top-right-radius: 4.5px;'/>
         </div>
         <div class="card-text" @click="handleClick()">
             <span class="date">{{race}} | {{characterClass}} | level {{level}} </span>
@@ -62,7 +62,7 @@ export default {
         grid-template-columns: 300px;
         grid-template-rows: 150px 150px 50px;
         grid-template-areas: "image" "text" "stats";
-        border-radius: 9px;
+        border-radius: 4.5px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
         text-align: center;
@@ -96,8 +96,8 @@ export default {
 
     .card-image {
         grid-area: image;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
+        border-top-left-radius: 4.5px;
+        border-top-right-radius: 4.5px;
         background-size: cover;
         background-position: top;
     }
@@ -107,8 +107,8 @@ export default {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
         background: rgb(209, 38, 29);
     }
 

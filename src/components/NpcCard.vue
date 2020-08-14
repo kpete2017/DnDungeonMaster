@@ -207,7 +207,7 @@ export default {
         grid-template-columns: 300px;
         grid-template-rows: 150px 150px 50px;
         grid-template-areas: "image" "text" "stats";
-        border-radius: 9px;
+        border-radius: 4.5px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
         font-family: roboto;
@@ -230,7 +230,7 @@ export default {
     }
 
     .new-npc {
-        border-radius: 9px;
+        border-radius: 4.5px;
         line-height: .7;
         position: fixed;
         top: 4rem;
@@ -283,7 +283,7 @@ export default {
         width: 70vw;
         z-index: 1;
         display: grid;
-        border-radius: 9px;
+        border-radius: 4.5px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     }
@@ -313,7 +313,7 @@ export default {
         position: absolute;
         overflow: auto;
         background-color: var(--bg-primary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: 5vw;
@@ -324,7 +324,7 @@ export default {
         position: absolute;
         overflow: auto;
         background-color: var(--bg-primary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: 5vw;

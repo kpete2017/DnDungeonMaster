@@ -39,7 +39,7 @@ export default {
         grid-template-rows: 150px 150px 50px;
         grid-template-areas: "image" "text" "stats";
         row-gap: 1rem;
-        border-radius: 9px;
+        border-radius: 4.5px;
         background: var(--bg-primary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
         text-align: center;
@@ -79,8 +79,8 @@ export default {
 
     .card-image {
         grid-area: image;
-        border-top-left-radius: 9px;
-        border-top-right-radius: 9px;
+        border-top-left-radius: 4.5px;
+        border-top-right-radius: 4.5px;
         width: 25vw;
         background-size: cover;
         background-position: top;
@@ -91,8 +91,8 @@ export default {
         grid-area: stats; 
         display: flex;
         justify-content: space-evenly;
-        border-bottom-left-radius: 9px;
-        border-bottom-right-radius: 9px;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
         background: rgb(209, 38, 29);
     }
 

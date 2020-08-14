@@ -69,7 +69,7 @@
             </div>
             <div class="player-stats-body"> 
                 <div class="player-stats-picture">
-                    <img :src="playerCardStats[17]" style='max-height:44vh; max-width: 20vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 9px;'/>
+                    <img :src="playerCardStats[17]" style='max-height:44vh; max-width: 20vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'/>
                 </div>
                 <div class="player-stats-body-general-information">
                     <h1>{{this.playerCardStats[0]}}</h1>
@@ -232,7 +232,7 @@ export default {
         grid-template-columns: 300px;
         grid-template-rows: 150px 150px 50px;
         grid-template-areas: "image" "text" "stats";
-        border-radius: 9px;
+        border-radius: 4.5px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
         font-family: roboto;
@@ -274,7 +274,7 @@ export default {
         height: 75vh;
         width: 70vw;
         z-index: 2;
-        border-radius: 9px;
+        border-radius: 4.5px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     }
@@ -303,7 +303,7 @@ export default {
     .player-stats-attacks-spellcasting {
         position: absolute;
         background-color: var(--bg-primary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: 5vw;
@@ -313,7 +313,7 @@ export default {
     .player-stats-equipment {
         position: absolute;
         background-color: var(--bg-primary);
-        border-radius: 9px;
+        border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: 5vw;
@@ -332,8 +332,8 @@ export default {
     .player-stats-footer {
         grid-area: player-stats-footer;
         background-color: rgb(209, 38, 29);
-        border-bottom-left-radius: 18px;
-        border-bottom-right-radius: 18px;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
     }
 
     #player-close-button {
@@ -371,7 +371,7 @@ export default {
         "new-player-bottom";
         grid-template-rows: 1fr 9fr 1fr;
         overflow: auto;
-        border-radius: 9px;
+        border-radius: 4.5px;
         line-height: .7;
         position: fixed;
         top: 4rem;

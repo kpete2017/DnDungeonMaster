@@ -175,7 +175,7 @@ export default {
 
     .party-page-custom-instance{
         cursor: pointer;
-        border-radius: 9px;
+        border-radius: 4.5px;
         color: var(--text-secondary);
         text-align: center;
         margin: 0 auto;
@@ -221,7 +221,7 @@ export default {
     }
 
     .new-player {
-        border-radius: 9px;
+        border-radius: 4.5px;
         background-image: url("../assets/player-background.jpg");
         background-size: cover;
         line-height: .7;

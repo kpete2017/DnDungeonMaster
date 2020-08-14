@@ -312,7 +312,7 @@ export default {
   margin: auto;
   box-sizing: border-box;
   border: 5px solid var(--bg-secondary);
-  border-radius: 9px;
+  border-radius: 4.5px;
   height: 39vh;
   overflow: hidden;
   box-shadow: 5px 5px 5px black;
