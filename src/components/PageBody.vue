@@ -49,11 +49,11 @@ export default {
         color: var(--text-secondary);
         text-align: center;
         width: 90%;
-        height: auto;
+        height: 90%;
         padding-left: 8rem;
         padding-right: 1rem;
-        padding-top: 6rem;
-        padding-bottom: 2rem;
+        padding-top: 5.5rem;
+        padding-bottom: .5rem;
         display: grid;
         grid-template-areas: 
             "left-sidebar PC right-sidebar"
@@ -68,7 +68,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 9px;
         max-width: 60vw;
-        height: 97%;
+        height: 98%;
         background-color: var(--bg-primary);
         grid-area: PC;
     }
@@ -77,7 +77,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 9px;
         max-width: 60vw;
-        height: 97%;
+        height: 98%;
         background-color: var(--bg-primary);
         grid-area: NPC;
     }

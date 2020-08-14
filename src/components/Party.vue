@@ -26,6 +26,8 @@
                     v-bind:playerName="player.player_name"
                     v-bind:image='player.image_url'
                     v-bind:proficiencyBondus='player.proficiency_bonus'
+                    v-bind:id="player.id"
+                    @deletePlayer="handleDeletePlayer"
                 />
             </div>
         </div>
@@ -144,6 +146,10 @@ export default {
     methods: {
         toggleAddPlayer: function(value) {
             this.newPlayer = value
+        },
+        handleDeletePlayer: function(value) {
+            let pos = this.players.map(function(e) { return e.name; }).indexOf(value[0]);
+            this.players.splice(pos, 1)
         }
     }
 }

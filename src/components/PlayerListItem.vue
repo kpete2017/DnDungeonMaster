@@ -76,7 +76,7 @@
         </div>
         <div class="player-stats-footer">
             <button class="player-options-button">Edit</button>
-            <button @click="deletePlayer" class="player-options-button">Delete</button>
+            <button @click="deletePlayer" value="delete" class="player-options-button">Delete</button>
         </div>
   </div>
 </template>
@@ -86,11 +86,16 @@ export default {
     name: "LargePlayerListItem",
     props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
-        "hitPoints", "speed", "playerName", "image", "proficiencyBonus"],
+        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "id"],
     methods: {
         deletePlayer: function() {
-            
+            this.$emit("deletePlayer", this.allStats)
         }
+    },
+    mounted() {
+        this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
+        this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
+        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus]
     }
 }
 </script>

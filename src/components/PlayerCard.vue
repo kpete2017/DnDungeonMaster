@@ -352,6 +352,7 @@ export default {
         grid-area: new-player-top;
         display: flex;
         overflow: auto;
+        flex-wrap: wrap;
         height: 100%;
         width: 75vw;
         background-color: var(--bg-secondary);
@@ -375,7 +376,7 @@ export default {
         position: fixed;
         top: 4rem;
         left: 15rem;
-        height: 55%;
+        height: 80%;
         width: 75vw;
         z-index: 4;
         background-color: var(--bg-secondary);

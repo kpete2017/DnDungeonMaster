@@ -116,6 +116,7 @@ export default {
 
   #rotation-next-button {
     width: 80%;
+    padding: 1rem;
     position: relative;
     top: -1rem;
     color: var(--text-secondary);

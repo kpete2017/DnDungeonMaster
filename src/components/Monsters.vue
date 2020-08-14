@@ -63,7 +63,6 @@ export default {
     },
     computed: {
         filteredList() {
-            console.log(this.searchChallengeRating)
             if(this.search === "" && this.searchChallengeRating === "") {
                 return this.monsters
             } else if(this.search) {

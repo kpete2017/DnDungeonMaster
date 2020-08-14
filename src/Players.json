@@ -18,7 +18,8 @@
         "proficiency_bonus": "2",
         "speed": "30ft",
         "player_name": "Kaylee",
-        "image_url": "https://preview.redd.it/uutgtc8tehu01.jpg?width=640&crop=smart&auto=webp&s=78bad8c8ee8465088478c48d2e5d5b992bc1ad60"
+        "image_url": "https://preview.redd.it/uutgtc8tehu01.jpg?width=640&crop=smart&auto=webp&s=78bad8c8ee8465088478c48d2e5d5b992bc1ad60",
+        "id": "0"
     },
     {
         "name": "Othellia",
@@ -39,7 +40,8 @@
         "proficiency_bonus": "2",
         "speed": "30ft",
         "player_name": "Kyle",
-        "image_url": "https://sketchmob.com/wp-content/uploads/2019/06/80346_2db8cbf54-720x1018.jpg"
+        "image_url": "https://sketchmob.com/wp-content/uploads/2019/06/80346_2db8cbf54-720x1018.jpg",
+        "id": "1"
     },
     {
         "name": "Jason",
@@ -60,7 +62,8 @@
         "proficiency_bonus": "2",
         "speed": "20ft",
         "player_name": "Kyle",
-        "image_url": "https://i.pinimg.com/originals/68/42/a0/6842a0b547772b8b21598a98324e908a.jpg"
+        "image_url": "https://i.pinimg.com/originals/68/42/a0/6842a0b547772b8b21598a98324e908a.jpg",
+        "id": "2"
     },
     {
         "name": "Evaughn",
@@ -81,7 +84,8 @@
         "proficiency_bonus": "2",
         "speed": "20ft",
         "player_name": "Kyle",
-        "image_url": "https://2static.fjcdn.com/pictures/Dank+dd+character+concept+art+10+mentionlist+dndcharartpart1+channeldungeonsndragsdank+d+d+chara+cter+concept+artgjxiltw_538ddf_5931853.jpg"
+        "image_url": "https://2static.fjcdn.com/pictures/Dank+dd+character+concept+art+10+mentionlist+dndcharartpart1+channeldungeonsndragsdank+d+d+chara+cter+concept+artgjxiltw_538ddf_5931853.jpg",
+        "id": "3"
     },
     {
         "name": "Jeff",
@@ -102,6 +106,7 @@
         "proficiency_bonus": "2",
         "speed": "30ft",
         "player_name": "Jeff",
-        "image_url": "https://i.imgflip.com/4/1cf8by.jpg"
+        "image_url": "https://i.imgflip.com/4/1cf8by.jpg",
+        "id": "4"
     }
 ]
