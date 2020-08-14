@@ -23,6 +23,7 @@
                     v-bind:legendaryActions="player.Legendary_Actions"
                     v-bind:image='player.img_url'
                     @create-large-Npc-card="handlePlayerCard"
+                    @delete-Npc-from-player-list="handleRemoveNpc"
                 />
         </div>   
         <div class="add-npc" @click="toggleAddNpc(true)">
@@ -47,14 +48,14 @@
             </div>
             <div class="player-stats-body"> 
                 <div class="player-stats-picture">
-                    <img :src="playerCardStats[17]" style='max-height:44vh; max-width: 20vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 18px;'/>
+                    <img :src="playerCardStats[19]" style='height:44vh; width: 20vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 18px;'/>
                 </div>
                 <div class="player-stats-body-general-information">
                     <h1>{{this.playerCardStats[0]}}</h1>
                     <h2>{{this.playerCardStats[1]}}</h2>
-                    <h2>Race: {{this.playerCardStats[2]}}</h2>
-                    <h2>Class: {{this.playerCardStats[3]}}</h2>
-                    <h2>Level: {{this.playerCardStats[4]}}</h2>
+                    <h2>Armor Class: {{this.playerCardStats[2]}}</h2>
+                    <h2>Hit Points: {{this.playerCardStats[3]}}</h2>
+                    <h2>Speed: {{this.playerCardStats[4]}}</h2>
                 </div>
                 <div class="player-stats-body-ability-scores">
                     <div class="ability-score">
@@ -81,26 +82,18 @@
                         <h2>Charisma</h2>
                         <h2>{{this.playerCardStats[10]}}</h2>
                     </div>
-                    <br/>
-                    <br/>
-                    <div class="ability-score">
-                        <h2>Armor Class</h2>
-                        <h2>{{this.playerCardStats[12]}}</h2>
-                    </div>
-                    <div class="ability-score">
-                        <h2>Speed</h2>
-                        <h2>{{this.playerCardStats[15]}}</h2>
-                    </div>
-                    <div class="ability-score">
-                        <h2>Max-HP</h2>
-                        <h2>{{this.playerCardStats[14]}}</h2>
-                    </div>
                 </div>
                 <div class="player-stats-attacks-spellcasting">
                     <h2>Attacks and SpellCasting</h2>
+                    <div class="ability-text" v-for="ability in listAbility" :key="ability.first"> 
+                        <Ability v-bind:ability="ability"/>
+                    </div>
                 </div>
                 <div class="player-stats-equipment">
-                    <h2>Equipment</h2>
+                    <h2>Traits</h2>
+                    <div class="trait-text" v-for="trait in listTrait" :key="trait.first">
+                        <Trait v-bind:trait="trait"/>
+                    </div>
                 </div>
             </div>
             <div class="player-stats-footer">
@@ -113,6 +106,8 @@
 <script>
 import SingleNpcCard from './SingleNpcCard.vue'
 import PlayersJson from '../CurrentMonsters.json'
+import Ability from './Ability'
+import Trait from './Trait'
 
 export default {
     name: "NpcCard",
@@ -122,15 +117,22 @@ export default {
             players: [],
             createPlayerCard: false,
             playerCardStats: [],
-            next: false
+            next: false,
+            abilities: [],
+            allTraits: [],
+            listAbility: [],
+            listTrait: []
         }
     },
     components: {
-        SingleNpcCard
+        SingleNpcCard,
+        Ability,
+        Trait
     },
     created: function () {
         let playerList = PlayersJson
         this.players = playerList
+        
     },
     methods: {
         toggleAddNpc: function(value) {
@@ -142,16 +144,51 @@ export default {
         handlePlayerCard(value) {
             this.createPlayerCard = true
             this.playerCardStats = value
-            console.log(this.playerCardStats)
+            
+            this.abilities.splice(0, this.abilities.length)
+            this.listAbility.splice(0, this.listAbility.length)
+            this.allTraits.splice(0, this.abilities.length)
+            this.listTrait.splice(0, this.abilities.length)
+
+            if(this.playerCardStats[17] != undefined) {
+            this.abilities = this.playerCardStats[17].split("<p>")
+            this.abilities.forEach( ability => {
+                this.listAbility.push(ability)
+                })
+            }
+            if(this.playerCardStats[16] != undefined) {
+            this.allTraits = this.playerCardStats[16].split("<p>")
+            this.allTraits.forEach( trait => {
+                this.listTrait.push(trait)
+                })
+            }
         },
         closePlayerCard() {
             this.createPlayerCard = false
+        },
+        handleRemoveNpc(value) {
+            let pos = this.players.map(function(e) { return e.name; }).indexOf(value[0]);
+            this.players.splice(pos, 1)
         }
     }
 }
 </script>
 
 <style scoped>
+
+    .ability-text {
+        font-size: 1rem;
+        text-align: left;
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+
+    .trait-text {
+        font-size: 1rem;
+        text-align: left;
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
 
     .npc-list {
         font-size: .8rem;
@@ -170,7 +207,7 @@ export default {
         grid-template-columns: 300px;
         grid-template-rows: 150px 150px 50px;
         grid-template-areas: "image" "text" "stats";
-        border-radius: 18px;
+        border-radius: 9px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
         font-family: roboto;
@@ -193,7 +230,7 @@ export default {
     }
 
     .new-npc {
-        border-radius: 18px;
+        border-radius: 9px;
         line-height: .7;
         position: fixed;
         top: 4rem;
@@ -246,7 +283,7 @@ export default {
         width: 70vw;
         z-index: 1;
         display: grid;
-        border-radius: 18px;
+        border-radius: 9px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     }
@@ -266,16 +303,17 @@ export default {
 
     .player-stats-body-ability-scores {
         width: 10vw;
-        position: absolute;
+        position: relative;
+        left: 22vw;
+        top: -20vh;
         text-align: left;
-        top: 0;
-        left: 18vw;
     }
 
     .player-stats-attacks-spellcasting {
         position: absolute;
+        overflow: auto;
         background-color: var(--bg-primary);
-        border-radius: 18px;
+        border-radius: 9px;
         width: 30vw;
         height: 30vh;
         right: 5vw;
@@ -284,8 +322,9 @@ export default {
 
     .player-stats-equipment {
         position: absolute;
+        overflow: auto;
         background-color: var(--bg-primary);
-        border-radius: 18px;
+        border-radius: 9px;
         width: 30vw;
         height: 30vh;
         right: 5vw;

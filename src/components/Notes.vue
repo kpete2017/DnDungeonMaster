@@ -91,13 +91,13 @@ export default {
         },
         removeNote: function(title) {
             let index = -1;
-            console.log(index)
+            
             for(let i = 0; i < this.notes.length; i++) {
                 if(this.notes[i].title === title) {
                     index = i;
                 }
             }
-            console.log(index)
+            
             this.notes.splice(index, 1)
         }
     }
@@ -230,10 +230,10 @@ export default {
     #close-button {
         position: absolute;
         color: var(--text-secondary);
-        bottom: 3rem;
+        bottom: 0.5rem;
         width: 5rem;
         height: 2rem;
-        right: 3rem;
+        right: 1rem;
         font-size: 1rem;
         background-color: var(--bg-primary);
         cursor: pointer;

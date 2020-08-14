@@ -1,5 +1,6 @@
 <template>
   <div class="card">
+        <i id="player-exit-button" class="fa fa-times" @click="deleteNpc()"></i>
         <div class="card-image" @click="handleClick()">
             <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 9px; border-top-right-radius: 9px;'/>
         </div>
@@ -45,12 +46,15 @@ export default {
     methods: {
         handleClick: function() {
             this.$emit("create-large-Npc-card", this.allStats)
+        },
+        deleteNpc: function() {
+            this.$emit("delete-Npc-from-player-list", this.allStats)
         }
     },
     mounted() {
-        this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
-        this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
-        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus]
+        this.allStats = [this.name, this.meta, this.armorClass, this.hitPoints, this.speed, this.strength, this.dexterity, this.constitution, this.intelligence, 
+        this.wisdom, this.charisma, this.savingThrows, this.skills, this.senses, 
+        this.languages, this.challenge, this.traits, this.actions, this.legendaryActions, this.image]
     }
 }
 </script>
@@ -84,7 +88,7 @@ export default {
         font-weight: 300;
     }
     .card-text h2 {
-        margin-top:0px;
+        margin-top:20px;
         font-size:28px;
     }
 

@@ -2,32 +2,28 @@
     <div class="monster-page">
         <div class="monster-page-background">
             <div class="monster-search-note">
-                <form @change.prevent="handleOnChange()">
+                <form>
                     <label style="color:var(--text-secondary)">Search: </label>
-                    <input v-model="filterTitle" class="note-search" type="text" placeholder="Search Monsters" />
+                    <input v-model="search" class="note-search" type="text" placeholder="Search Monsters" />
                 </form>
-                <form @change.prevent="handleOnChange()">
+                <form>
                     <label style="color:var(--text-secondary)">Challenge Rating: </label>
-                    <input id="cr" type="number" />
+                    <input v-model="searchChallengeRating" min="1" id="cr" type="number" />
                 </form>
             </div>
-            <div class="monster-page-custom-instance">
-                <h1>Add Custom Monster</h1>
-                <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
-            </div>
-            <div v-for="monster in monsters" :key="monster.name">
+            <div v-for="monster in filteredList" :key="monster.name">
                 <Monster
                     v-bind:name="monster.name"
                     v-bind:meta="monster.meta"
                     v-bind:armorClass="monster.Armor_Class"
                     v-bind:hitPoints="monster.Hit_Points"
                     v-bind:speed="monster.Speed"
-                    v-bind:strength="monster.STR"
-                    v-bind:dexterity="monster.DEX"
-                    v-bind:constitution="monster.CON"
-                    v-bind:intelligence="monster.INT"
-                    v-bind:wisdom="monster.WIS"
-                    v-bind:charisma="monster.CHA"
+                    v-bind:strength="monster.STR_mod"
+                    v-bind:dexterity="monster.DEX_mod"
+                    v-bind:constitution="monster.CON_mod"
+                    v-bind:intelligence="monster.INT_mod"
+                    v-bind:wisdom="monster.WIS_mod"
+                    v-bind:charisma="monster.CHA_mod"
                     v-bind:savingThrows="monster.Saving_Throws"
                     v-bind:skills="monster.Skills"
                     v-bind:senses="monster.Senses"
@@ -50,15 +46,37 @@ export default {
     name: "notes",
     data() {
         return {
-            monsters: ""
+            monsters: [],
+            filterTitle: "",
+            search: '',
+            searchChallengeRating: '',
+            filteredChallengeRating: ''
         }
     },
     created: function () {
         let monsterList = MonsterJson
         this.monsters = monsterList
+        this.filteredMonsters = monsterList
     },
     components: {
         Monster
+    },
+    computed: {
+        filteredList() {
+            console.log(this.searchChallengeRating)
+            if(this.search === "" && this.searchChallengeRating === "") {
+                return this.monsters
+            } else if(this.search) {
+                return this.monsters.filter(monster => {
+                    return monster.name.toLowerCase().includes(this.search.toLowerCase())
+                }) 
+            } else if(this.searchChallengeRating) {
+                return this.monsters.filter(monster => {
+                    return monster.Challenge.includes(this.searchChallengeRating)
+                })
+            }
+            return null
+        }
     }
 }
 </script>
@@ -66,14 +84,15 @@ export default {
 <style>
     .monster-page-custom-instance{
         cursor: pointer;
+        border-radius: 9px;
         color: var(--text-secondary);
         text-align: center;
-        margin-left: 8rem;
-        margin-top: 2rem;
+        margin: 0 auto;
+        margin-top: 5vh;
         background-color: var(--bg-primary);
         border: solid 1px var(--bg-primary);
         height: 20vh;
-        width: 90vw;
+        width: 70vw;
     }
 
     .monster-page-custom-instance:hover {
@@ -103,11 +122,10 @@ export default {
     .monster-search-note {
         display: flex;
         justify-content: space-evenly;
-        position: absolute;
-        top: 3rem;
-        left: 7vw;
+        margin: 0 auto;
         width: 45rem;
         padding: 2rem;
+        margin-top: -15vh;
         background-color: var(--bg-primary);
     }
 

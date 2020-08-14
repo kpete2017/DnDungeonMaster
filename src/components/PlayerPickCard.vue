@@ -1,6 +1,5 @@
 <template>
   <div class="card">
-        <i id="player-exit-button" class="fa fa-times" @click="deletePlayer()"></i>
         <div class="card-image" @click="handleClick()">
             <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 9px; border-top-right-radius: 9px;'/>
         </div>
@@ -27,7 +26,7 @@
 </template>
 <script>
 export default {
-    name: "SinglePlayerCard",
+    name: "PlayerPickCard",
     props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
         "hitPoints", "speed", "playerName", "image", "proficiencyBonus"],
@@ -42,10 +41,7 @@ export default {
     },
     methods: {
         handleClick: function() {
-            this.$emit("create-large-player-card", this.allStats)
-        },
-        deletePlayer: function() {
-            this.$emit("delete-player-from-player-list", this.allStats)
+            this.$emit("add-player", this.allStats)
         }
     },
     mounted() {
@@ -123,19 +119,5 @@ export default {
 
     .card:hover {
         transform: scale(1.05);
-        box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
     }
-
-    #player-exit-button {
-        grid-area: image;
-        color: rgb(209, 38, 29);
-        position: relative;
-        height: 2vh;
-        width: 2vh;
-        top: 1vh;
-        right: 2vh;
-        cursor: pointer;
-    }
-
-
 </style>

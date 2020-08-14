@@ -1,16 +1,40 @@
 <template>
-  <div class="party-page">
-      <h1 id="test-text">NPC Page</h1>
-      <div class="party-page-custom-instance" @click="toggleAddPlayer(true)">
+    <div class="party-page">
+        <div class="party-page-custom-instance" @click="toggleAddPlayer(true)">
                 <h1>Create New NPC</h1>
                 <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
-    </div>
-      <div class="new-player" v-if="newPlayer" v-drag>
+        </div>
+        <div class="party-list"> 
+            <div v-for="player in players" :key="player.name">
+                <PlayerListItem 
+                    v-bind:name="player.name"
+                    v-bind:subtitle="player.subtitle"
+                    v-bind:race="player.race"
+                    v-bind:characterClass="player.characterClass"
+                    v-bind:level="player.level"
+                    v-bind:strength="player.strength"
+                    v-bind:dexterity="player.dexterity"
+                    v-bind:constitution="player.constitution"
+                    v-bind:intelligence="player.intelligence"
+                    v-bind:wisdom="player.wisdom"
+                    v-bind:charisma="player.charisma"
+                    v-bind:initiative="player.initiative"
+                    v-bind:armorClass="player.armor_class"
+                    v-bind:passivePerception="player.passive_perception"
+                    v-bind:hitPoints="player.hit_points"
+                    v-bind:speed="player.speed"
+                    v-bind:playerName="player.player_name"
+                    v-bind:image='player.image_url'
+                    v-bind:proficiencyBonus='player.proficiency_bonus'
+                />
+            </div>
+        </div>
+        <div class="new-player" v-if="newPlayer" v-drag>
             <div class="menu-bar">
                 <i id="exit-button" class="fa fa-times" @click="toggleAddPlayer(false)"></i>
             </div>
             <form>
-                <h2>Create New NPC</h2>
+                <h2>Create New Player</h2>
                 <br/>
                 <div class="new-player-body">
                     <div class="player-input-area">
@@ -38,10 +62,6 @@
                             <div class="input-label">
                                 <h4>Player Name</h4>
                                 <input placeholder="Enter Player Name"/>
-                            </div>
-                            <div class="input-label">
-                                <h4>Experience</h4>
-                                <input type="number" placeholder="Enter Experience Points"/>
                             </div>
                         </div>
                         <div class="second">
@@ -91,6 +111,10 @@
                                 <h4>Max Hit_Points</h4>
                                 <input value=40 type="number" placeholder="Hit_Points"/>
                             </div>
+                            <div class="input-label">
+                                <h4>Player Image URl</h4>
+                                <input type="text" placeholder="insert url"/>
+                            </div>
                             <button id="submit-button" type="submit">Submit</button>
                         </div>
                     </div>
@@ -104,12 +128,18 @@
 </template>
 
 <script>
+import PlayersJson from '../NPC.json'
+import PlayerListItem from './PlayerListItem'
 export default {
     name: "Party",
     data() {
         return {
             newPlayer: false,
+            players: PlayersJson
         }
+    },
+    components: {
+        PlayerListItem
     },
     methods: {
         toggleAddPlayer: function(value) {
@@ -120,26 +150,34 @@ export default {
 </script>
 
 <style scoped>
+
+    .party-list {
+        display: flex;
+        flex-wrap: wrap;   
+    }
+
     .party-page {
         color: var(--text-secondary);
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        min-height: 100vh;
+        height: auto;
         background-color: var(--bg-secondary);
     }
 
     .party-page-custom-instance{
         cursor: pointer;
+        border-radius: 9px;
         color: var(--text-secondary);
         text-align: center;
-        margin-left: 8rem;
-        margin-top: 2rem;
+        margin: 0 auto;
+        margin-top: 10vh;
         background-color: var(--bg-primary);
         border: solid 1px var(--bg-primary);
         height: 20vh;
-        width: 90vw;
+        width: 70vw;
     }
         .new-player-body {
         display: flex;
