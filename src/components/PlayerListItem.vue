@@ -74,7 +74,10 @@
                 </div>
             </div>      
         </div>
-        <div class="player-stats-footer"></div>
+        <div class="player-stats-footer">
+            <button class="player-options-button">Edit</button>
+            <button @click="deletePlayer" class="player-options-button">Delete</button>
+        </div>
   </div>
 </template>
 
@@ -83,7 +86,12 @@ export default {
     name: "LargePlayerListItem",
     props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
-        "hitPoints", "speed", "playerName", "image", "proficiencyBonus"]
+        "hitPoints", "speed", "playerName", "image", "proficiencyBonus"],
+    methods: {
+        deletePlayer: function() {
+            
+        }
+    }
 }
 </script>
 
@@ -150,7 +158,14 @@ export default {
         top: 1vh;
     }
 
-
+    .player-options-button {
+        color: var(--text-secondary);
+        background-color: var(--bg-secondary);
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        cursor: pointer;
+    }
 
     .ability-score {
         display: flex;

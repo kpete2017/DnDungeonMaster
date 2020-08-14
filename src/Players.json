@@ -63,6 +63,27 @@
         "image_url": "https://i.pinimg.com/originals/68/42/a0/6842a0b547772b8b21598a98324e908a.jpg"
     },
     {
+        "name": "Evaughn",
+        "subtitle": "The Soul Stealer",
+        "race": "Human",
+        "characterClass": "Warrior/Necormancer",
+        "level": "2",
+        "strength":             "(+3)",
+        "dexterity":            "(+0)",
+        "constitution":         "(+2)",
+        "intelligence":         "(-2)",
+        "wisdom":               "(-1)",
+        "charisma":             "(+0)",
+        "initiative": "3",
+        "armor_class": "15",
+        "passive_perception": "9",
+        "hit_points": "60",
+        "proficiency_bonus": "2",
+        "speed": "20ft",
+        "player_name": "Kyle",
+        "image_url": "https://2static.fjcdn.com/pictures/Dank+dd+character+concept+art+10+mentionlist+dndcharartpart1+channeldungeonsndragsdank+d+d+chara+cter+concept+artgjxiltw_538ddf_5931853.jpg"
+    },
+    {
         "name": "Jeff",
         "subtitle": "From Accounting",
         "race": "Human",

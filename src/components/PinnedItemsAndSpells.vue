@@ -1,10 +1,17 @@
 <template>
-  <p>Pinned items and spells</p>
+  <div>
+    <Calculator/>
+  </div>
 </template>
 
 <script>
-export default {
+import Calculator from './Calculator.vue'
 
+export default {
+  name: "PinnedItemsAndSpells",
+  components: {
+    Calculator
+  }
 }
 </script>
 
