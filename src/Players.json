@@ -19,7 +19,8 @@
         "speed": "30ft",
         "player_name": "Kaylee",
         "image_url": "https://preview.redd.it/uutgtc8tehu01.jpg?width=640&crop=smart&auto=webp&s=78bad8c8ee8465088478c48d2e5d5b992bc1ad60",
-        "id": "0"
+        "id": "0",
+        "actions": ""
     },
     {
         "name": "Othellia",
@@ -41,7 +42,8 @@
         "speed": "30ft",
         "player_name": "Kyle",
         "image_url": "https://sketchmob.com/wp-content/uploads/2019/06/80346_2db8cbf54-720x1018.jpg",
-        "id": "1"
+        "id": "1",
+        "actions": ""
     },
     {
         "name": "Jason",
@@ -63,7 +65,8 @@
         "speed": "20ft",
         "player_name": "Kyle",
         "image_url": "https://i.pinimg.com/originals/68/42/a0/6842a0b547772b8b21598a98324e908a.jpg",
-        "id": "2"
+        "id": "2",
+        "actions": ""
     },
     {
         "name": "Evaughn",
@@ -85,7 +88,31 @@
         "speed": "20ft",
         "player_name": "Kyle",
         "image_url": "https://2static.fjcdn.com/pictures/Dank+dd+character+concept+art+10+mentionlist+dndcharartpart1+channeldungeonsndragsdank+d+d+chara+cter+concept+artgjxiltw_538ddf_5931853.jpg",
-        "id": "3"
+        "id": "3",
+        "actions": ""
+    },
+    {
+        "name": "Ser Jonhson",
+        "subtitle": "Of House Big",
+        "race": "Human",
+        "characterClass": "Cleric",
+        "level": "2",
+        "strength":             "(+3)",
+        "dexterity":            "(+0)",
+        "constitution":         "(+2)",
+        "intelligence":         "(-2)",
+        "wisdom":               "(-1)",
+        "charisma":             "(+0)",
+        "initiative": "3",
+        "armor_class": "15",
+        "passive_perception": "9",
+        "hit_points": "60",
+        "proficiency_bonus": "2",
+        "speed": "20ft",
+        "player_name": "Kyle",
+        "image_url": "https://cdnb.artstation.com/p/assets/images/images/009/866/795/large/joma-cueto-edwin-lowres-1st-pass.jpg?1521306625",
+        "id": "4",
+        "actions": ""
     },
     {
         "name": "Jeff",
@@ -107,6 +134,7 @@
         "speed": "30ft",
         "player_name": "Jeff",
         "image_url": "https://i.imgflip.com/4/1cf8by.jpg",
-        "id": "4"
+        "id": "5",
+        "actions": ""
     }
 ]

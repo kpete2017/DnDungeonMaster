@@ -1,6 +1,6 @@
 <template>
-  <div class="long-player-list"> 
-        <div class="player-stats-body">
+  <div class="long-player-list">
+        <div v-if="editPlayer === false" class="player-stats-body">
             <div class="player-stats-body-left-side">
             <div class="player-stats-picture">
                     <img :src="image" style='height:44vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'/>
@@ -68,6 +68,7 @@
             <div class="right-side">
                 <div class="player-stats-attacks-spellcasting">
                     <h2>Attacks and SpellCasting</h2>
+                    <p>{{actions}}</p>
                 </div>
                 <div class="player-stats-equipment">
                     <h2>Equipment</h2>
@@ -75,7 +76,7 @@
             </div>      
         </div>
         <div class="player-stats-footer">
-            <button class="player-options-button">Edit</button>
+            <button @click="handleEditPlayer" class="player-options-button">Edit</button>
             <button @click="deletePlayer" value="delete" class="player-options-button">Delete</button>
         </div>
   </div>
@@ -86,16 +87,24 @@ export default {
     name: "LargePlayerListItem",
     props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
-        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "id"],
+        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "id", "actions"],
     methods: {
         deletePlayer: function() {
             this.$emit("deletePlayer", this.allStats)
+        },
+        handleEditPlayer: function() {
+            this.editPlayer = true
+        }
+    },
+    data() {
+        return {
+            editPlayer: false
         }
     },
     mounted() {
         this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
         this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
-        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus]
+        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions]
     }
 }
 </script>

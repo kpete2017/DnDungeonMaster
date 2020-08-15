@@ -11,7 +11,7 @@
         </div>
         <div class="card-stats">
             <div class="stat">
-                <div class="value"><input type="number" :value="hitPoints" max="999" style="width:30px"/></div>
+                <div class="value"><input id="npc-stat-value-input" class="player-hp-input" type="number" :value="hitPoints" max="999" style="width:30px"/></div>
                 <div class="type">HP</div>
             </div>
             <div class="stat">
@@ -70,6 +70,10 @@ export default {
         cursor: pointer;
         margin:25px;
         margin-top: 1rem;;
+    }
+
+    input {
+        width: 40px;
     }
     
     .stat {

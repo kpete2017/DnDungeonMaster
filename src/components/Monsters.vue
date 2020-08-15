@@ -4,7 +4,7 @@
             <div class="monster-search-note">
                 <form>
                     <label style="color:var(--text-secondary)">Search: </label>
-                    <input v-model="search" class="note-search" type="text" placeholder="Search Monsters" />
+                    <input v-model="search" style="width:20vw" class="note-search" type="text" placeholder="Search Monsters" />
                 </form>
                 <form>
                     <label style="color:var(--text-secondary)">Challenge Rating: </label>

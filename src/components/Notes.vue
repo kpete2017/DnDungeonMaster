@@ -1,10 +1,5 @@
 <template>
   <div class="notes-page">
-        <div class="search-note">
-            <form @change.prevent="handleOnChange()">
-                <input v-model="filterTitle" class="note-search" type="text" placeholder="Search Note" />
-            </form> 
-        </div>
         <div class="notes-section">
             <div id="create-new-note" class="note" @click="toggleNewNote(true)">
                 <h1 id="new-note">Add New Note</h1>
@@ -106,16 +101,6 @@ export default {
 
 <style>
 
-    .search-note {
-        border-radius: 4.5px;
-        position: absolute;
-        top: 7rem;
-        left: 6vw;
-        width: 15rem;
-        padding: 2rem;
-        background-color: var(--bg-primary);
-    }
-
     .note-message {
         text-align: left;
         margin: 1rem;
@@ -141,9 +126,9 @@ export default {
     }
 
     .notes-section {
-        margin-top: 25vh;
+        margin-top: 9vh;
         background-color: var(--bg-secondary);
-        min-height: 75vh;
+        min-height: 82.7vh;
         max-height: 400vh;
         margin-left: 7rem;
         margin-bottom: 5rem;
@@ -246,7 +231,7 @@ export default {
     #submit-button {
         position: absolute;
         color: var(--text-secondary);
-        bottom: 3rem;
+        bottom: .4rem;
         width: 5rem;
         height: 2rem;
         right: 10rem;

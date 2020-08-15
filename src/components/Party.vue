@@ -27,6 +27,7 @@
                     v-bind:image='player.image_url'
                     v-bind:proficiencyBondus='player.proficiency_bonus'
                     v-bind:id="player.id"
+                    v-bind:actions="player.actions"
                     @deletePlayer="handleDeletePlayer"
                 />
             </div>
@@ -117,7 +118,7 @@
                                 <h4>Player Image URl</h4>
                                 <input type="text" placeholder="insert url"/>
                             </div>
-                            <button id="submit-button" type="submit">Submit</button>
+                            <button id="party-submit-button" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>

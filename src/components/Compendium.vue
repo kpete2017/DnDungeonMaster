@@ -4,7 +4,7 @@
             <div class="monster-search-note">
                 <form>
                     <label style="color:var(--text-secondary)">Search: </label>
-                    <input v-model="searchByName" class="note-search" type="text" placeholder="Search Spells" />
+                    <input id="search-by-name" v-model="searchByName" style="width:20vw" class="note-search" type="text" placeholder="Search Spells" />
                 </form>
             </div>
             <div class="spells-list">
@@ -62,6 +62,7 @@ export default {
 </script>
 
 <style>
+
     .spell-page {
         position: absolute;
         top: 0;

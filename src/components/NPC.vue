@@ -34,7 +34,7 @@
                 <i id="exit-button" class="fa fa-times" @click="toggleAddPlayer(false)"></i>
             </div>
             <form>
-                <h2>Create New Player</h2>
+                <h2>Create New Npc</h2>
                 <br/>
                 <div class="new-player-body">
                     <div class="player-input-area">
@@ -115,7 +115,7 @@
                                 <h4>Player Image URl</h4>
                                 <input type="text" placeholder="insert url"/>
                             </div>
-                            <button id="submit-button" type="submit">Submit</button>
+                            <button id="npc-submit-button" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@ export default {
 
     .party-page-custom-instance{
         cursor: pointer;
-        border-radius: 4.5px;
+        border-radius: 9px;
         color: var(--text-secondary);
         text-align: center;
         margin: 0 auto;
@@ -215,7 +215,7 @@ export default {
     }
 
     .new-player {
-        border-radius: 4.5px;
+        border-radius: 9px;
         background-image: url("../assets/player-background.jpg");
         background-size: cover;
         line-height: .7;
