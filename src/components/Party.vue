@@ -25,7 +25,7 @@
                     v-bind:speed="player.speed"
                     v-bind:playerName="player.player_name"
                     v-bind:image='player.image_url'
-                    v-bind:proficiencyBondus='player.proficiency_bonus'
+                    v-bind:proficiencyBonus='player.proficiency_bonus'
                     v-bind:id="player.id"
                     v-bind:actions="player.actions"
                     @deletePlayer="handleDeletePlayer"
