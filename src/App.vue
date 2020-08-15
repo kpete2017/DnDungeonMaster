@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Login v-if="loggedIn==false" @login="handleLogin"/>
-    <div v-if="loggedIn" v-bind:class="[isActive ? 'dark' : 'light']">
+    <div v-if="loggedIn" :class="[isActive ? 'dark' : 'light']">
       <NavBar 
         @toggled="isActive = !isActive" 
         @notes="handleNotesClick" 
@@ -11,11 +11,11 @@
         @spell="handleMonsterClick"
         @compendium="handleCompendiumClick"
       />
-      <PageHeader @logout="handleLogout"/>
-      <PageBody v-if="PageBody"/>
+      <PageHeader @logout="handleLogout" :name="userData.name"/>
+      <PageBody v-if="PageBody" :data="userData"/>
       <Notes v-if="Notes"/>
-      <Party v-if="Party" />
-      <Npc v-if="Npc"/>
+      <Party v-if="Party" :players="userData.players" />
+      <Npc v-if="Npc" :npcs="userData.npcs"/>
       <Monster v-if="Monster"/>
       <Compendium v-if="Compendium"/>
     </div>
@@ -56,12 +56,14 @@ export default {
         Party: false,
         Npc: false,
         Monster: false,
-        Compendium: false
+        Compendium: false,
+        userData: {},
     }
   },
   methods: {
-    handleLogin: function() {
+    handleLogin: function(users) {
       this.loggedIn = true
+      this.userData = users
     },
     handleLogout: function() {
       this.loggedIn = false

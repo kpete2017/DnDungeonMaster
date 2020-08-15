@@ -8,7 +8,7 @@
             <h1 id="master">Master</h1>
         </div>
         <div class="nav">
-            <h2 id="welcome">Welcome The_All_Powerful_Kyle!</h2>
+            <h2 id="welcome">Welcome {{name}}!</h2>
             <button id="logout" @click="handleLogout()">Logout</button>
         </div>
     </header>
@@ -21,7 +21,8 @@ export default {
         handleLogout: function() {
             this.$emit("logout")
         }
-    }
+    },
+    props: ["name"]
 }
 </script>
 

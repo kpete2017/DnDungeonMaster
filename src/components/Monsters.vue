@@ -7,8 +7,8 @@
                     <input v-model="search" style="width:20vw" class="note-search" type="text" placeholder="Search Monsters" />
                 </form>
                 <form>
-                    <label style="color:var(--text-secondary)">Challenge Rating: </label>
-                    <input v-model="searchChallengeRating" min="1" id="cr" type="number" />
+                    <label style="color:var(--text-secondary)">Level Rating: </label>
+                    <input v-model="searchLevelRating" min="1" id="cr" type="number" />
                 </form>
             </div>
             <div v-for="monster in filteredList" :key="monster.name">
@@ -28,11 +28,11 @@
                     v-bind:skills="monster.Skills"
                     v-bind:senses="monster.Senses"
                     v-bind:languages="monster.Languages"
-                    v-bind:challenge="monster.Challenge"
+                    v-bind:Level="monster.Level"
                     v-bind:traits="monster.Traits"
                     v-bind:actions="monster.Actions"
                     v-bind:legendaryActions="monster.Legendary_Actions"
-                    v-bind:image="monster.img_url"
+                    v-bind:image="monster.image_url"
                 />
             </div>
         </div>
@@ -49,8 +49,8 @@ export default {
             monsters: [],
             filterTitle: "",
             search: '',
-            searchChallengeRating: '',
-            filteredChallengeRating: ''
+            searchLevelRating: '',
+            filteredLevelRating: ''
         }
     },
     created: function () {
@@ -63,15 +63,15 @@ export default {
     },
     computed: {
         filteredList() {
-            if(this.search === "" && this.searchChallengeRating === "") {
+            if(this.search === "" && this.searchLevelRating === "") {
                 return this.monsters
             } else if(this.search) {
                 return this.monsters.filter(monster => {
                     return monster.name.toLowerCase().includes(this.search.toLowerCase())
                 }) 
-            } else if(this.searchChallengeRating) {
+            } else if(this.searchLevelRating) {
                 return this.monsters.filter(monster => {
-                    return monster.Challenge.includes(this.searchChallengeRating)
+                    return monster.Level.includes(this.searchLevelRating)
                 })
             }
             return null

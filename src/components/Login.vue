@@ -9,9 +9,9 @@
         </div>
         <form class="login-form"> 
             <h1>Login</h1>
-            <input id="login-username" type="username" placeholder="Username" value="kpete2017"/>
-            <input id="login-password" type="password" placeholder="Password" value="Password"/>
-            <button id="login-submit" @click="handleLogin" type="submit">Submit</button>
+            <input id="login-username" v-model="username" type="username" placeholder="Username"/>
+            <input id="login-password" v-model="password" type="password" placeholder="Password"/>
+            <button id="login-submit" @click.prevent="handleLogin" type="submit">Submit</button>
             <p>New Here?
                 <br/>
                 <br/>
@@ -24,9 +24,38 @@
 <script>
 export default {
     name: 'Login',
+    data() {
+        return {
+            username: "kpete2017",
+            password: "Guitarman2",
+            userData: {}
+        }
+    },
     methods: {
         handleLogin: function() {
-            this.$emit('login')
+            
+            const username = this.username
+            const password  = this.password
+            const userData = { username, password}
+
+            fetch("http://localhost:3000/login", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+                .then(response => response.json())
+                .then(result => this.successfulLogin(result))
+        },
+        successfulLogin: function(userData) {
+            if(userData.token) {
+                localStorage.setItem('token', userData.token);
+                this.userData = userData
+                this.$emit('login', this.userData)
+            } else {
+                alert("invalid login or password")
+            }
         }
     }
 }

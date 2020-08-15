@@ -28,7 +28,7 @@ export default {
   .pinned-note {
     border-radius: 4.5px;
     cursor: pointer;
-    height: 25rem;
+    height: 20rem;
     width: 90%;
     color: var(--text-secondary);
     background-color: var(--bg-secondary);

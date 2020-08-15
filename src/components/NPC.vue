@@ -128,14 +128,13 @@
 </template>
 
 <script>
-import PlayersJson from '../NPC.json'
 import PlayerListItem from './PlayerListItem'
 export default {
-    name: "Party",
+    name: "NPC",
     data() {
         return {
             newPlayer: false,
-            players: PlayersJson
+            players: this.npcs
         }
     },
     components: {
@@ -145,7 +144,8 @@ export default {
         toggleAddPlayer: function(value) {
             this.newPlayer = value
         }
-    }
+    },
+    props: ["npcs"]
 }
 </script>
 

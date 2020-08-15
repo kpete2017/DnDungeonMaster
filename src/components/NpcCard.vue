@@ -17,11 +17,11 @@
                     v-bind:skills="player.Skills"
                     v-bind:senses="player.Senses"
                     v-bind:languages="player.Languages"
-                    v-bind:challenge="player.Challenge"
+                    v-bind:Level="player.Level"
                     v-bind:traits="player.Traits"
                     v-bind:actions="player.Actions"
                     v-bind:legendaryActions="player.Legendary_Actions"
-                    v-bind:image='player.img_url'
+                    v-bind:image='player.image_url'
                     @create-large-Npc-card="handlePlayerCard"
                     @delete-Npc-from-player-list="handleRemoveNpc"
                 />
@@ -34,10 +34,29 @@
             <div class="menu-bar">
                 <i id="exit-button" class="fa fa-times" @click="toggleAddNpc(false)"></i>
             </div>
-            <form>
                 <h2>Add New NPC</h2>
-                <br/>
-            </form>
+                <div class="monster-search-list">
+                <form>
+                    <label style="color:var(--text-secondary)">Search: </label>
+                    <input v-model="search" style="width:20vw" class="note-search" type="text" placeholder="Search Monsters" />
+                </form>
+            </div>
+                <div class="list-monsters">
+                    <div v-for="monster in allMonsters" :key="monster.name">
+                        <div class="short-monster-description" @click="handleAddMonster(monster)">
+                            <img :src="monster.image_url" style='height:24vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:center; border-top-left-radius: 4.5px;'>
+                            <div class="main-stats-description">
+                                <h1>{{monster.name}}</h1>
+                                <h2>Level: {{monster.Level}}</h2>
+                                <h2>Hit Points: {{monster.Hit_Points}}</h2>
+                                <h2>Armor Class: {{monster.Armor_Class}}</h2>
+                            </div>
+                            <div class="main-traits-description">
+                                <Trait v-bind:trait="monster.Traits"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="new-npc-footer">
                 <button id="close-button" @click="toggleAddNpc(false)">close</button>
             </div>
@@ -105,9 +124,9 @@
 
 <script>
 import SingleNpcCard from './SingleNpcCard.vue'
-import PlayersJson from '../CurrentMonsters.json'
 import Ability from './Ability'
 import Trait from './Trait'
+import Monsters from '../Monsters.json'
 
 export default {
     name: "NpcCard",
@@ -115,13 +134,15 @@ export default {
         return {
             newNpc: false,
             players: [],
+            allMonsters: [],
             createPlayerCard: false,
             playerCardStats: [],
             next: false,
             abilities: [],
             allTraits: [],
             listAbility: [],
-            listTrait: []
+            listTrait: [],
+            search: ""
         }
     },
     components: {
@@ -129,10 +150,16 @@ export default {
         Ability,
         Trait
     },
-    created: function () {
-        let playerList = PlayersJson
-        this.players = playerList
-        
+    props: ['npcs'],
+    created: function() {
+
+        this.npcs.forEach(npc => {
+            this.allMonsters.push(npc)
+        })
+
+        Monsters.forEach(monster => {
+            this.allMonsters.push(monster)
+        })
     },
     methods: {
         toggleAddNpc: function(value) {
@@ -169,7 +196,11 @@ export default {
         handleRemoveNpc(value) {
             let pos = this.players.map(function(e) { return e.name; }).indexOf(value[0]);
             this.players.splice(pos, 1)
-        }
+        },
+        handleAddMonster(value) {
+            this.players.push(value)
+            this.toggleAddNpc(false)
+        },
     }
 }
 </script>
@@ -190,12 +221,54 @@ export default {
         margin-right: 2vw;
     }
 
+    .list-monsters{
+        height: 75%;
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 1rem;
+        overflow: auto;
+        text-align: left;
+        line-height: 2;
+        border-radius: 4.5px;
+    }
+
+    .new-npc-footer {
+        background-color: rgb(209, 38, 29);
+        height: 10vh;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
+        position: relative;
+        bottom: -5.5vh;
+    }
+
     .npc-list {
         font-size: .8rem;
         display: flex;
         width: 100%;
         overflow: auto;
         margin-right: 1rem;
+    }
+
+    .short-monster-description {
+        display: flex;
+        margin-right: 1rem;
+        background-color: var(--bg-primary);
+        margin-top: 1rem;
+        padding-right: 1rem;
+        cursor: pointer;
+    }
+
+    .main-stats-description {
+        margin-left: 2vw;
+    }
+
+    .main-traits-description   {
+        margin-left: 5vw;
+        margin: 0 auto;
+        margin-top: 2vh;
+        height: 20vh;
+        width: 30vw;
+        overflow: auto;
     }
     
     #plus-icon {
@@ -235,10 +308,11 @@ export default {
         position: fixed;
         top: 4rem;
         left: 15rem;
-        height: 70%;
-        width: 70vw;
+        height: 80%;
+        width: 75vw;
         z-index: 3;
         background-color: var(--bg-secondary);
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     }
 
     #close-button {

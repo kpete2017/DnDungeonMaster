@@ -11,7 +11,7 @@
         </div>
         <div class="card-stats">
             <div class="stat">
-                <div class="value"><input type="number" :value="hitPoints" max="999" style="width:30px"/></div>
+                <div class="value"><input type="number" :value="firstHP" max="999" style="width:30px"/></div>
                     <div class="type">HP</div>
             </div>
             <div class="stat">
@@ -19,7 +19,7 @@
                     <div class="type">AC</div>
             </div>
             <div class="stat">
-                <div class="value">{{speed}}</div>
+                <div class="value">{{firstSpeed}}</div>
                     <div class="type">Speed</div>
             </div>
         </div>
@@ -30,17 +30,25 @@ export default {
     name: "SingleNpc",
     props: ["name", "meta", "armorClass", "hitPoints", "speed", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "savingThrows", "skills", "senses", 
-        "languages", "challenge", "traits", "actions", "legendaryActions", "image"],
+        "languages", "Level", "traits", "actions", "legendaryActions", "image"],
     created: function() {
         if(typeof this.image === 'string') {
             this.playerImage = this.image.toString()
         }
         this.playerImage = this.image
+
+        let words = this.hitPoints.split(" ")
+        this.firstHP = words[0]
+
+        let speed = this.speed.split(" ")
+        this.firstSpeed = speed[0] + speed[1]
     },
     data() {
         return {
             viewAllStats: false,
             allStats: [],
+            firstHP: "",
+            firstSpeed: ""
         }
     },
     methods: {
@@ -54,7 +62,7 @@ export default {
     mounted() {
         this.allStats = [this.name, this.meta, this.armorClass, this.hitPoints, this.speed, this.strength, this.dexterity, this.constitution, this.intelligence, 
         this.wisdom, this.charisma, this.savingThrows, this.skills, this.senses, 
-        this.languages, this.challenge, this.traits, this.actions, this.legendaryActions, this.image]
+        this.languages, this.Level, this.traits, this.actions, this.legendaryActions, this.image]
     }
 }
 </script>

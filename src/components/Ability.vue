@@ -1,5 +1,5 @@
 <template>
-    <p>{{filteredAbility}}</p>
+    <h4 style="font-size: 1.2rem; font-weight: 500;">{{filteredAbility}}</h4>
 </template>
 
 <script>

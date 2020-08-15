@@ -2,10 +2,10 @@
     <div class="background">
         <main>
             <div class="pc">
-                <PlayerCard/>
+                <PlayerCard :players="data.players"/>
             </div>
             <div class="npc">
-                <NpcCard />
+                <NpcCard :npcs="data.npcs" />
             </div>
             <div class="spells">
                 <PinnedItemsAndSpells/>
@@ -33,6 +33,14 @@ export default {
         PinnedItemsAndSpells,
         NpcCard,
         InformationTab
+    },
+    props: {
+        data: {
+            type: Object
+        }
+    },
+    created: function() {
+        console.log(this.data)
     }
 }
 </script>
@@ -52,8 +60,8 @@ export default {
         height: 90%;
         padding-left: 8rem;
         padding-right: 1rem;
-        padding-top: 5.5rem;
-        padding-bottom: .5rem;
+        padding-top: 5.9rem;
+        padding-bottom: .9rem;
         display: grid;
         grid-template-areas: 
             "left-sidebar PC right-sidebar"
@@ -68,7 +76,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 60vw;
-        height: 98%;
+        height: 97%;
         background-color: var(--bg-primary);
         grid-area: PC;
     }
@@ -77,7 +85,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 60vw;
-        height: 98%;
+        height: 97%;
         background-color: var(--bg-primary);
         grid-area: NPC;
     }
@@ -86,7 +94,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 50vw;
-        height: 100%;
+        height: 98.5%;
         background-color: var(--bg-primary);
         grid-area: left-sidebar;
     }
@@ -95,7 +103,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 50vw;
-        height: 100%;
+        height: 98.5%;
         background-color: var(--bg-primary);
         grid-area: right-sidebar;
     }

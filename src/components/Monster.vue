@@ -7,7 +7,7 @@
                 </div>
                 <div class="monster-instance-bottom-left"> 
                     <h1>{{name}}</h1>
-                    <h2>Challenge Rating: {{challenge}}</h2>
+                    <h2>Level Rating: {{Level}}</h2>
                     <h2>Hit Points: {{hitPoints}}</h2>
                     <h2>Armor Class: {{armorClass}}</h2>
                 </div>
@@ -84,7 +84,7 @@ export default {
     },
     props: ["name", "meta", "armorClass", "hitPoints", "speed", 
     "strength", "dexterity", "constitution", "intelligence", "wisdom", 
-    "charisma", "savingThrows", "skills", "senses", "languages", "challenge", 
+    "charisma", "savingThrows", "skills", "senses", "languages", "Level", 
     "traits", "actions", "legendaryActions", "image"],
     created: function() {
         if(this.actions != undefined) {
