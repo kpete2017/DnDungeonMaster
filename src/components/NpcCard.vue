@@ -4,8 +4,8 @@
                 <SingleNpcCard
                     v-bind:name="player.name"
                     v-bind:meta="player.meta"
-                    v-bind:armorClass="player.Armor_Class"
-                    v-bind:hitPoints="player.Hit_Points"
+                    v-bind:armorClass="player.armor_class"
+                    v-bind:hitPoints="player.hit_points"
                     v-bind:speed="player.Speed"
                     v-bind:strength="player.STR_mod"
                     v-bind:dexterity="player.DEX_mod"
@@ -17,7 +17,7 @@
                     v-bind:skills="player.Skills"
                     v-bind:senses="player.Senses"
                     v-bind:languages="player.Languages"
-                    v-bind:Level="player.Level"
+                    v-bind:Level="player.level"
                     v-bind:traits="player.Traits"
                     v-bind:actions="player.Actions"
                     v-bind:legendaryActions="player.Legendary_Actions"
@@ -27,7 +27,7 @@
                 />
         </div>   
         <div class="add-npc" @click="toggleAddNpc(true)">
-            <h4>Add Non Player Character</h4>
+            <h1>Add Non Player Character</h1>
             <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
         </div>
         <div class="new-npc" v-if="newNpc" v-drag>
@@ -44,12 +44,12 @@
                 <div class="list-monsters">
                     <div v-for="monster in allMonsters" :key="monster.name">
                         <div class="short-monster-description" @click="handleAddMonster(monster)">
-                            <img :src="monster.image_url" style='height:24vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:center; border-top-left-radius: 4.5px;'>
+                            <img :src="monster.image_url" style='height:24vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'>
                             <div class="main-stats-description">
                                 <h1>{{monster.name}}</h1>
-                                <h2>Level: {{monster.Level}}</h2>
-                                <h2>Hit Points: {{monster.Hit_Points}}</h2>
-                                <h2>Armor Class: {{monster.Armor_Class}}</h2>
+                                <h2>Level: {{monster.level}}</h2>
+                                <h2>Hit Points: {{monster.hit_points}}</h2>
+                                <h2>Armor Class: {{monster.armor_class}}</h2>
                             </div>
                             <div class="main-traits-description">
                                 <Trait v-bind:trait="monster.Traits"/>
@@ -213,6 +213,11 @@ export default {
         margin-left: 2vw;
         margin-right: 2vw;
     }
+
+    .add-npc:hover {
+        transform: scale(1.05);
+    }
+    
 
     .trait-text {
         font-size: 1rem;

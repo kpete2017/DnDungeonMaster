@@ -15,8 +15,8 @@
                 <Monster
                     v-bind:name="monster.name"
                     v-bind:meta="monster.meta"
-                    v-bind:armorClass="monster.Armor_Class"
-                    v-bind:hitPoints="monster.Hit_Points"
+                    v-bind:armorClass="monster.armor_class"
+                    v-bind:hitPoints="monster.hit_points"
                     v-bind:speed="monster.Speed"
                     v-bind:strength="monster.STR_mod"
                     v-bind:dexterity="monster.DEX_mod"
@@ -28,7 +28,7 @@
                     v-bind:skills="monster.Skills"
                     v-bind:senses="monster.Senses"
                     v-bind:languages="monster.Languages"
-                    v-bind:Level="monster.Level"
+                    v-bind:Level="monster.level"
                     v-bind:traits="monster.Traits"
                     v-bind:actions="monster.Actions"
                     v-bind:legendaryActions="monster.Legendary_Actions"
@@ -71,7 +71,7 @@ export default {
                 }) 
             } else if(this.searchLevelRating) {
                 return this.monsters.filter(monster => {
-                    return monster.Level.includes(this.searchLevelRating)
+                    return monster.level.includes(this.searchLevelRating)
                 })
             }
             return null

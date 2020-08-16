@@ -1,7 +1,7 @@
 <template>
   <div class="note-template">
-        <i id="note-exit-button" class="fa fa-times" @click="deleteNewNote()"></i>
-        <h2 class=note-title>{{this.title}}</h2>
+        <i v-if="exitable" id="note-exit-button" class="fa fa-times" @click="deleteNewNote()"></i>
+        <h3 class=note-title>{{this.title}}</h3>
         <p class="note-message">{{this.message}}</p>
   </div>
 </template>
@@ -9,10 +9,17 @@
 <script>
 export default {
     name: "Note",
-    props: ["title", "message"],
+    props: ["title", "message", "id", "exitable"],
     methods: {
         deleteNewNote: function() {
             this.$emit('deleteNote')
+            fetch(`http://localhost:3000/notes/${this.id}`, {
+                method: 'DELETE',
+                headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
         }
     }
 }
@@ -22,4 +29,5 @@ export default {
     .note-title {
         margin-top: -1rem;
     }
+
 </style>

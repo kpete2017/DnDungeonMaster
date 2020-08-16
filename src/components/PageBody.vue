@@ -2,13 +2,13 @@
     <div class="background">
         <main>
             <div class="pc">
-                <PlayerCard :players="data.players"/>
+                <PlayerCard :npcs="data.npcs" :players="data.players"/>
             </div>
             <div class="npc">
                 <NpcCard :npcs="data.npcs" />
             </div>
             <div class="spells">
-                <PinnedItemsAndSpells/>
+                <PinnedItemsAndSpells :notes="data.notes" />
             </div>
             <div class="items">
                 <InformationTab/>
@@ -39,9 +39,6 @@ export default {
             type: Object
         }
     },
-    created: function() {
-        console.log(this.data)
-    }
 }
 </script>
 

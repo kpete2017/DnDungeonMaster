@@ -159,13 +159,22 @@ export default {
         return {
             newPlayer: false,
             currentPlayers: [],
-            allPlayers: this.players,
+            allPlayers: [],
             createPlayerCard: false,
             playerCardStats: [],
             next: false
         }
     },
-    props: ["players"],
+    created: function() {
+        this.npcs.forEach( npc => {
+            this.allPlayers.push(npc)
+        })
+
+        this.players.forEach( player => {
+            this.allPlayers.push(player)
+        })
+    },
+    props: ["players", "npcs"],
     methods: {
         toggleAddPlayer: function(value) {
             this.newPlayer = value
@@ -235,6 +244,10 @@ export default {
         transition: 0.5s ease;
         cursor: pointer;
         margin:30px;
+    }
+
+    .last-card:hover {
+        transform: scale(1.05);
     }
     
 

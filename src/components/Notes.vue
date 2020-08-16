@@ -6,7 +6,7 @@
                 <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
             </div>
             <div id="create-new-note" class="note" v-for="note in notes" :key="note.title">
-                <Note v-bind:title="note.title" v-bind:message="note.message" @deleteNote="removeNote(note.title)"/>
+                <Note v-bind:title="note.title" v-bind:message="note.message" v-bind:id="note.id" v-bind:exitable="true" @deleteNote="removeNote(note.title)"/>
             </div>
         </div>
         <div class="new-note" v-if="newNote" v-drag> 
@@ -18,7 +18,7 @@
                     <div class="title">
                         <label for="input">Title:     </label><input placeholder="Enter Title" v-model="newNoteTitle" />
                     </div>
-                    <ckeditor class="ck-editor" :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+                    <ckeditor class="ck-editor" :editor="editor" v-model="editorData"></ckeditor>
                 </div>
                 <button id="submit-button" type="submit">Submit</button>
                 <button id="close-button" @click="toggleNewNote(false)">close</button>
@@ -41,36 +41,11 @@ export default {
             newNote: false,
             editor: ClassicEditor,
             editorData: '',
-            editorConfig: {
-            },
-            notes: [],
             newNoteTitle: "",
             filterTitle: ""
         }
     },
-    created: function() {
-        let exampleNote = {
-            title: "IMPORTANT CAMPAIGN DETAILS",
-            message: "Make it up as you go"
-        }
-        let exampleNote2 = {
-            title: "That one character you forgot the accent for",
-            message: "It was borderline offensive irish"
-            }
-        let exampleNote3 = {
-            title: "The random tavern your group spent wayyy to much time in ",
-            message: "The Leaks"
-        }
-        let exampleNote4 = {
-            title: "The mega demon that will destory the world",
-            message: "His name was fluffy"
-        }
-        let exampleNote5 = {
-            title: "Dont forget",
-            message: "Horribly Murder Jeff for showing up late"
-        }
-        this.notes.push(exampleNote, exampleNote2, exampleNote3, exampleNote4, exampleNote5)
-    },
+    props: ["notes"],
     methods: {
         toggleNewNote: function(value) {
             this.newNote = value
@@ -103,7 +78,8 @@ export default {
 
     .note-message {
         text-align: left;
-        margin: 1rem;
+        margin-left: .5rem;
+        margin-right: .5rem;
     }
 
     .ck-content { height:28rem; }
@@ -128,7 +104,7 @@ export default {
     .notes-section {
         margin-top: 9vh;
         background-color: var(--bg-secondary);
-        min-height: 82.7vh;
+        min-height: 95vh;
         max-height: 400vh;
         margin-left: 7rem;
         margin-bottom: 5rem;
@@ -153,13 +129,8 @@ export default {
         padding-top: 2rem;
         border: solid 1px var(--bg-secondary);
         margin-right: 1rem;
-        margin-top: 1rem;
     }
-
-    .note:hover {
-        border: solid 1px var(--text-secondary);
-    }
-
+    
     .new-note {
         border-radius: 4.5px;
         position: fixed;

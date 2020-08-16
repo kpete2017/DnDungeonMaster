@@ -126,12 +126,12 @@ export default {
     methods: {
         deletePlayer: function() {
             this.$emit("deletePlayer", this.allStats)
-            fetch(`http://localhost:3000/players/${this.storedId}`, {
+            fetch(`http://localhost:3000/npcs/${this.storedId}`, {
                 method: 'DELETE',
                 headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
-            }
+                }
             })
         },
         handleEditPlayer: function(value) {

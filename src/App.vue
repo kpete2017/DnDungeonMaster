@@ -13,7 +13,7 @@
       />
       <PageHeader @logout="handleLogout" :name="userData.name"/>
       <PageBody v-if="PageBody" :data="userData"/>
-      <Notes v-if="Notes"/>
+      <Notes v-if="Notes" :notes="userData.notes"/>
       <Party v-if="Party" :players="userData.players" />
       <Npc v-if="Npc" :npcs="userData.npcs"/>
       <Monster v-if="Monster"/>

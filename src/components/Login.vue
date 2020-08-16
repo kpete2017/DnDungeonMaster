@@ -8,15 +8,16 @@
             <h1 id="master">Master</h1>
         </div>
         <form class="login-form"> 
-            <h1>Login</h1>
+            <h1 v-if="newAccount">Sign up</h1>
+            <h1 v-else>Login</h1>
             <input id="login-username" v-model="username" type="username" placeholder="Username"/>
             <input id="login-password" v-model="password" type="password" placeholder="Password"/>
-            <button id="login-submit" @click.prevent="handleLogin" type="submit">Submit</button>
-            <p>New Here?
-                <br/>
-                <br/>
-                <a>Create Account</a>
-            </p>
+            <button v-if="newAccount" id="login-submit" @click.prevent="handleCreateNewUser" type="submit">Sign-Up</button>
+            <button v-else id="login-submit" @click.prevent="handleLogin" type="submit">Submit</button>
+            <p v-if="newAccount">Already have an account?</p>
+            <p v-else>New Here?</p>
+            <p v-if="newAccount" id="sign-up" @click="handleNewAccount(false)">Login</p>
+            <p v-else id="sign-up" @click="handleNewAccount(true)">Create Account</p>
         </form>
     </div>
 </template>
@@ -28,7 +29,8 @@ export default {
         return {
             username: "kpete2017",
             password: "Guitarman2",
-            userData: {}
+            userData: {},
+            newAccount: false
         }
     },
     methods: {
@@ -56,6 +58,23 @@ export default {
             } else {
                 alert("invalid login or password")
             }
+        },
+        handleNewAccount: function(value) {
+            this.newAccount = value
+        },
+        handleCreateNewUser: function() {
+            const username = this.username
+            const password  = this.password
+            const userData = { username, password}
+            fetch("http://localhost:3000/users", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(result => this.successfulLogin(result))
         }
     }
 }
@@ -77,6 +96,14 @@ export default {
         margin-bottom: .5rem;
         margin-top: .5rem;
         cursor: pointer;
+    }
+
+    #sign-up {
+        cursor: pointer;
+    }
+
+    #sign-up:hover {
+        color: rgb(209, 38, 29);
     }
 
 
