@@ -168,9 +168,17 @@ export default {
         toggleAddPlayer: function(value) {
             this.newPlayer = value
         },
-        handleDeletePlayer: function(value) {
-            let pos = this.players.map(function(e) { return e.name; }).indexOf(value[0]);
-            this.players.splice(pos, 1)
+        handleDeletePlayer: function(value, id) {
+            let pos = this.allPlayers.map(function(e) { return e.name; }).indexOf(value[0]);
+            this.allPlayers.splice(pos, 1)
+
+            fetch(`http://localhost:3000/npcs/${id}`, {
+                method: 'DELETE',
+                headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
         },
         handleNewPlayer: function() {
             this.toggleAddPlayer(false)
@@ -193,9 +201,12 @@ export default {
             const image_url = this.newPlayerImage
             const proficiency_bonus = this.newPlayerProficiencyBonus
            
-            const userData = { name, subtitle, race, characterClass, level, strength, dexterity, constitution, intelligence, wisdom, charisma, initiative, armor_class, passive_perception, hit_points, proficiency_bonus, speed, image_url }
+            const userData = { name, subtitle, race, characterClass, level, 
+            strength, dexterity, constitution, intelligence, wisdom, charisma, 
+            initiative, armor_class, passive_perception, hit_points, proficiency_bonus, 
+            speed, image_url }
 
-            this.players.push(userData)
+            this.allPlayers.push(userData)
 
             fetch("http://localhost:3000/npcs", {
                 method: "POST",
