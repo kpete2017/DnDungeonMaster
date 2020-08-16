@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="new-player-body" v-if="newPlayer" v-drag>
-            <h1 id="add-a-character">Add A Party Member</h1>
+            <h1 id="add-a-character">Add Ally</h1>
             <div class="new-player" >
                 <div class="add-new-players-div" v-for="player in allPlayers" :key="player.name">
                     <PlayerPickCard

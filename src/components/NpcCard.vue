@@ -34,7 +34,7 @@
             <div class="menu-bar">
                 <i id="exit-button" class="fa fa-times" @click="toggleAddNpc(false)"></i>
             </div>
-                <h2>Add New NPC</h2>
+                <h2>Add Enemy</h2>
                 <div class="monster-search-list">
                 <form>
                     <label style="color:var(--text-secondary)">Search: </label>

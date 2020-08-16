@@ -3,7 +3,11 @@
         <div class="player-stats-body">
             <div class="player-stats-body-left-side">
             <div class="player-stats-picture">
-                    <img :src="image" style='height:44vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'/>
+                    <div v-if="editPlayer" style="margin-left: 1vw; height:44vh; width: 19vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;">
+                        <h2>Enter Image URL: </h2>
+                        <input v-model="storedImage" style="width:15vw;" placeholder="Please Enter Image URL"/>
+                    </div>
+                    <img v-else :src="image" style='height:44vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'/>
             </div>
             <div class="player-stats-body-general-information">
                 <div class="character-general-info-list">
@@ -110,8 +114,8 @@
             </div>      
         </div>
         <div class="player-stats-footer">
-            <button v-if="editPlayer" @click="handleEditPlayer(false)" class="player-options-button">Done</button>
-            <button v-else @click="handleEditPlayer(true)" class="player-options-button">Edit</button>
+            <button v-if="editPlayer" @click="handleEditPlayer()" class="player-options-button">Done</button>
+            <button v-else @click="toggleEditPlayer(true)" class="player-options-button">Edit</button>
             <button @click="deletePlayer" value="delete" class="player-options-button">Delete</button>
         </div>
   </div>
@@ -125,17 +129,46 @@ export default {
         "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "id", "actions"],
     methods: {
         deletePlayer: function() {
-            this.$emit("deletePlayer", this.allStats)
+            this.$emit("deletePlayer", this.allStats, this.storedId)
+        },
+        toggleEditPlayer: function(value) {
+            this.editPlayer = value
+        },
+        handleEditPlayer: function() {
+            this.toggleEditPlayer(false)
+
+            const name = this.storedName
+            const subtitle = this.storedSubtitle
+            const race = this.storedRace
+            const characterClass = this.storedClass
+            const level = this.storedLevel
+            const strength = this.storedStrength
+            const dexterity = this.storedDexterity
+            const constitution = this.storedConstitution
+            const intelligence  = this.storedIntelligence
+            const wisdom = this.storedWisdom
+            const charisma = this.storedCharisma
+            const armor_class = this.storedArmorClass
+            const initiative = this.storedInitiative
+            const speed = this.storedSpeed
+            const passive_perception = this.storedPassivePerception
+            const hit_points = this.storedHitPoints
+            const image_url = this.storedImage
+            const proficiency_bonus = this.storedProficiencyBonus
+           
+            const userData = { name, subtitle, race, characterClass, 
+            level, strength, dexterity, constitution, intelligence, wisdom, 
+            charisma, initiative, armor_class, passive_perception, 
+            hit_points, proficiency_bonus, speed, image_url }
+
             fetch(`http://localhost:3000/players/${this.storedId}`, {
-                method: 'DELETE',
+                method: 'PUT',
                 headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
-            }
+                },
+                body: JSON.stringify(userData)
             })
-        },
-        handleEditPlayer: function(value) {
-            this.editPlayer = value
         }
     },
     data() {
@@ -167,7 +200,7 @@ export default {
     mounted() {
         this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
         this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
-        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions]
+        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions, this.id]
     }
 }
 </script>
