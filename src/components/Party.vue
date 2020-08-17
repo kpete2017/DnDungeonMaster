@@ -28,6 +28,7 @@
                     v-bind:proficiencyBonus='player.proficiency_bonus'
                     v-bind:id="player.id"
                     v-bind:actions="player.actions"
+                    v-bind:equipment="player.equipment"
                     @deletePlayer="handleDeletePlayer"
                 />
             </div>
@@ -207,7 +208,7 @@ export default {
             initiative, armor_class, passive_perception, hit_points, proficiency_bonus, 
             speed, image_url }
 
-            this.allPlayers.push(userData)
+            
 
             fetch("http://localhost:3000/players", {
                 method: "POST",
@@ -217,7 +218,11 @@ export default {
                 },
                 body: JSON.stringify(userData)
             })
-
+            .then(response => response.json())
+            .then(results => {
+                userData.id = results.id
+                this.allPlayers.push(userData)
+            })
         }
     },
     props: ["players"],
@@ -232,7 +237,6 @@ export default {
     }
 
     .party-page {
-        color: var(--text-secondary);
         position: absolute;
         top: 0;
         left: 0;
@@ -254,7 +258,7 @@ export default {
         height: 20vh;
         width: 70vw;
     }
-        .new-player-body {
+    .new-player-body {
         display: flex;
         justify-content: center;
     }

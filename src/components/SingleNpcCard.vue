@@ -11,11 +11,11 @@
         </div>
         <div class="card-stats">
             <div class="stat">
-                <div class="value"><input type="number" :value="firstHP" max="999" style="width:30px"/></div>
+                <div class="value"><input style="width: 2vw; text-align: center;" type="number" :value="firstHP" max="999" /></div>
                     <div class="type">HP</div>
             </div>
             <div class="stat">
-                <div class="value">{{armorClass}}</div>
+                <div class="value">{{firstArmorClass}}</div>
                     <div class="type">AC</div>
             </div>
             <div class="stat">
@@ -42,13 +42,17 @@ export default {
 
         let speed = this.speed.split(" ")
         this.firstSpeed = speed[0] + speed[1]
+
+        let armorClass = this.armorClass.split(" ")
+        this.firstArmorClass = armorClass[0]
     },
     data() {
         return {
             viewAllStats: false,
             allStats: [],
             firstHP: "",
-            firstSpeed: ""
+            firstSpeed: "",
+            firstArmorClass: "",
         }
     },
     methods: {

@@ -27,7 +27,7 @@
                 />
         </div>   
         <div class="add-npc" @click="toggleAddNpc(true)">
-            <h1>Add Non Player Character</h1>
+            <h1>Add Enemy</h1>
             <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
         </div>
         <div class="new-npc" v-if="newNpc" v-drag>
@@ -42,7 +42,7 @@
                 </form>
             </div>
                 <div class="list-monsters">
-                    <div v-for="monster in allMonsters" :key="monster.name">
+                    <div v-for="monster in filteredList" :key="monster.name">
                         <div class="short-monster-description" @click="handleAddMonster(monster)">
                             <img :src="monster.image_url" style='height:24vh; width: 20vw; position: relative; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'>
                             <div class="main-stats-description">
@@ -51,9 +51,7 @@
                                 <h2>Hit Points: {{monster.hit_points}}</h2>
                                 <h2>Armor Class: {{monster.armor_class}}</h2>
                             </div>
-                            <div class="main-traits-description">
-                                <Trait v-bind:trait="monster.Traits"/>
-                            </div>
+                            <h4 class="main-traits-description" v-html="monster.Traits"> </h4>
                         </div>
                     </div>
                 </div>
@@ -104,15 +102,11 @@
                 </div>
                 <div class="player-stats-attacks-spellcasting">
                     <h2>Attacks and SpellCasting</h2>
-                    <div class="ability-text" v-for="ability in listAbility" :key="ability.first"> 
-                        <Ability v-bind:ability="ability"/>
-                    </div>
+                    <h4  class="ability-text" v-html="playerCardStats[17]"></h4>
                 </div>
                 <div class="player-stats-equipment">
                     <h2>Traits</h2>
-                    <div class="trait-text" v-for="trait in listTrait" :key="trait.first">
-                        <Trait v-bind:trait="trait"/>
-                    </div>
+                    <h4 class="trait-text" v-html="playerCardStats[16]"></h4>
                 </div>
             </div>
             <div class="player-stats-footer">
@@ -124,8 +118,6 @@
 
 <script>
 import SingleNpcCard from './SingleNpcCard.vue'
-import Ability from './Ability'
-import Trait from './Trait'
 import Monsters from '../Monsters.json'
 
 export default {
@@ -147,8 +139,6 @@ export default {
     },
     components: {
         SingleNpcCard,
-        Ability,
-        Trait
     },
     props: ['npcs'],
     created: function() {
@@ -177,18 +167,6 @@ export default {
             this.allTraits.splice(0, this.abilities.length)
             this.listTrait.splice(0, this.abilities.length)
 
-            if(this.playerCardStats[17] != undefined) {
-            this.abilities = this.playerCardStats[17].split("<p>")
-            this.abilities.forEach( ability => {
-                this.listAbility.push(ability)
-                })
-            }
-            if(this.playerCardStats[16] != undefined) {
-            this.allTraits = this.playerCardStats[16].split("<p>")
-            this.allTraits.forEach( trait => {
-                this.listTrait.push(trait)
-                })
-            }
         },
         closePlayerCard() {
             this.createPlayerCard = false
@@ -201,6 +179,18 @@ export default {
             this.players.push(value)
             this.toggleAddNpc(false)
         },
+    },
+    computed: {
+        filteredList() {
+            if(this.search === "") {
+                return this.allMonsters
+            } else if(this.search) {
+                return this.allMonsters.filter(monster => {
+                    return monster.name.toLowerCase().includes(this.search.toLowerCase())
+                }) 
+            }
+            return null
+        }
     }
 }
 </script>

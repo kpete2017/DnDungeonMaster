@@ -7,7 +7,7 @@
                 </div>
                 <div class="monster-instance-bottom-left"> 
                     <h1>{{name}}</h1>
-                    <h2>Level Rating: {{Level}}</h2>
+                    <h2>Challenge Rating: {{challenge}}</h2>
                     <h2>Hit Points: {{hitPoints}}</h2>
                     <h2>Armor Class: {{armorClass}}</h2>
                 </div>
@@ -46,15 +46,11 @@
             <div class="right-side">
                 <div class="monster-stats-attacks-spellcasting">
                     <h2>Attacks and SpellCasting</h2>
-                    <div class="ability-text" v-for="ability in listAbility" :key="ability.first"> 
-                        <Ability v-bind:ability="ability"/>
-                    </div>
+                    <h4 class="ability-text" v-html="actions"></h4>
                 </div>
                 <div class="monster-stats-equipment">
                     <h2>Traits</h2>
-                    <div class="trait-text" v-for="trait in listTrait" :key="trait.first">
-                        <Trait v-bind:trait="trait"/>
-                    </div>
+                    <h4 class="trait-text" v-html="traits"></h4>
                 </div>
             </div>    
         </div> 
@@ -65,43 +61,13 @@
 </template>
 
 <script>
-import Ability from './Ability'
-import Trait from './Trait'
 
 export default {
     name: "Monster",
-    data() {
-        return {
-            abilities: [],
-            allTraits: [],
-            listAbility: [],
-            listTrait: []
-        }
-    },
-    components: {
-        Ability,
-        Trait
-    },
     props: ["name", "meta", "armorClass", "hitPoints", "speed", 
     "strength", "dexterity", "constitution", "intelligence", "wisdom", 
-    "charisma", "savingThrows", "skills", "senses", "languages", "Level", 
+    "charisma", "savingThrows", "skills", "senses", "languages", "challenge", 
     "traits", "actions", "legendaryActions", "image"],
-    created: function() {
-        if(this.actions != undefined) {
-            this.abilities = this.actions.split("<p>")
-            this.abilities.forEach( ability => {
-                this.listAbility.push(ability)
-            })
-        }
-
-        if(this.traits != undefined) {
-            this.allTraits = this.traits.split("<p>")
-            this.allTraits.forEach( trait => {
-                this.listTrait.push(trait)
-            })
-        }
-        
-    }
 }
 </script>
 

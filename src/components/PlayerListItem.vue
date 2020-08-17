@@ -104,12 +104,13 @@
             <div class="right-side">
                 <div class="player-stats-attacks-spellcasting">
                     <h2>Attacks and SpellCasting</h2>
-                    <textarea v-if="editPlayer" v-model="storedActions" style="width: 95%; height: 70%"></textarea>
-                    <p v-else>{{storedActions}}</p>
+                    <ckeditor v-if="editPlayer" class="ck-editor" :editor="editor" v-model="storedActions"></ckeditor>
+                    <p v-else v-html="storedActions"></p>
                 </div>
                 <div class="player-stats-equipment">
                     <h2>Equipment</h2>
-                    <textarea v-if="editPlayer" style="width: 95%; height: 70%"></textarea>
+                    <ckeditor v-if="editPlayer" style="color:black;" class="ck-editor" :editor="editor" v-model="storedEquipment"></ckeditor>
+                    <p v-else v-html="storedEquipment"></p>
                 </div>
             </div>      
         </div>
@@ -122,11 +123,13 @@
 </template>
 
 <script>
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 export default {
     name: "LargePlayerListItem",
     props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
-        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "id", "actions"],
+        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "id", "actions", "equipment"],
     methods: {
         deletePlayer: function() {
             this.$emit("deletePlayer", this.allStats, this.storedId)
@@ -155,11 +158,13 @@ export default {
             const hit_points = this.storedHitPoints
             const image_url = this.storedImage
             const proficiency_bonus = this.storedProficiencyBonus
+            const actions = this.storedActions
+            const equipment = this.storedEquipment
            
             const userData = { name, subtitle, race, characterClass, 
             level, strength, dexterity, constitution, intelligence, wisdom, 
             charisma, initiative, armor_class, passive_perception, 
-            hit_points, proficiency_bonus, speed, image_url }
+            hit_points, proficiency_bonus, speed, image_url, actions, equipment }
 
             fetch(`http://localhost:3000/players/${this.storedId}`, {
                 method: 'PUT',
@@ -195,17 +200,24 @@ export default {
             storedProficiencyBonus: this.proficiencyBonus,
             storedId: this.id,
             storedActions: this.actions,
+            storedEquipment: this.equipment,
+
+            editor: ClassicEditor,
         }
     },
     mounted() {
         this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
         this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
-        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions, this.id]
+        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions, this.equipment, this.id]
     }
 }
 </script>
 
 <style scoped>
+
+    .ck-editor {
+        height: 13rem;
+    }
 
     .general-info-value {
         margin-left: 1rem;
@@ -224,7 +236,6 @@ export default {
         margin-left: 1rem;
         margin-right: 1rem;
     }
-
 
     .long-player-list {
         font-size: .8rem ;
@@ -246,6 +257,7 @@ export default {
     .player-stats-body {
         grid-area: player-stats-body;
         display: flex;
+        color: var(--text-secondary);
         line-height: 1;
     }
 
@@ -271,6 +283,8 @@ export default {
     .player-stats-attacks-spellcasting {
         position: relative;
         text-align: center;
+        overflow-y: auto;
+        overflow-x: hidden;
         background-color: var(--bg-secondary);
         border-radius: 4.5px;
         width: 30vw;
@@ -280,14 +294,29 @@ export default {
     }
 
     .player-stats-equipment {
+        margin-top: 1rem;
         position: relative;
         text-align: center;
+        overflow-y: auto;
+        overflow-x: hidden;
         background-color: var(--bg-secondary);
         border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: -6vw;
         top: 1vh;
+    }
+
+    .player-stats-attacks-spellcasting > p {
+        text-align: left;
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+
+    .player-stats-equipment > p {
+        text-align: left;
+        font-size: 1rem;
+        margin-left: 1rem;
     }
 
     .player-options-button {

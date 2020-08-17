@@ -5,7 +5,7 @@
                 <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
         </div>
         <div class="party-list"> 
-            <div v-for="player in players" :key="player.name">
+            <div v-for="player in allPlayers" :key="player.name">
                 <PlayerListItem 
                     v-bind:name="player.name"
                     v-bind:subtitle="player.subtitle"
@@ -28,6 +28,7 @@
                     v-bind:proficiencyBonus='player.proficiency_bonus'
                     v-bind:id="player.id"
                     v-bind:actions="player.actions"
+                    v-bind:equipment="player.equipment"
                     @deletePlayer="handleDeletePlayer"
                 />
             </div>
@@ -137,7 +138,7 @@ export default {
     data() {
         return {
             newPlayer: false,
-            players: this.npcs,
+            allPlayers: this.npcs,
 
             newPlayerName: "",
             newPlayerSubtitle: "",
@@ -206,8 +207,6 @@ export default {
             initiative, armor_class, passive_perception, hit_points, proficiency_bonus, 
             speed, image_url }
 
-            this.allPlayers.push(userData)
-
             fetch("http://localhost:3000/npcs", {
                 method: "POST",
                 headers: {
@@ -216,7 +215,11 @@ export default {
                 },
                 body: JSON.stringify(userData)
             })
-
+            .then(response => response.json())
+            .then(results => {
+                userData.id = results.id
+                this.allPlayers.push(userData)
+            })
         }
     },
     props: ["npcs"]

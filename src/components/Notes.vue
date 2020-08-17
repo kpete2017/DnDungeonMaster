@@ -16,7 +16,7 @@
             <form @submit.prevent="getEditorData()">
                 <div class="editor"> 
                     <div class="title">
-                        <label for="input">Title:     </label><input placeholder="Enter Title" v-model="newNoteTitle" />
+                        <label for="input">Title:     </label><input style="width: 10vw;" placeholder="Enter Title" v-model="newNoteTitle" />
                     </div>
                     <ckeditor class="ck-editor" :editor="editor" v-model="editorData"></ckeditor>
                 </div>
@@ -82,14 +82,14 @@ export default {
         margin-right: .5rem;
     }
 
-    .ck-content { height:28rem; }
+    .ck-content { height:13rem; overflow: auto; color: black;}
 
     .title {
         margin: 1rem;
     }
 
     .editor {
-        height: 40vh;
+        height: 20vh;
         margin: 1rem;
     }
     .notes-page {
@@ -136,8 +136,8 @@ export default {
         position: fixed;
         margin: 0 auto;
         top: -100vh;
-        height: 70vh;
-        width: 70vw;
+        height: 37vh;
+        width: 38vw;
         z-index: 2;
         background-color: var(--text-secondary);
         border: solid 1px var(--text-primary);
