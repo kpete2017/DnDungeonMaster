@@ -173,7 +173,7 @@ export default {
             let pos = this.allPlayers.map(function(e) { return e.name; }).indexOf(value[0]);
             this.allPlayers.splice(pos, 1)
 
-            fetch(`http://localhost:3000/npcs/${id}`, {
+            fetch(`https://dndungeonmaster.herokuapp.com/npcs/${id}`, {
                 method: 'DELETE',
                 headers: {
                 "Content-Type": "application/json",
@@ -207,7 +207,7 @@ export default {
             initiative, armor_class, passive_perception, hit_points, proficiency_bonus, 
             speed, image_url }
 
-            fetch("http://localhost:3000/npcs", {
+            fetch("https://dndungeonmaster.herokuapp.com/npcs", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",

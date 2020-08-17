@@ -27,8 +27,8 @@ export default {
     name: 'Login',
     data() {
         return {
-            username: "kpete2017",
-            password: "Guitarman2",
+            username: "",
+            password: "",
             userData: {},
             newAccount: false
         }
@@ -40,7 +40,7 @@ export default {
             const password  = this.password
             const userData = { username, password}
 
-            fetch("http://localhost:3000/login", {
+            fetch("https://dndungeonmaster.herokuapp.com/login", {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
@@ -66,7 +66,7 @@ export default {
             const username = this.username
             const password  = this.password
             const userData = { username, password}
-            fetch("http://localhost:3000/users", {
+            fetch("https://dndungeonmaster.herokuapp.com/users", {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

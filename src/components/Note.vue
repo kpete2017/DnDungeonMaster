@@ -13,7 +13,7 @@ export default {
     methods: {
         deleteNewNote: function() {
             this.$emit('deleteNote')
-            fetch(`http://localhost:3000/notes/${this.id}`, {
+            fetch(`https://dndungeonmaster.herokuapp.com/notes/${this.id}`, {
                 method: 'DELETE',
                 headers: {
                 "Content-Type": "application/json",

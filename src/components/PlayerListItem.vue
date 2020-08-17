@@ -166,7 +166,7 @@ export default {
             charisma, initiative, armor_class, passive_perception, 
             hit_points, proficiency_bonus, speed, image_url, actions, equipment }
 
-            fetch(`http://localhost:3000/players/${this.storedId}`, {
+            fetch(`https://dndungeonmaster.herokuapp.com/players/${this.storedId}`, {
                 method: 'PUT',
                 headers: {
                 "Content-Type": "application/json",

@@ -30,7 +30,7 @@ export default {
     name: "SinglePlayerCard",
     props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
-        "hitPoints", "speed", "playerName", "image", "proficiencyBonus"],
+        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "actions", "equipment"],
     created: function() {
         this.playerImage = this.image.toString()
     },
@@ -51,7 +51,7 @@ export default {
     mounted() {
         this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
         this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
-        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus]
+        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions, this.equipment]
     }
 }
 </script>

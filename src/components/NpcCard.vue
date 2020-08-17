@@ -150,6 +150,8 @@ export default {
         Monsters.forEach(monster => {
             this.allMonsters.push(monster)
         })
+
+        this.players.push(this.allMonsters[302])
     },
     methods: {
         toggleAddNpc: function(value) {

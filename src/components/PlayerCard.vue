@@ -22,6 +22,8 @@
                     v-bind:speed="player.speed"
                     v-bind:playerName="player.player_name"
                     v-bind:image='player.image_url'
+                    v-bind:actions="player.actions"
+                    v-bind:equipment="player.equipment"
                     @create-large-player-card="handlePlayerCard"
                     @delete-player-from-player-list="handleRemovePlayer"
                 />
@@ -55,6 +57,8 @@
                         v-bind:speed="player.speed"
                         v-bind:playerName="player.player_name"
                         v-bind:image='player.image_url'
+                        v-bind:actions="player.actions"
+                        v-bind:equipment="player.equipment"
                         @add-player="handleAddPlayer"
                     />
                 </div>
@@ -132,9 +136,11 @@
                 </div>
                 <div class="player-stats-attacks-spellcasting">
                     <h2>Attacks and SpellCasting</h2>
+                    <h4 v-html="this.playerCardStats[19]"></h4>
                 </div>
                 <div class="player-stats-equipment">
                     <h2>Equipment</h2>
+                    <h4 v-html="this.playerCardStats[20]"></h4>
                 </div>
             </div>
             <div class="player-stats-footer">
@@ -173,6 +179,8 @@ export default {
         this.players.forEach( player => {
             this.allPlayers.push(player)
         })
+
+        this.currentPlayers.push(this.allPlayers[1], this.allPlayers[2], this.allPlayers[3] )
     },
     props: ["players", "npcs"],
     methods: {
@@ -210,7 +218,9 @@ export default {
                 proficiency_bonus: value[18],
                 speed: value[15],
                 player_name: value[16],
-                image_url: value[17]
+                image_url: value[17],
+                actions: value[19],
+                equipment: value[20]
             }
             this.currentPlayers.push(newPlayer)
             this.toggleAddPlayer(false)
@@ -310,6 +320,7 @@ export default {
 
     .player-stats-attacks-spellcasting {
         position: absolute;
+        overflow: auto;
         background-color: var(--bg-primary);
         border-radius: 4.5px;
         width: 30vw;
@@ -318,14 +329,25 @@ export default {
         top: 1vh;
     }
 
+    .player-stats-attacks-spellcasting h4 { 
+        margin-left: 1rem;
+        text-align: left;
+    }
+
     .player-stats-equipment {
         position: absolute;
+        overflow: auto;
         background-color: var(--bg-primary);
         border-radius: 4.5px;
         width: 30vw;
         height: 30vh;
         right: 5vw;
         top: 33vh;
+    }
+
+    .player-stats-equipment h4 { 
+        margin-left: 1rem;
+        text-align: left;
     }
 
     .ability-score {

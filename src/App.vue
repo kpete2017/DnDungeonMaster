@@ -128,6 +128,17 @@ body {
   max-height: 100vh;
 }
 
+
+h4 {
+    color: var(--text-secondary);
+}
+
+
+h2 {
+    color: var(--text-secondary);
+}
+
+
 #app {
   font-family: 'Fantasy';
   -webkit-font-smoothing: antialiased;

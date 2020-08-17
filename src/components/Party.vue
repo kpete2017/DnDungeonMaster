@@ -174,7 +174,7 @@ export default {
             let pos = this.allPlayers.map(function(e) { return e.name; }).indexOf(value[0]);
             this.allPlayers.splice(pos, 1)
 
-            fetch(`http://localhost:3000/players/${id}`, {
+            fetch(`https://dndungeonmaster.herokuapp.com/players/${id}`, {
                 method: 'DELETE',
                 headers: {
                 "Content-Type": "application/json",
@@ -210,7 +210,7 @@ export default {
 
             
 
-            fetch("http://localhost:3000/players", {
+            fetch("https://dndungeonmaster.herokuapp.com/players", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",

@@ -167,7 +167,7 @@ export default {
 
             console.log(this.storedActions, this.storedEquipment)
 
-            fetch(`http://localhost:3000/npcs/${this.storedId}`, {
+            fetch(`https://dndungeonmaster.herokuapp.com/npcs/${this.storedId}`, {
                 method: 'PUT',
                 headers: {
                 "Content-Type": "application/json",
