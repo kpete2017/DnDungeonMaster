@@ -150,8 +150,6 @@ export default {
         Monsters.forEach(monster => {
             this.allMonsters.push(monster)
         })
-
-        this.players.push(this.allMonsters[302])
     },
     methods: {
         toggleAddNpc: function(value) {
@@ -242,7 +240,9 @@ export default {
         font-size: .8rem;
         display: flex;
         width: 100%;
-        overflow: auto;
+        height: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
         margin-right: 1rem;
     }
 
@@ -274,26 +274,26 @@ export default {
     }
     .add-npc {
         display: grid;
-        grid-template-columns: 300px;
-        grid-template-rows: 150px 150px 50px;
+        grid-template-columns: 16vw;
+        grid-template-rows: 20vh 10vh 6vh;
         grid-template-areas: "image" "text" "stats";
         border-radius: 4.5px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
-        font-family: roboto;
         text-align: center;
         transition: 0.5s ease;
         cursor: pointer;
-        margin:30px;
+        height: 36vh;
+        width: 16vw;
+        margin:25px;
+        margin-top: 1rem;
     }
 
     #plus-icon {
         justify-self: center;
-        align-self: center;
         height: 25px;
         width: 25px;
     }
-
 
     .stay-square {
         width: 15rem;

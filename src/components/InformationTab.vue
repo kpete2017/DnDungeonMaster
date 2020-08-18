@@ -1,39 +1,45 @@
 <template>
   <div class="information-tab">
     <div class="top-third">
-      <h2>Region information</h2>
+      <h2 style="margin: 0 auto;">Region information</h2>
       <div class="region-info">
         <div class="region-div">
-          <p>Plane of existence:</p>
-          <p>Boeing</p>
+          <p>Plane:</p>
+          <input v-if="editRegionInfo" v-model="plane"/>
+          <p v-else>{{plane}}</p>
         </div> 
         <div class="region-div">
           <p>Continent:</p>
-          <p>Toril</p>
+          <input v-if="editRegionInfo" v-model="continent"/>
+          <p v-else>{{continent}}</p>
         </div> 
         <div class="region-div">
-          <p>Kingdom: </p>
-          <p>Fearun</p>
-        </div> 
-        <div class="region-div">
-          <p>City: </p>
-          <p>Waterdeep </p>
+          <p>Area: </p>
+          <input v-if="editRegionInfo" v-model="area"/>
+          <p v-else>{{area}}</p>
         </div> 
         <div class="region-div">
           <p>Climate: </p>
-          <p>Temperate </p>
-        </div> 
+          <input v-if="editRegionInfo" v-model="climate"/>
+          <p v-else>{{climate}} </p>
+        </div>
+        <div class="region-div">
+          <p>Terrain: </p>
+          <input v-if="editRegionInfo" v-model="terrain"/>
+          <p v-else>{{terrain}} </p>
+        </div>  
       </div>
-      <button id="edit-region-button">Edit</button>
+      <button style="margin: 0 auto;" v-if="editRegionInfo === false" @click="editRegionInfo = !editRegionInfo" id="edit-region-button">Edit</button>
+      <button style="margin: 0 auto;" v-if="editRegionInfo" @click="handleEditRegionInfo" id="edit-region-button">Done</button>
     </div>
     <div class="middle-third">
       <h2>Turn Rotation</h2>
       <button @click="rotate" id="rotation-next-button">Next</button>
-      <div class="turn-rotation" v-for="character in turnRotation" :key="character">
+      <div class="turn-rotation" v-for="character in turnRotation" :key="character.name">
         <i  style="cursor: pointer;" class="fa fa-times" @click="deletePlayerFromRotation(character)"></i>
-        <p class="turn-rotation-character">{{character}}</p>
+        <p class="turn-rotation-character">{{character.name}}</p>
       </div>
-      <form style="margin: 1rem;" @submit.prevent="handeAddTurnRotation">
+      <form style="margin: 1rem;" @submit.prevent="handleAddTurnRotation">
         <input style="width: 8vw;" v-model="newCombatant" type="text"/>
         <button type="submit">Add</button>
       </form>
@@ -62,54 +68,104 @@
 
 <script>
 export default {
-    name: "InformationTab",
-    data() {
-      return {
-        dice: "D4",
-        number: 1,
-        result: null,
-        turnRotation: [],
-        newCombatant: "",
+  name: "InformationTab",
+  data() {
+    return {
+      dice: "D4",
+      number: 1,
+      result: null,
+      turnRotation: this.rotation,
+      newCombatant: "",
+      storedRegionInfo: "",
+      editRegionInfo: false,
+      plane: this.region.plane,
+      continent: this.region.continent,
+      area: this.region.area,
+      climate: this.region.climate,
+      terrain:  this.region.terrain,
+    }
+  },
+  props: ["region", "rotation"],
+  methods: {
+    processForm: function() {
+      if(this.dice == "D4") {
+        this.getResult(4)
+      } else if(this.dice == "D6") {
+        this.getResult(6)
+      } else if(this.dice == "D8") {
+        this.getResult(8)
+      } else if(this.dice == "D10") {
+        this.getResult(10)
+      } else if(this.dice == "D12") {
+        this.getResult(12)
+      } else if(this.dice == "D00") {
+        this.getResult(100)
+      } else if(this.dice == "D20") {
+        this.getResult(20)
       }
     },
-    methods: {
-      processForm: function() {
-        if(this.dice == "D4") {
-          this.getResult(4)
-        } else if(this.dice == "D6") {
-          this.getResult(6)
-        } else if(this.dice == "D8") {
-          this.getResult(8)
-        } else if(this.dice == "D10") {
-          this.getResult(10)
-        } else if(this.dice == "D12") {
-          this.getResult(12)
-        } else if(this.dice == "D00") {
-          this.getResult(100)
-        } else if(this.dice == "D20") {
-          this.getResult(20)
-        }
-      },
-      getResult: function(n) {
-        let total = 0
-        for(let i = 0; i < this.number; i++) {
-          total = total + Math.floor(Math.random() * n) + 1
-        }
-        this.result = total
-      },
-      rotate: function() {
-        let firstEntry = this.turnRotation[0]
-        this.turnRotation.shift()
-        this.turnRotation.push(firstEntry)
-      },
-      handeAddTurnRotation: function() {
-        this.turnRotation.push(this.newCombatant)
-      },
-      deletePlayerFromRotation(character) {
-        let pos = this.turnRotation.indexOf(character)
-        this.turnRotation.splice(pos, 1)
+    getResult: function(n) {
+      let total = 0
+      for(let i = 0; i < this.number; i++) {
+        total = total + Math.floor(Math.random() * n) + 1
       }
+      this.result = total
     },
+    rotate: function() {
+      let firstEntry = this.turnRotation[0]
+      this.turnRotation.shift()
+      this.turnRotation.push(firstEntry)
+    },
+    handleAddTurnRotation: function() {
+
+      const name = this.newCombatant
+      const userData = { name }
+
+      fetch(`https://dndungeonmaster.herokuapp.com/rotations`, {
+        method: 'POST',
+        headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify(userData)
+      })
+      .then(respone => respone.json())
+      .then(results => this.turnRotation.push(results))
+
+    },
+    deletePlayerFromRotation: function(character) {
+      fetch(`https://dndungeonmaster.herokuapp.com/rotations/${character.id}`, {
+        method: 'DELETE',
+        headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+      })    
+      let pos = this.turnRotation.indexOf(character)
+      this.turnRotation.splice(pos, 1)
+    },
+    handleEditRegionInfo: function() {
+
+      this.editRegionInfo = !this.editRegionInfo
+
+      const plane = this.plane
+      const continent = this.continent
+      const area = this.area
+      const climate = this.climate
+      const terrain = this.terrain
+
+      const userData =  {plane, continent, area, climate, terrain}
+
+      fetch(`https://dndungeonmaster.herokuapp.com/regions/${this.region.id}`, {
+              method: 'PUT',
+              headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`
+              },
+              body: JSON.stringify(userData)
+          })
+    }
+  },
 }
 </script>
 
@@ -150,9 +206,10 @@ export default {
   .roll-result {
     background-color: var(--bg-secondary);
     margin: 0 auto;
-    margin-top: 1rem;
-    width: 10rem;
-    height: 4rem;
+    width: 11vw;
+    height: 7vh;
+    position: relative;
+    bottom: 3.2vh;
   }
 
   #roll-result-text {
@@ -163,7 +220,6 @@ export default {
     top: 1rem;
   }
 
-
   #roll-pic {
     margin-top: .5rem;
     height: 45px;
@@ -171,7 +227,7 @@ export default {
   }
 
   .information-tab {
-    height: 100%;
+    max-height: 95vh;
     display: grid;
     grid-template-areas: 
     "top"
@@ -182,12 +238,6 @@ export default {
 
   select {
     height: 1.3rem;
-  }
-
-  .top-third {
-    grid-area: top;
-    text-align: left;
-    padding-left: 1rem;
   }
 
   .middle-third {
@@ -201,10 +251,20 @@ export default {
   .bottom-third {
     grid-area: bottom;
     border-top: solid 1px var(--text-secondary);
+    max-height: 5vh;
   }
 
   .bottom-third input {
     width: 2rem;
+  }
+
+  .top-third {
+    color: black;
+    grid-area: top;
+    padding-left: 1rem;
+    max-width: 12.5vw;
+    max-height: 28vh;
+    overflow: auto;
   }
 
   .region-info {
@@ -220,12 +280,31 @@ export default {
   .region-div {
     display: flex;
     justify-content: space-between;
+    color: var(--text-secondary);
     margin-right: 1rem;
-    margin-top: -1rem;
+    line-height: 0;
   }
 
   #edit-region-button {
-    margin: .5rem;
+    position: relative;
+    width: 8vw;
+    height: 4vh;
+    top: 1rem;
+    color: #fff !important;
+    background: var(--bg-secondary);
+    cursor: pointer;
+    transition: all 0.4s ease 0s;
+  }
+
+  #edit-region-button:hover {
+    transform: scale(1.05);
+    transition: all 0.4s ease 0s;
+  }
+
+  .text-editor {
+    max-height: 17vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   
 </style>

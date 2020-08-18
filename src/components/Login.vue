@@ -27,8 +27,8 @@ export default {
     name: 'Login',
     data() {
         return {
-            username: "",
-            password: "",
+            username: "kpete2017",
+            password: "Guitarman2",
             userData: {},
             newAccount: false
         }

@@ -24,6 +24,7 @@
                     v-bind:image='player.image_url'
                     v-bind:actions="player.actions"
                     v-bind:equipment="player.equipment"
+                    v-bind:ally="player.ally"
                     @create-large-player-card="handlePlayerCard"
                     @delete-player-from-player-list="handleRemovePlayer"
                 />
@@ -59,6 +60,7 @@
                         v-bind:image='player.image_url'
                         v-bind:actions="player.actions"
                         v-bind:equipment="player.equipment"
+                        v-bind:id="player.id"
                         @add-player="handleAddPlayer"
                     />
                 </div>
@@ -180,9 +182,22 @@ export default {
             this.allPlayers.push(player)
         })
 
-        this.currentPlayers.push(this.allPlayers[1], this.allPlayers[2], this.allPlayers[3] )
+        this.allies.forEach(ally => {
+            fetch(`https://dndungeonmaster.herokuapp.com/players/${ally.player_id}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                result.ally = ally.id
+                this.currentPlayers.push(result)
+            })
+        })
     },
-    props: ["players", "npcs"],
+    props: ["players", "npcs", "allies"],
     methods: {
         toggleAddPlayer: function(value) {
             this.newPlayer = value
@@ -220,14 +235,38 @@ export default {
                 player_name: value[16],
                 image_url: value[17],
                 actions: value[19],
-                equipment: value[20]
+                equipment: value[20],
             }
+
+            const player_id = value[21]
+            const userData = { player_id }
+
+            fetch("https://dndungeonmaster.herokuapp.com/allies", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify(userData)
+            })
+
             this.currentPlayers.push(newPlayer)
             this.toggleAddPlayer(false)
         },
         handleRemovePlayer(value) {
+
+            
             let pos = this.currentPlayers.map(function(e) { return e.name; }).indexOf(value[0]);
             this.currentPlayers.splice(pos, 1)
+            
+            fetch(`https://dndungeonmaster.herokuapp.com/allies/${value[21]}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+
         }
     }
 }
@@ -243,17 +282,19 @@ export default {
 
     .last-card {
         display: grid;
-        grid-template-columns: 300px;
-        grid-template-rows: 150px 150px 50px;
+        grid-template-columns: 16vw;
+        grid-template-rows: 20vh 10vh 6vh;
         grid-template-areas: "image" "text" "stats";
         border-radius: 4.5px;
         background: var(--bg-secondary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
-        font-family: roboto;
         text-align: center;
         transition: 0.5s ease;
         cursor: pointer;
-        margin:30px;
+        height: 36vh;
+        width: 16vw;
+        margin:25px;
+        margin-top: 1rem;
     }
 
     .last-card:hover {
@@ -263,7 +304,9 @@ export default {
 
     .player-card {
         z-index: 2;
-        overflow: auto;
+        height: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
         font-size: .8rem;
     }
 

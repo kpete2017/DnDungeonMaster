@@ -28,7 +28,7 @@
                     v-bind:skills="monster.Skills"
                     v-bind:senses="monster.Senses"
                     v-bind:languages="monster.Languages"
-                    v-bind:Level="monster.level"
+                    v-bind:level="monster.level"
                     v-bind:traits="monster.Traits"
                     v-bind:actions="monster.Actions"
                     v-bind:legendaryActions="monster.Legendary_Actions"

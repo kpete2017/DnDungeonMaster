@@ -66,7 +66,7 @@ export default {
   .pinned-note {
     border-radius: 4.5px;
     cursor: pointer;
-    height: 20rem;
+    height: 30vh;
     width: 90%;
     color: var(--text-secondary);
     background-color: var(--bg-secondary);

@@ -2,7 +2,7 @@
   <div class="card">
         <i id="player-exit-button" class="fa fa-times" @click="deletePlayer()"></i>
         <div class="card-image" @click="handleClick()">
-            <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 4.5px; border-top-right-radius: 4.5px;'/>
+            <img :src="playerImage" style='height: 19vh; width: 16vw; object-fit: cover; object-position:top; border-top-left-radius: 4.5px; border-top-right-radius: 4.5px;'/>
         </div>
         <div class="card-text" @click="handleClick()">
             <span class="date">{{race}} | {{characterClass}} | level {{level}} </span>
@@ -30,7 +30,7 @@ export default {
     name: "SinglePlayerCard",
     props: ["name", "subtitle", "race", "characterClass", "level", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "initiative", "armorClass", "passivePerception", 
-        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "actions", "equipment"],
+        "hitPoints", "speed", "playerName", "image", "proficiencyBonus", "actions", "equipment", "ally"],
     created: function() {
         this.playerImage = this.image.toString()
     },
@@ -51,7 +51,7 @@ export default {
     mounted() {
         this.allStats = [this.name, this.subtitle, this.race, this.characterClass, this.level, this.strength, this.dexterity, this.constitution, this.intelligence, 
         this.wisdom, this.charisma, this.initiative, this.armorClass, this.passivePerception, 
-        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions, this.equipment]
+        this.hitPoints, this.speed, this.playerName, this.image, this.proficiencyBonus, this.actions, this.equipment, this.ally]
     }
 }
 </script>
@@ -59,8 +59,8 @@ export default {
 <style>
     .card {
         display: grid;
-        grid-template-columns: 300px;
-        grid-template-rows: 150px 150px 50px;
+        grid-template-columns: 16vw;
+        grid-template-rows: 20vh 10vh 6vh;
         grid-template-areas: "image" "text" "stats";
         border-radius: 4.5px;
         background: var(--bg-secondary);
@@ -68,8 +68,10 @@ export default {
         text-align: center;
         transition: 0.5s ease;
         cursor: pointer;
+        height: 36vh;
+        width: 16vw;
         margin:25px;
-        margin-top: 1rem;;
+        margin-top: 1rem;
     }
 
     input {
@@ -82,20 +84,22 @@ export default {
 
     .card-text {
         grid-area: text;
-        margin: 25px;
+        margin: 0;
     }
     .card-text .date {
         color: rgb(209, 38, 29);
         font-size:13px;
     }
-    .card-text p {
+    .card-text h4 {
         color: grey;
         font-size:15px;
         font-weight: 300;
+        margin-top: 0;
     }
     .card-text h2 {
-        margin-top:20px;
         font-size:28px;
+        margin: 0rem;
+        margin-top: 1vh;        
     }
 
     .card-image {
@@ -140,6 +144,17 @@ export default {
         right: 2vh;
         cursor: pointer;
     }
+
+    .value {
+        margin-top: -.5vh;
+    }
+
+    .type {
+        margin-top: 0;
+        margin-bottom: .5vh ;
+    }
+
+
 
 
 </style>

@@ -2,7 +2,7 @@
     <div class="background">
         <main>
             <div class="pc">
-                <PlayerCard :npcs="data.npcs" :players="data.players"/>
+                <PlayerCard :npcs="data.npcs" :players="data.players" :allies="data.allies" />
             </div>
             <div class="npc">
                 <NpcCard :npcs="data.npcs" />
@@ -11,7 +11,7 @@
                 <PinnedItemsAndSpells :notes="data.notes" />
             </div>
             <div class="items">
-                <InformationTab/>
+                <InformationTab :region="data.regions[0]" :rotation="data.rotations"/>
             </div>
         </main>
     </div>
@@ -39,10 +39,8 @@ export default {
             type: Object
         }
     },
-    data() {
-        return {
-            
-        }
+    mounted() {
+        console.log(this.data)
     }
 }
 </script>
@@ -59,7 +57,7 @@ export default {
         color: var(--text-secondary);
         text-align: center;
         width: 90%;
-        height: 90%;
+        height: 88.8vh;
         padding-left: 8rem;
         padding-right: 1rem;
         padding-top: 5.9rem;
@@ -69,16 +67,16 @@ export default {
             "left-sidebar PC right-sidebar"
             "left-sidebar NPC right-sidebar";
         grid-template-columns: 1fr 4fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 42vh 42vh;
         grid-column-gap: 1rem;
-        grid-row-gap: 2rem;
+        grid-row-gap: 1rem;
     }
 
     .pc {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 60vw;
-        height: 97%;
+        height: 42vh;
         background-color: var(--bg-primary);
         grid-area: PC;
     }
@@ -87,7 +85,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 60vw;
-        height: 97%;
+        height: 42vh;
         background-color: var(--bg-primary);
         grid-area: NPC;
     }
@@ -96,7 +94,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 50vw;
-        height: 98.5%;
+        height: 85.5vh;
         background-color: var(--bg-primary);
         grid-area: left-sidebar;
     }
@@ -105,7 +103,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
         border-radius: 4.5px;
         max-width: 50vw;
-        height: 98.5%;
+        height: 85.5vh;
         background-color: var(--bg-primary);
         grid-area: right-sidebar;
     }

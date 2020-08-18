@@ -82,7 +82,17 @@ export default {
         margin-right: .5rem;
     }
 
-    .ck-content { height:13rem; overflow: auto; color: black;}
+    .ck-editor {
+        max-width: 100%;
+    }
+
+    .ck-content { 
+        min-height: 10vh;
+        max-height: 100%;
+        overflow: auto;
+        color: black;
+        max-width: 100%;
+    }
 
     .title {
         margin: 1rem;

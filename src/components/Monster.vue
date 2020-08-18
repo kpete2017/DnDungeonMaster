@@ -7,7 +7,7 @@
                 </div>
                 <div class="monster-instance-bottom-left"> 
                     <h1>{{name}}</h1>
-                    <h2>Challenge Rating: {{challenge}}</h2>
+                    <h2>Challenge Rating: {{level}}</h2>
                     <h2>Hit Points: {{hitPoints}}</h2>
                     <h2>Armor Class: {{armorClass}}</h2>
                 </div>
@@ -66,7 +66,7 @@ export default {
     name: "Monster",
     props: ["name", "meta", "armorClass", "hitPoints", "speed", 
     "strength", "dexterity", "constitution", "intelligence", "wisdom", 
-    "charisma", "savingThrows", "skills", "senses", "languages", "challenge", 
+    "charisma", "savingThrows", "skills", "senses", "languages", "level", 
     "traits", "actions", "legendaryActions", "image"],
 }
 </script>
@@ -88,6 +88,10 @@ export default {
         margin-top: 1rem;
         margin-bottom: 1rem;
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    }
+
+    .monster-instance-bottom-left {
+        margin-left: 1rem;
     }
 
     .monster-stats-attacks-spellcasting {

@@ -71,11 +71,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .card {
         display: grid;
-        grid-template-columns: 300px;
-        grid-template-rows: 150px 150px 50px;
+        grid-template-columns: 16vw;
+        grid-template-rows: 20vh 10vh 6vh;
         grid-template-areas: "image" "text" "stats";
         border-radius: 4.5px;
         background: var(--bg-secondary);
@@ -83,7 +83,10 @@ export default {
         text-align: center;
         transition: 0.5s ease;
         cursor: pointer;
+        height: 36vh;
+        width: 16vw;
         margin:25px;
+        margin-top: 1rem;
     }
 
     .card-text {
@@ -94,14 +97,16 @@ export default {
         color: rgb(209, 38, 29);
         font-size:13px;
     }
-    .card-text p {
+    .card-text h4 {
         color: grey;
         font-size:15px;
         font-weight: 300;
+        margin-top: 0;
     }
     .card-text h2 {
-        margin-top:20px;
         font-size:28px;
+        margin: 0rem;
+        margin-top: -3vh;        
     }
 
     .card-image {
@@ -135,4 +140,14 @@ export default {
         transform: scale(1.05);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
     }
+
+     .value {
+        margin-top: -.5vh;
+    }
+
+    .type {
+        margin-top: 0;
+        margin-bottom: .5vh ;
+    }
+
 </style>

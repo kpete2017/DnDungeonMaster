@@ -215,6 +215,8 @@ export default {
 
 <style scoped>
 
+
+
     .ck-editor {
         height: 13rem;
     }

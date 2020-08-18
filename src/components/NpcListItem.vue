@@ -165,7 +165,6 @@ export default {
             charisma, initiative, armor_class, passive_perception, 
             hit_points, proficiency_bonus, speed, image_url, equipment }
 
-            console.log(this.storedActions, this.storedEquipment)
 
             fetch(`https://dndungeonmaster.herokuapp.com/npcs/${this.storedId}`, {
                 method: 'PUT',
