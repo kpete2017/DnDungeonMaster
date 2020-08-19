@@ -32,21 +32,21 @@ export default {
 <style scoped>
 
     .card {
-        display: grid;
         color: var(--text-secondary);
-        width: 25vw;
-        grid-template-columns: 300px;
-        grid-template-rows: 150px 150px 50px;
+        display: grid;
+        grid-template-columns: 25vw;
+        grid-template-rows: 20vh 10vh 6vh;
         grid-template-areas: "image" "text" "stats";
-        row-gap: 1rem;
         border-radius: 4.5px;
         background: var(--bg-primary);
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
         text-align: center;
         transition: 0.5s ease;
         cursor: pointer;
+        height: 36vh;
+        width: 25vw;
         margin:25px;
-        margin-top: 1rem;;
+        margin-top: 1rem;
     }
     
     .stat {
@@ -57,37 +57,39 @@ export default {
         margin-top: .5rem;
         color: var(--text-secondary);
         grid-area: text;
-        overflow: auto;
         text-align: left;
-        width: 23vw;
         margin-right: 0;
+        overflow: auto;
     }
     .card-image .date {
         color: rgb(209, 38, 29);
         font-size:13px;
-        width: 100%;
     }
     .card-text p {
         font-size:15px;
         font-weight: 300;
         margin: 0 auto;
+        margin-right: 1vw;
+        margin-left: 1vw;
     }
-    .card-text h2 {
-        margin-top:20px;
+    .card-text h1 {
+
         font-size:28px;
     }
+
 
     .card-image {
         grid-area: image;
         border-top-left-radius: 4.5px;
         border-top-right-radius: 4.5px;
-        width: 25vw;
+        margin-bottom: 1vh;
         background-size: cover;
         background-position: top;
+        overflow: auto;
+
     }
 
     .card-stats {
-        width: 25vw;
         grid-area: stats; 
         display: flex;
         justify-content: space-evenly;

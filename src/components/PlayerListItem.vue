@@ -240,7 +240,7 @@ export default {
     }
 
     .long-player-list {
-        font-size: .8rem ;
+        font-size: .7rem ;
         height: 75vh;
         width: 70vw;
         display: grid;
@@ -251,8 +251,8 @@ export default {
         margin-left: 14.6vw;
         background-color: var(--bg-primary);
         border-radius: 4.5px;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 2.5vh;
+        margin-bottom: 2.5vh;
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     }
 
@@ -325,8 +325,9 @@ export default {
         color: var(--text-secondary);
         background-color: var(--bg-secondary);
         padding: 1rem;
-        margin-top: 1rem;
-        margin-left: 1rem;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        margin-left: 2vw;
         cursor: pointer;
     }
 

@@ -88,6 +88,7 @@ export default {
     grid-area: new-player-top;
     display: flex;
     overflow: auto;
+    justify-content: center;
     flex-wrap: wrap;
     height: 100%;
     width: 75vw;

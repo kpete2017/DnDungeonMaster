@@ -169,20 +169,28 @@ export default {
             currentPlayers: [],
             allPlayers: [],
             createPlayerCard: false,
-            playerCardStats: [],
+            allAllies: this.allies,
             next: false
         }
     },
     created: function() {
-        this.npcs.forEach( npc => {
-            this.allPlayers.push(npc)
-        })
 
+        // this.npcs.forEach( npc => {
+        //     this.allPlayers.push(npc)
+        // })
+        
         this.players.forEach( player => {
             this.allPlayers.push(player)
         })
 
-        this.allies.forEach(ally => {
+        this.refreshList()
+ 
+    },
+    props: ["players", "npcs", "allies"],
+    methods: {
+        refreshList: function() {
+            this.currentPlayers.splice(0, this.currentPlayers.length)
+            this.allAllies.forEach(ally => {
             fetch(`https://dndungeonmaster.herokuapp.com/players/${ally.player_id}`, {
                 method: "GET",
                 headers: {
@@ -190,15 +198,13 @@ export default {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            .then(response => response.json())
-            .then(result => {
-                result.ally = ally.id
-                this.currentPlayers.push(result)
+                .then(response => response.json())
+                .then(result => {
+                    result.ally = ally.id
+                    this.currentPlayers.push(result)
+                })
             })
-        })
-    },
-    props: ["players", "npcs", "allies"],
-    methods: {
+        },
         toggleAddPlayer: function(value) {
             this.newPlayer = value
         },
@@ -213,30 +219,6 @@ export default {
             this.createPlayerCard = false
         },
         handleAddPlayer(value) {
-            
-            let newPlayer = {
-                name: value[0],
-                subtitle: value[1],
-                race: value[2],
-                characterClass: value[3],
-                level: value[4],
-                strength: value[5],
-                dexterity: value[6],
-                constitution: value[7],
-                intelligence: value[8],
-                wisdom: value[9],
-                charisma: value[10],
-                initiative: value[11],
-                armor_class: value[12],
-                passive_perception: value[13],
-                hit_points: value[14],
-                proficiency_bonus: value[18],
-                speed: value[15],
-                player_name: value[16],
-                image_url: value[17],
-                actions: value[19],
-                equipment: value[20],
-            }
 
             const player_id = value[21]
             const userData = { player_id }
@@ -249,8 +231,12 @@ export default {
                 },
                 body: JSON.stringify(userData)
             })
+                .then( response => response.json())
+                .then(results => {
+                    this.allAllies.push(results)
+                    this.refreshList()
+                })
 
-            this.currentPlayers.push(newPlayer)
             this.toggleAddPlayer(false)
         },
         handleRemovePlayer(value) {
@@ -265,7 +251,7 @@ export default {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }
-            })
+            })  
 
         }
     }
@@ -426,6 +412,7 @@ export default {
         display: flex;
         overflow: auto;
         flex-wrap: wrap;
+        justify-content: center;
         height: 100%;
         width: 75vw;
         background-color: var(--bg-secondary);

@@ -30,7 +30,7 @@ export default {
     name: "SingleNpc",
     props: ["name", "meta", "armorClass", "hitPoints", "speed", "strength", "dexterity", "constitution", "intelligence", 
         "wisdom", "charisma", "savingThrows", "skills", "senses", 
-        "languages", "Level", "traits", "actions", "legendaryActions", "image"],
+        "languages", "Level", "traits", "actions", "legendaryActions", "image", "id"],
     created: function() {
         if(typeof this.image === 'string') {
             this.playerImage = this.image.toString()
@@ -66,7 +66,7 @@ export default {
     mounted() {
         this.allStats = [this.name, this.meta, this.armorClass, this.hitPoints, this.speed, this.strength, this.dexterity, this.constitution, this.intelligence, 
         this.wisdom, this.charisma, this.savingThrows, this.skills, this.senses, 
-        this.languages, this.Level, this.traits, this.actions, this.legendaryActions, this.image]
+        this.languages, this.Level, this.traits, this.actions, this.legendaryActions, this.image, this.id]
     }
 }
 </script>

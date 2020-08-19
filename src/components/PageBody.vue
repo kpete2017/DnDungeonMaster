@@ -5,7 +5,7 @@
                 <PlayerCard :npcs="data.npcs" :players="data.players" :allies="data.allies" />
             </div>
             <div class="npc">
-                <NpcCard :npcs="data.npcs" />
+                <NpcCard :npcs="data.npcs" :enemies="data.enemeies" />
             </div>
             <div class="spells">
                 <PinnedItemsAndSpells :notes="data.notes" />
@@ -39,24 +39,21 @@ export default {
             type: Object
         }
     },
-    mounted() {
-        console.log(this.data)
-    }
 }
 </script>
 
 <style scoped>
 
     .background {
-        width: 100%;
-        height: 100%;
+        width: auto;
+        height: auto;
         background-color: var(--bg-secondary);
     }
     
     main {
         color: var(--text-secondary);
         text-align: center;
-        width: 90%;
+        width: auto;
         height: 88.8vh;
         padding-left: 8rem;
         padding-right: 1rem;
@@ -68,8 +65,8 @@ export default {
             "left-sidebar NPC right-sidebar";
         grid-template-columns: 1fr 4fr 1fr;
         grid-template-rows: 42vh 42vh;
-        grid-column-gap: 1rem;
-        grid-row-gap: 1rem;
+        grid-column-gap: 1vw;
+        grid-row-gap: 1vh;
     }
 
     .pc {

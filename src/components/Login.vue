@@ -11,7 +11,9 @@
             <h1 v-if="newAccount">Sign up</h1>
             <h1 v-else>Login</h1>
             <input id="login-username" v-model="username" type="username" placeholder="Username"/>
+            <input id="login-name" v-if="newAccount" v-model="name" type="username" placeholder="Name"/>
             <input id="login-password" v-model="password" type="password" placeholder="Password"/>
+            <input v-if="newAccount" id="login-password-match" v-model="passwordMatch" type="password" placeholder="Re-type password"/>
             <button v-if="newAccount" id="login-submit" @click.prevent="handleCreateNewUser" type="submit">Sign-Up</button>
             <button v-else id="login-submit" @click.prevent="handleLogin" type="submit">Submit</button>
             <p v-if="newAccount">Already have an account?</p>
@@ -27,8 +29,10 @@ export default {
     name: 'Login',
     data() {
         return {
-            username: "kpete2017",
-            password: "Guitarman2",
+            username: "",
+            password: "",
+            name: "",
+            passwordMatch: "",
             userData: {},
             newAccount: false
         }
@@ -38,7 +42,8 @@ export default {
             
             const username = this.username
             const password  = this.password
-            const userData = { username, password}
+            const name = this.name
+            const userData = { username, password, name}
 
             fetch("https://dndungeonmaster.herokuapp.com/login", {
                 method: 'POST',
@@ -63,18 +68,23 @@ export default {
             this.newAccount = value
         },
         handleCreateNewUser: function() {
-            const username = this.username
-            const password  = this.password
-            const userData = { username, password}
-            fetch("https://dndungeonmaster.herokuapp.com/users", {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(userData)
-            })
-            .then(response => response.json())
-            .then(result => this.successfulLogin(result))
+            if(this.password === this.passwordMatch) {
+                const username = this.username
+                const password  = this.password
+                const userData = { username, password}
+                fetch("https://dndungeonmaster.herokuapp.com/users", {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                })
+                .then(response => response.json())
+                .then(this.handleLogin())
+            } else {
+                alert("Passwords did not match")
+            }
+            
         }
     }
 }
@@ -124,8 +134,8 @@ export default {
         text-align: center;
         background-color: #242424de;
         position: relative;
-        width: 20rem;
-        height: 20rem;
+        width: 20vw;
+        height: 40vh;
         display: flex;
         flex-direction: column;
         margin: 0 auto;

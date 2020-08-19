@@ -22,6 +22,7 @@
                     v-bind:actions="player.Actions"
                     v-bind:legendaryActions="player.Legendary_Actions"
                     v-bind:image='player.image_url'
+                    v-bind:id="player.id"
                     @create-large-Npc-card="handlePlayerCard"
                     @delete-Npc-from-player-list="handleRemoveNpc"
                 />
@@ -140,7 +141,7 @@ export default {
     components: {
         SingleNpcCard,
     },
-    props: ['npcs'],
+    props: ['npcs', 'enemies'],
     created: function() {
 
         this.npcs.forEach(npc => {
@@ -150,8 +151,24 @@ export default {
         Monsters.forEach(monster => {
             this.allMonsters.push(monster)
         })
+
+        this.refreshList()
+        
     },
     methods: {
+        refreshList: function() {
+            fetch(`https://dndungeonmaster.herokuapp.com/enemies`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                result.forEach( enemy => { this.players.push(enemy) })
+            })
+        },
         toggleAddNpc: function(value) {
             this.newNpc = value
         },
@@ -174,9 +191,34 @@ export default {
         handleRemoveNpc(value) {
             let pos = this.players.map(function(e) { return e.name; }).indexOf(value[0]);
             this.players.splice(pos, 1)
+
+            console.log(value)
+
+           fetch(`https://dndungeonmaster.herokuapp.com/enemies/${value[20]}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+            })
+
         },
         handleAddMonster(value) {
-            this.players.push(value)
+
+            fetch("https://dndungeonmaster.herokuapp.com/enemies", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify(value)
+            })
+
+            .then(response => response.json())
+            .then(results => {
+                this.players.push(results)
+            })
+
             this.toggleAddNpc(false)
         },
     },

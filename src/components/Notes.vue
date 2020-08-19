@@ -119,7 +119,7 @@ export default {
         margin-left: 7rem;
         margin-bottom: 5rem;
         display: flex;
-        justify-content: left;
+        justify-content: center;
         flex-wrap: wrap;
         max-width: 90vw;
     }
@@ -139,6 +139,7 @@ export default {
         padding-top: 2rem;
         border: solid 1px var(--bg-secondary);
         margin-right: 1rem;
+        margin-top: 1rem;
     }
     
     .new-note {

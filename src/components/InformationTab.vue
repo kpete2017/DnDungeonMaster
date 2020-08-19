@@ -29,8 +29,8 @@
           <p v-else>{{terrain}} </p>
         </div>  
       </div>
-      <button style="margin: 0 auto;" v-if="editRegionInfo === false" @click="editRegionInfo = !editRegionInfo" id="edit-region-button">Edit</button>
       <button style="margin: 0 auto;" v-if="editRegionInfo" @click="handleEditRegionInfo" id="edit-region-button">Done</button>
+      <button style="margin: 0 auto;" v-else @click="editRegionInfo = !editRegionInfo" id="edit-region-button">Edit</button>
     </div>
     <div class="middle-third">
       <h2>Turn Rotation</h2>
@@ -73,19 +73,28 @@ export default {
     return {
       dice: "D4",
       number: 1,
-      result: null,
+      result: 0,
       turnRotation: this.rotation,
       newCombatant: "",
       storedRegionInfo: "",
       editRegionInfo: false,
-      plane: this.region.plane,
-      continent: this.region.continent,
-      area: this.region.area,
-      climate: this.region.climate,
-      terrain:  this.region.terrain,
+      plane: "",
+      continent: "",
+      area: "",
+      climate: "",
+      terrain:  "",
     }
   },
   props: ["region", "rotation"],
+  created: function(){
+    if(this.region) {
+      this.plane = this.region.plane
+      this.continent = this.region.continent
+      this.area =  this.region.area
+      this.climate = this.region.climate
+      this.terrain = this.region.terrain
+    }
+  },
   methods: {
     processForm: function() {
       if(this.dice == "D4") {
@@ -206,10 +215,11 @@ export default {
   .roll-result {
     background-color: var(--bg-secondary);
     margin: 0 auto;
-    width: 11vw;
-    height: 7vh;
+    width: 8vw;
+    height: 6vh;
     position: relative;
-    bottom: 3.2vh;
+    margin-top: 1vh;
+    bottom: 2.5vh;
   }
 
   #roll-result-text {
@@ -251,7 +261,7 @@ export default {
   .bottom-third {
     grid-area: bottom;
     border-top: solid 1px var(--text-secondary);
-    max-height: 5vh;
+    overflow: auto;
   }
 
   .bottom-third input {

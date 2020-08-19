@@ -33,7 +33,7 @@
                 />
             </div>
         </div>
-        <div class="new-player" v-if="newPlayer" v-drag>
+        <div class="new-player" v-if="newPlayer">
             <div class="menu-bar">
                 <i id="exit-button" class="fa fa-times" @click="toggleAddPlayer(false)"></i>
             </div>
@@ -230,7 +230,8 @@ export default {
 
     .party-list {
         display: flex;
-        flex-wrap: wrap;   
+        flex-wrap: wrap;
+        padding-bottom: 5vh;   
     }
 
     .party-page {
