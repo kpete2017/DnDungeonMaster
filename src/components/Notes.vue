@@ -2,11 +2,15 @@
   <div class="notes-page">
         <div class="notes-section">
             <div id="create-new-note" class="note" @click="toggleNewNote(true)">
-                <h1 id="new-note">Add New Note</h1>
-                <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
+                <div class="note-top">
+                    <h1 id="new-note">Add New Note</h1>
+                    <svg id="plus-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
+                </div>
+            <div class="note-footer"></div>
             </div>
             <div id="create-new-note" class="note" v-for="note in notes" :key="note.title">
                 <Note v-bind:title="note.title" v-bind:message="note.message" v-bind:id="note.id" v-bind:exitable="true" @deleteNote="removeNote(note.title)"/>
+                <div class="note-footer"></div>
             </div>
         </div>
         <div class="new-note" v-if="newNote" v-drag> 
@@ -51,12 +55,25 @@ export default {
             this.newNote = value
         },
         getEditorData: function() {
-            let newMessage = this.editorData.replace('<p>', '').replace('</p>', '')
-            let newNote = {
-                title: this.newNoteTitle,
-                message: newMessage
-            }
-            this.notes.push(newNote)
+
+            const title = this.newNoteTitle
+            const message = this.editorData.replace('<p>', '').replace('</p>', '')
+
+            const userData = { title, message}
+
+            fetch("https://dndungeonmaster.herokuapp.com/notes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify(userData)
+            })
+                .then( response => response.json())
+                .then(results => {
+                    this.notes.push(results)
+                })
+
             this.toggleNewNote(false)
         },
         removeNote: function(title) {
@@ -106,9 +123,12 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        max-height: 400vh;
+        width: 100%;
         background-color: var(--bg-secondary);
+    }
+
+    .note-top {
+        grid-area: note-top;
     }
 
     .notes-section {
@@ -119,7 +139,7 @@ export default {
         margin-left: 7rem;
         margin-bottom: 5rem;
         display: flex;
-        justify-content: center;
+        justify-content: left;
         flex-wrap: wrap;
         max-width: 90vw;
     }
@@ -132,14 +152,20 @@ export default {
     .note {
         border-radius: 4.5px;
         cursor: pointer;
-        height: 20rem;
-        width: 20rem;
+        width: 18vw;
+        display: grid;
+        grid-template-areas: 
+        "note-top"
+        "note-bottom";
+        grid-template-rows: 30vh 10vh;
+        height: 40vh;
         color: var(--text-secondary);
         background-color: var(--bg-primary);
         padding-top: 2rem;
         border: solid 1px var(--bg-secondary);
         margin-right: 1rem;
         margin-top: 1rem;
+        border-radius: 4.5px;
     }
     
     .new-note {
@@ -221,6 +247,17 @@ export default {
         background-color: var(--bg-primary);
         cursor: pointer;
     }
+
+    
+    .note-footer {
+        grid-area: note-bottom;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
+        width: 100%;
+        background-color: rgb(209, 38, 29);
+        position: relative;
+    }
+
 
 
 </style>

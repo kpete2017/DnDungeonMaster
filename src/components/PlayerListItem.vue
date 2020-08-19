@@ -322,8 +322,8 @@ export default {
     }
 
     .player-options-button {
-        color: var(--text-secondary);
-        background-color: var(--bg-secondary);
+        color: var(--bg-secondary);
+        background-color: #d6d6d6;
         padding: 1rem;
         margin-top: 1vh;
         margin-bottom: 1vh;
