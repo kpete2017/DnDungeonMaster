@@ -1,4 +1,5 @@
 # D&DungeonMaster
+![Image of Home](https://github.com/kpete2017/D-DungeonMaster/blob/master/src/assets/screenshot.PNG?raw=true)
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -19,8 +20,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-![Image of Home](https://github.com/kpete2017/D-DungeonMaster/blob/master/src/assets/screenshot.PNG?raw=true)
 
 D&DungeonMaster is a powerful tool that helps Dungeon Master's everywhere keep their game sessions organized and accessable.
 
