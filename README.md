@@ -58,7 +58,7 @@ npm install npm@latest -g
 
 1. Clone the repo
 ```sh
-git clone https://github.com/kpete2017/D-DungeonMaster.git
+git clone https://github.com/kpete2017/DnDungeonMaster
 ```
 2. Install NPM packages
 ```sh
