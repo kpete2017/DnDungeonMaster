@@ -17,7 +17,6 @@
 * [Acknowledgements](#acknowledgements)
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -82,6 +81,10 @@ npm run lint
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+## Full Usage Video
+[![Watch the video](https://i9.ytimg.com/vi_webp/LY_SHCTwNwU/mqdefault.webp?sqp=CJSd9_kF&rs=AOn4CLBSups0_Z2ZWYFbuu9d7-sv_rqQxQ)](https://youtu.be/LY_SHCTwNwU)
+
 
 ### Log-in Screen
 ![Image of Login](https://github.com/kpete2017/D-DungeonMaster/blob/master/src/assets/Login.PNG?raw=true)
