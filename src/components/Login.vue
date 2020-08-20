@@ -139,7 +139,7 @@ export default {
         bottom: 30vh;
         top: 25vh;
         width: 20vw;
-        height: 40vh;
+        height: 45vh;
         display: flex;
         flex-direction: column;
         margin: 0 auto;

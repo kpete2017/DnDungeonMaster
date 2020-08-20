@@ -49,12 +49,13 @@
       <h2 id="roll-text">Roll</h2>
       <form  @submit.prevent="processForm">
         <select v-model="dice">
-          <option value="D20">D20</option>
           <option value="D4">D4</option>
           <option value="D6">D6</option>
           <option value="D8">D8</option>
           <option value="D10">D10</option>
-          <option value="D00">D00</option>
+          <option value="D12">D12</option>
+          <option value="D00">D100</option>
+          <option value="D20">D20</option>
         </select>
         <input v-model="number" type="number" placeholder="0"/>
         <button type="submit">Roll Dice</button>
