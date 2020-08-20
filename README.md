@@ -79,8 +79,7 @@ npm run lint
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-## Full Usage Video
-[![Watch the video](https://i9.ytimg.com/vi_webp/LY_SHCTwNwU/mqdefault.webp?sqp=CJSd9_kF&rs=AOn4CLBSups0_Z2ZWYFbuu9d7-sv_rqQxQ)](https://youtu.be/LY_SHCTwNwU)
+### [Full Usage video](https://youtu.be/LY_SHCTwNwU)
 
 
 ### Log-in Screen
