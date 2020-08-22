@@ -22,7 +22,9 @@
                     <div class="title">
                         <label for="input">Title:     </label><input style="width: 10vw;" placeholder="Enter Title" v-model="newNoteTitle" />
                     </div>
-                    <ckeditor class="ck-editor" :editor="editor" v-model="editorData"></ckeditor>
+                    <div class="ck-editor-container">
+                        <ckeditor class="ck-editor" :editor="editor" v-model="editorData"></ckeditor>
+                    </div>
                 </div>
                 <button id="submit-button" type="submit">Submit</button>
                 <button id="close-button" @click="toggleNewNote(false)">close</button>
@@ -57,7 +59,7 @@ export default {
         getEditorData: function() {
 
             const title = this.newNoteTitle
-            const message = this.editorData.replace('<p>', '').replace('</p>', '')
+            const message = this.editorData
 
             const userData = { title, message}
 
@@ -116,8 +118,8 @@ export default {
     }
 
     .editor {
-        height: 20vh;
-        margin: 1rem;
+        height: 28vh;
+        margin: 2rem;
     }
     .notes-page {
         position: absolute;
@@ -129,6 +131,12 @@ export default {
 
     .note-top {
         grid-area: note-top;
+    }
+
+    .ck-editor-container {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 25vh;
     }
 
     .notes-section {

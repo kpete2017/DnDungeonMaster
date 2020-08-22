@@ -7,12 +7,15 @@
     </div>
     <div class="new-player-body" v-if="selectNote" v-drag>
       <h1 id="add-a-character">Pick a note to pin</h1>
-      <div class="new-player" >
+      <div class="new-player" v-if="notes.length > 0">
           <div class="add-new-players-div" v-for="note in notes" :key="note.title">
               <div @click="handleAddNoteClick(note.title, note.message)" class="list-notes">
                 <Note v-bind:title="note.title" v-bind:message="note.message" v-bind:id="note.id" @deleteNote="removeNote(note.title)"/>
               </div>
           </div>
+      </div>
+      <div v-else>
+        <h1>Please create a note in the notes tab to pin it here!</h1>
       </div>
       <div class="new-player-footer">
           <button id="close-button" @click="toggleNewNote(false)">close</button>

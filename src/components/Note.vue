@@ -2,7 +2,7 @@
   <div class="note-template">
         <i v-if="exitable" id="note-exit-button" class="fa fa-times" @click="deleteNewNote()"></i>
         <h3 class=note-title>{{this.title}}</h3>
-        <p class="note-message">{{this.message}}</p>
+        <p class="note-message" v-html="this.message"></p>
   </div>
 </template>
 
