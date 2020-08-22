@@ -347,4 +347,5 @@ export default {
         border-bottom-right-radius: 4.5px;
     }
 
+
 </style>

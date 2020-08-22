@@ -264,6 +264,11 @@ export default {
 </script>
 
 <style scoped>
+
+    h2 {
+        font-size: 1vw;
+    }
+
     #plus-icon {
         justify-self: center;
         align-self: center;
@@ -451,6 +456,5 @@ export default {
         grid-area: new-player-bottom;
         background-color: rgb(209, 38, 29);
     }
-
 
 </style>

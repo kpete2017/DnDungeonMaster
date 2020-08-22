@@ -35,7 +35,7 @@ export default {
         color: var(--text-secondary);
         display: grid;
         grid-template-columns: 25vw;
-        grid-template-rows: 20vh 10vh 6vh;
+        grid-template-rows: 20vh 20vh 8vh;
         grid-template-areas: "image" "text" "stats";
         border-radius: 4.5px;
         background: var(--bg-primary);
@@ -43,10 +43,10 @@ export default {
         text-align: center;
         transition: 0.5s ease;
         cursor: pointer;
-        height: 36vh;
+        height: 45vh;
         width: 25vw;
-        margin:25px;
-        margin-top: 1rem;
+        margin: 25px;
+        margin-top: 3rem;
     }
     
     .stat {
@@ -54,7 +54,7 @@ export default {
     }
 
     .card-text {
-        margin-top: .5rem;
+        margin-top: 1rem;
         color: var(--text-secondary);
         grid-area: text;
         text-align: left;
@@ -63,7 +63,7 @@ export default {
     }
     .card-image .date {
         color: rgb(209, 38, 29);
-        font-size:13px;
+        font-size: 13px;
     }
     .card-text p {
         font-size:15px;
@@ -82,7 +82,6 @@ export default {
         grid-area: image;
         border-top-left-radius: 4.5px;
         border-top-right-radius: 4.5px;
-        margin-bottom: 1vh;
         background-size: cover;
         background-position: top;
         overflow: auto;
@@ -121,5 +120,13 @@ export default {
         top: 1vh;
         right: 2vh;
         cursor: pointer;
+    }
+
+    
+    @media only screen and (max-width: 1500px) {
+        h1 {
+            font-size: 2.0vw;
+            margin-bottom: 0;
+        }
     }
 </style>

@@ -30,4 +30,15 @@ export default {
         margin-top: -1rem;
     }
 
+    #note-exit-button {
+        transition: 400ms;
+    }
+
+    #note-exit-button:hover {
+        color: rgb(209, 38, 29);
+        transform: rotate(-180deg);
+        transition: 400ms;
+        cursor: pointer;
+    }
+
 </style>

@@ -8,8 +8,8 @@
                 <h1 id="dungeon">ungeon</h1>
                 <h1 id="master">Master</h1>
             </div>
-            <h1 v-if="newAccount">Sign up</h1>
-            <h1 v-else>Login</h1>
+            <h2 v-if="newAccount">Sign up</h2>
+            <h2 v-else id="login-screen-text">Login</h2>
             <input id="login-username" v-model="username" type="username" placeholder="Username"/>
             <input id="login-name" v-if="newAccount" v-model="name" type="username" placeholder="Name"/>
             <input id="login-password" v-model="password" type="password" placeholder="Password"/>
@@ -94,29 +94,32 @@ export default {
 <style scoped>
 
     #login-username {
-        margin-bottom: .5rem;
-        margin-top: .5rem;
+        margin-bottom: .25vh;
+        margin-top: .25vh;
+
     }
 
     #login-password {
-        margin-bottom: .5rem;
-        margin-top: .5rem;
+        margin-bottom: .25vh;
+        margin-top: .25vh;
+
     }
 
     #login-submit {
-        margin-bottom: .5rem;
-        margin-top: .5rem;
+        margin-bottom: .25vh;
+        margin-top: .25vh;
+
         cursor: pointer;
     }
 
     #sign-up {
         cursor: pointer;
+        margin-top: 0;
     }
 
     #sign-up:hover {
         color: rgb(209, 38, 29);
     }
-
 
     .login-background {
         background-image: url("../assets/background-image1.jpg");
@@ -137,30 +140,28 @@ export default {
         position: absolute;
         right: 40vw;
         left: 40vw;
-        bottom: 30vh;
-        top: 25vh;
+        top: 20%;
         width: 20vw;
         height: 45vh;
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
     }
 
     .login-form > input {
         align-self: center;
-        width: 10rem;
+        width: 10vw;
     }
 
     .login-form > button {
         align-self: center;
-        width: 10.5rem;
+        width: 10.5vw;
     }
 
     .title-card {
         align-items: center;
         display: flex;
         line-height: .5;
-        width: 20rem;
+        width: 18vw;
         margin: 0 auto;
     }
 
@@ -171,8 +172,23 @@ export default {
     #dnd {
         color: 	rgb(209, 38, 29);
         margin-right: -.3rem;
-        height: 35px;
-        width: 35px;
+        height: 3vw;
+        width: 3vw;
+    }
+
+    @media only screen and (max-width: 1500px) {
+        h1 {
+            font-size: 2.5vw;
+        }
+
+        .login-form {
+            height: 52vh;
+            width: 25vw;
+        }
+
+        .title-card {
+            width: 21vw;
+        }
     }
 
 </style>

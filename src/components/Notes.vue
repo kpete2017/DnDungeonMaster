@@ -199,20 +199,6 @@ export default {
         margin-top: 5rem;
     }
 
-    #note-exit-button {
-        position: relative;
-        right: -8rem;
-        top: -1rem;
-        transition: 400ms;
-    }
-
-    #note-exit-button:hover {
-        color: rgb(209, 38, 29);
-        transform: rotate(-180deg);
-        transition: 400ms;
-        cursor: pointer;
-    }
-
     #exit-button {
         position: absolute;
         color: var(--text-secondary);
