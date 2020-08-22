@@ -10,12 +10,8 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -58,7 +54,7 @@ npm install npm@latest -g
 
 1. Clone the repo
 ```sh
-git clone https://github.com/kpete2017/D-DungeonMaster.git
+git clone https://github.com/kpete2017/DnDungeonMaster
 ```
 2. Install NPM packages
 ```sh
@@ -82,6 +78,9 @@ npm run lint
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+### [Full Usage video](https://youtu.be/LY_SHCTwNwU)
+
 
 ### Log-in Screen
 ![Image of Login](https://github.com/kpete2017/D-DungeonMaster/blob/master/src/assets/Login.PNG?raw=true)
