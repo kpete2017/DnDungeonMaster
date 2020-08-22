@@ -71,7 +71,9 @@ export default {
             if(this.password === this.passwordMatch) {
                 const username = this.username
                 const password  = this.password
-                const userData = { username, password}
+                const name = this.name
+                
+                const userData = { username, password, name}
                 fetch("https://dndungeonmaster.herokuapp.com/users", {
                     method: 'POST',
                     headers: {
@@ -79,8 +81,7 @@ export default {
                     },
                     body: JSON.stringify(userData)
                 })
-                .then(response => response.json())
-                .then(this.handleLogin())
+                .then(this.newAccount = false)
             } else {
                 alert("Passwords did not match")
             }

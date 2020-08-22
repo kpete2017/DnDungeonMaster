@@ -192,8 +192,6 @@ export default {
             let pos = this.players.map(function(e) { return e.name; }).indexOf(value[0]);
             this.players.splice(pos, 1)
 
-            console.log(value)
-
            fetch(`https://dndungeonmaster.herokuapp.com/enemies/${value[20]}`, {
                 method: "DELETE",
                 headers: {

@@ -36,7 +36,7 @@
         </div>
         <div class="new-player-body" v-if="newPlayer" v-drag>
             <h1 id="add-a-character">Add Ally</h1>
-            <div class="new-player" >
+            <div class="new-player"  v-if="allPlayers.length > 0">
                 <div class="add-new-players-div" v-for="player in allPlayers" :key="player.name">
                     <PlayerPickCard
                         v-bind:name="player.name"
@@ -64,6 +64,9 @@
                         @add-player="handleAddPlayer"
                     />
                 </div>
+            </div>
+            <div v-else>
+                <h1>Please create a character in the player page</h1>
             </div>
             <div class="new-player-footer">
                 <button id="close-button" @click="toggleAddPlayer(false)">close</button>
@@ -244,6 +247,8 @@ export default {
             
             let pos = this.currentPlayers.map(function(e) { return e.name; }).indexOf(value[0]);
             this.currentPlayers.splice(pos, 1)
+            let allyPos = this.allAllies.map(function(e) { return e.name; }).indexOf(value[21]);
+            this.allAllies.splice(allyPos, 1)
             
             fetch(`https://dndungeonmaster.herokuapp.com/allies/${value[21]}`, {
                 method: "DELETE",
@@ -251,7 +256,7 @@ export default {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }
-            })  
+            }) 
 
         }
     }

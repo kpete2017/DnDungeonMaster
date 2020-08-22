@@ -139,7 +139,7 @@ export default {
         margin-left: 7rem;
         margin-bottom: 5rem;
         display: flex;
-        justify-content: left;
+        justify-content: center;
         flex-wrap: wrap;
         max-width: 90vw;
     }
