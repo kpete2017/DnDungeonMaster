@@ -1,8 +1,12 @@
 <template>
   <div class="note-template">
-        <i v-if="exitable" id="note-exit-button" class="fa fa-times" @click="deleteNewNote()"></i>
-        <h3 class=note-title>{{this.title}}</h3>
-        <p class="note-message" v-html="this.message"></p>
+        <div class="header">
+            <i v-if="exitable" id="note-exit-button" class="fa fa-times" @click="deleteNewNote()"></i>
+        </div>
+        <div>
+            <h3 class=note-title>{{this.title}}</h3>
+            <p class="note-message" v-html="this.message"></p>
+        </div>
   </div>
 </template>
 
@@ -26,12 +30,17 @@ export default {
 </script>
 
 <style>
-    .note-title {
-        margin-top: -1rem;
+
+    .note-template {
+        display: flex;
+        flex-direction: column;
     }
 
     #note-exit-button {
         transition: 400ms;
+        position: relative;
+        top: -3vh;
+        left: 7vw;
     }
 
     #note-exit-button:hover {

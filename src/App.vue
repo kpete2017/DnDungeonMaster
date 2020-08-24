@@ -182,4 +182,16 @@ h2 {
     background: #555;
 }
 
+  @media only screen and (max-width: 1500px) {
+    h1 {
+        font-size: 2.0vw;
+    }
+
+    p {
+      font-size: 1.2vw;
+      font-weight: 500;
+    }
+    
+  }
+
 </style>
