@@ -383,6 +383,7 @@ export default {
     }
     .player-stats {
         position: absolute;
+        font-size: 1.5vh;
         display: grid;
         grid-template-areas:
         "player-stats-body"
@@ -390,7 +391,7 @@ export default {
         grid-template-rows: 9fr 1fr;
         top: 6rem;
         left: 10rem;
-        height: 75vh;
+        height: 85vh;
         width: 70vw;
         z-index: 1;
         display: grid;
@@ -454,8 +455,8 @@ export default {
     .player-stats-footer {
         grid-area: player-stats-footer;
         background-color: rgb(209, 38, 29);
-        border-bottom-left-radius: 18px;
-        border-bottom-right-radius: 18px;
+        border-bottom-left-radius: 4.5px;
+        border-bottom-right-radius: 4.5px;
     }
 
     #player-close-button {

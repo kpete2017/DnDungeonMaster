@@ -78,7 +78,7 @@
             </div>
             <div class="player-stats-body"> 
                 <div class="player-stats-picture">
-                    <img :src="playerCardStats[17]" style='max-height:44vh; max-width: 20vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'/>
+                    <img :src="playerCardStats[17]" style='max-height:38vh; max-width: 18vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 4.5px;'/>
                 </div>
                 <div class="player-stats-body-general-information">
                     <h1>{{this.playerCardStats[0]}}</h1>

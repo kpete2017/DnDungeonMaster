@@ -78,7 +78,7 @@ export default {
     }
 
     #class {
-        width: 10rem;
+        width: 10vw;
     }
 
     .spells-list {
