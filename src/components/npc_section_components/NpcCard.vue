@@ -1,30 +1,30 @@
 <template>
     <div class="npc-list">
-        <div v-for="player in players" :key="player.name">
+        <div v-for="Npc in Npcs" :key="Npc.name">
                 <SingleNpcCard
-                    v-bind:name="player.name"
-                    v-bind:meta="player.meta"
-                    v-bind:armorClass="player.armor_class"
-                    v-bind:hitPoints="player.hit_points"
-                    v-bind:speed="player.Speed"
-                    v-bind:strength="player.STR_mod"
-                    v-bind:dexterity="player.DEX_mod"
-                    v-bind:constitution="player.CON_mod"
-                    v-bind:intelligence="player.INT_mod"
-                    v-bind:wisdom="player.WIS_mod"
-                    v-bind:charisma="player.CHA_mod"
-                    v-bind:savingThrows="player.Saving_Throws"
-                    v-bind:skills="player.Skills"
-                    v-bind:senses="player.Senses"
-                    v-bind:languages="player.Languages"
-                    v-bind:Level="player.level"
-                    v-bind:traits="player.Traits"
-                    v-bind:actions="player.Actions"
-                    v-bind:legendaryActions="player.Legendary_Actions"
-                    v-bind:image='player.image_url'
-                    v-bind:id="player.id"
-                    @create-large-Npc-card="handlePlayerCard"
-                    @delete-Npc-from-player-list="handleRemoveNpc"
+                    v-bind:name="Npc.name"
+                    v-bind:meta="Npc.meta"
+                    v-bind:armorClass="Npc.armor_class"
+                    v-bind:hitPoints="Npc.hit_points"
+                    v-bind:speed="Npc.Speed"
+                    v-bind:strength="Npc.STR_mod"
+                    v-bind:dexterity="Npc.DEX_mod"
+                    v-bind:constitution="Npc.CON_mod"
+                    v-bind:intelligence="Npc.INT_mod"
+                    v-bind:wisdom="Npc.WIS_mod"
+                    v-bind:charisma="Npc.CHA_mod"
+                    v-bind:savingThrows="Npc.Saving_Throws"
+                    v-bind:skills="Npc.Skills"
+                    v-bind:senses="Npc.Senses"
+                    v-bind:languages="Npc.Languages"
+                    v-bind:Level="Npc.level"
+                    v-bind:traits="Npc.Traits"
+                    v-bind:actions="Npc.Actions"
+                    v-bind:legendaryActions="Npc.Legendary_Actions"
+                    v-bind:image='Npc.image_url'
+                    v-bind:id="Npc.id"
+                    @create-large-Npc-card="handleNpcCard"
+                    @delete-Npc-from-Npc-list="handleRemoveNpc"
                 />
         </div>   
         <div class="add-npc" @click="toggleAddNpc(true)">
@@ -60,58 +60,58 @@
                 <button id="close-button" @click="toggleAddNpc(false)">close</button>
             </div>
         </div>
-        <div class="player-stats" v-if="createPlayerCard" v-drag>
-            <div class="player-stats-menu-bar">
-                <i id="exit-button" class="fa fa-times" @click="closePlayerCard()"></i>
+        <div class="Npc-stats" v-if="createNpcCard" v-drag>
+            <div class="Npc-stats-menu-bar">
+                <i id="exit-button" class="fa fa-times" @click="closeNpcCard()"></i>
             </div>
-            <div class="player-stats-body"> 
-                <div class="player-stats-picture">
-                    <img :src="playerCardStats[19]" style='height:44vh; width: 20vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 18px;'/>
+            <div class="Npc-stats-body"> 
+                <div class="Npc-stats-picture">
+                    <img :src="NpcCardStats[19]" style='height:44vh; width: 20vw; position: absolute; left: 0; object-fit: cover; object-position:top; border-top-left-radius: 18px;'/>
                 </div>
-                <div class="player-stats-body-general-information">
-                    <h1>{{this.playerCardStats[0]}}</h1>
-                    <h2>{{this.playerCardStats[1]}}</h2>
-                    <h2>Armor Class: {{this.playerCardStats[2]}}</h2>
-                    <h2>Hit Points: {{this.playerCardStats[3]}}</h2>
-                    <h2>Speed: {{this.playerCardStats[4]}}</h2>
+                <div class="Npc-stats-body-general-information">
+                    <h1>{{this.NpcCardStats[0]}}</h1>
+                    <h2>{{this.NpcCardStats[1]}}</h2>
+                    <h2>Armor Class: {{this.NpcCardStats[2]}}</h2>
+                    <h2>Hit Points: {{this.NpcCardStats[3]}}</h2>
+                    <h2>Speed: {{this.NpcCardStats[4]}}</h2>
                 </div>
-                <div class="player-stats-body-ability-scores">
+                <div class="Npc-stats-body-ability-scores">
                     <div class="ability-score">
                         <h2>Strength</h2>
-                        <h2>{{this.playerCardStats[5]}}</h2>
+                        <h2>{{this.NpcCardStats[5]}}</h2>
                     </div>
                     <div class="ability-score">
                         <h2>Dexterity</h2>
-                        <h2>{{this.playerCardStats[6]}}</h2>
+                        <h2>{{this.NpcCardStats[6]}}</h2>
                     </div>
                     <div class="ability-score">
                         <h2>Constitution</h2>
-                        <h2>{{this.playerCardStats[7]}}</h2>
+                        <h2>{{this.NpcCardStats[7]}}</h2>
                     </div>
                     <div class="ability-score">
                         <h2>Intelligence</h2>
-                        <h2>{{this.playerCardStats[8]}}</h2>
+                        <h2>{{this.NpcCardStats[8]}}</h2>
                     </div>
                     <div class="ability-score">
                         <h2>Wisdom</h2>
-                        <h2>{{this.playerCardStats[9]}}</h2>
+                        <h2>{{this.NpcCardStats[9]}}</h2>
                     </div>
                     <div class="ability-score">
                         <h2>Charisma</h2>
-                        <h2>{{this.playerCardStats[10]}}</h2>
+                        <h2>{{this.NpcCardStats[10]}}</h2>
                     </div>
                 </div>
-                <div class="player-stats-attacks-spellcasting">
+                <div class="Npc-stats-attacks-spellcasting">
                     <h2>Attacks and SpellCasting</h2>
-                    <h4  class="ability-text" v-html="playerCardStats[17]"></h4>
+                    <h4  class="ability-text" v-html="NpcCardStats[17]"></h4>
                 </div>
-                <div class="player-stats-equipment">
+                <div class="Npc-stats-equipment">
                     <h2>Traits</h2>
-                    <h4 class="trait-text" v-html="playerCardStats[16]"></h4>
+                    <h4 class="trait-text" v-html="NpcCardStats[16]"></h4>
                 </div>
             </div>
-            <div class="player-stats-footer">
-                <button id="player-close-button" @click="closePlayerCard()">close</button>
+            <div class="Npc-stats-footer">
+                <button id="Npc-close-button" @click="closeNpcCard()">close</button>
             </div>
         </div>
     </div>
@@ -119,17 +119,17 @@
 
 <script>
 import SingleNpcCard from './SingleNpcCard.vue'
-import Monsters from '../Monsters.json'
+import Monsters from '../../Monsters.json'
 
 export default {
     name: "NpcCard",
     data() {
         return {
             newNpc: false,
-            players: [],
+            Npcs: [],
             allMonsters: [],
-            createPlayerCard: false,
-            playerCardStats: [],
+            createNpcCard: false,
+            NpcCardStats: [],
             next: false,
             abilities: [],
             allTraits: [],
@@ -166,7 +166,7 @@ export default {
             })
             .then(response => response.json())
             .then(result => {
-                result.forEach( enemy => { this.players.push(enemy) })
+                result.forEach( enemy => { this.Npcs.push(enemy) })
             })
         },
         toggleAddNpc: function(value) {
@@ -175,9 +175,9 @@ export default {
         toggleNext: function(value) {
             this.next = value
         },
-        handlePlayerCard(value) {
-            this.createPlayerCard = true
-            this.playerCardStats = value
+        handleNpcCard(value) {
+            this.createNpcCard = true
+            this.NpcCardStats = value
             
             this.abilities.splice(0, this.abilities.length)
             this.listAbility.splice(0, this.listAbility.length)
@@ -185,12 +185,12 @@ export default {
             this.listTrait.splice(0, this.abilities.length)
 
         },
-        closePlayerCard() {
-            this.createPlayerCard = false
+        closeNpcCard() {
+            this.createNpcCard = false
         },
         handleRemoveNpc(value) {
-            let pos = this.players.map(function(e) { return e.name; }).indexOf(value[0]);
-            this.players.splice(pos, 1)
+            let pos = this.Npcs.map(function(e) { return e.name; }).indexOf(value[0]);
+            this.Npcs.splice(pos, 1)
 
            fetch(`https://dndungeonmaster.herokuapp.com/enemies/${value[20]}`, {
                 method: "DELETE",
@@ -214,7 +214,7 @@ export default {
 
             .then(response => response.json())
             .then(results => {
-                this.players.push(results)
+                this.Npcs.push(results)
             })
 
             this.toggleAddNpc(false)
@@ -381,13 +381,13 @@ export default {
         transition: 400ms;
         cursor: pointer;
     }
-    .player-stats {
+    .Npc-stats {
         position: absolute;
         font-size: 1.5vh;
         display: grid;
         grid-template-areas:
-        "player-stats-body"
-        "player-stats-footer";
+        "Npc-stats-body"
+        "Npc-stats-footer";
         grid-template-rows: 9fr 1fr;
         top: 6rem;
         left: 10rem;
@@ -400,12 +400,12 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     }
 
-    .player-stats-body {
-        grid-area: player-stats-body;
+    .Npc-stats-body {
+        grid-area: Npc-stats-body;
         line-height: 1;
     }
 
-    .player-stats-body-general-information {
+    .Npc-stats-body-general-information {
         position: relative;
         width: 17vw;
         text-align: left;
@@ -413,7 +413,7 @@ export default {
         top: 65%;
     }
 
-    .player-stats-body-ability-scores {
+    .Npc-stats-body-ability-scores {
         width: 10vw;
         position: relative;
         left: 22vw;
@@ -421,7 +421,7 @@ export default {
         text-align: left;
     }
 
-    .player-stats-attacks-spellcasting {
+    .Npc-stats-attacks-spellcasting {
         position: absolute;
         overflow: auto;
         background-color: var(--bg-primary);
@@ -432,7 +432,7 @@ export default {
         top: 1vh;
     }
 
-    .player-stats-equipment {
+    .Npc-stats-equipment {
         position: absolute;
         overflow: auto;
         background-color: var(--bg-primary);
@@ -448,18 +448,18 @@ export default {
         justify-content: space-between;
     }
 
-    .player-body-content {
-        grid-area: player-stats-body;
+    .Npc-body-content {
+        grid-area: Npc-stats-body;
     }
 
-    .player-stats-footer {
-        grid-area: player-stats-footer;
+    .Npc-stats-footer {
+        grid-area: Npc-stats-footer;
         background-color: rgb(209, 38, 29);
         border-bottom-left-radius: 4.5px;
         border-bottom-right-radius: 4.5px;
     }
 
-    #player-close-button {
+    #Npc-close-button {
         position: absolute;
         color: var(--text-secondary);
         bottom: 1rem;

@@ -27,11 +27,11 @@ import PageHeader from './components/PageHeader.vue'
 import PageBody from './components/PageBody.vue'
 import NavBar from './components/NavBar.vue'
 import Login from './components/Login.vue'
-import Notes from './components/Notes.vue'
-import Party from './components/Party'
-import Npc from './components/NPC.vue'
-import Monster from './components/Monsters.vue'
-import Compendium from './components/Compendium.vue'
+import Notes from './components/note_components/Notes'
+import Party from './components/party_page_components/Party'
+import Npc from './components/npc_page_components/NPC'
+import Monster from './components/monster_components/Monsters.vue'
+import Compendium from './components/compendium_components/Compendium.vue'
 
 export default {
   name: 'App',

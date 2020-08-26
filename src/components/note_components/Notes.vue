@@ -35,7 +35,7 @@
 
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Note from './Note.vue'
+import Note from './Note'
 
 export default {
     name: "notes",

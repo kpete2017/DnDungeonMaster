@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import SpellJson from '../Spells.json'
+import SpellJson from '../../Spells.json'
 import Spell from './Spell.vue'
 export default {
     name: "notes",

@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-        <i id="player-exit-button" class="fa fa-times" @click="deleteNpc()"></i>
+        <i id="Npc-exit-button" class="fa fa-times" @click="deleteNpc()"></i>
         <div class="card-image" @click="handleClick()">
-            <img :src="playerImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 4.5px; border-top-right-radius: 4.5px;'/>
+            <img :src="NpcImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 4.5px; border-top-right-radius: 4.5px;'/>
         </div>
         <div class="card-text" @click="handleClick()">
             <span class="date"></span>
@@ -33,9 +33,9 @@ export default {
         "languages", "Level", "traits", "actions", "legendaryActions", "image", "id"],
     created: function() {
         if(typeof this.image === 'string') {
-            this.playerImage = this.image.toString()
+            this.NpcImage = this.image.toString()
         }
-        this.playerImage = this.image
+        this.NpcImage = this.image
 
         let words = this.hitPoints.split(" ")
         this.firstHP = words[0]
@@ -60,7 +60,7 @@ export default {
             this.$emit("create-large-Npc-card", this.allStats)
         },
         deleteNpc: function() {
-            this.$emit("delete-Npc-from-player-list", this.allStats)
+            this.$emit("delete-Npc-from-Npc-list", this.allStats)
         }
     },
     mounted() {

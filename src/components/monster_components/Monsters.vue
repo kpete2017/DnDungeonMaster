@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import MonsterJson from '../Monsters.json'
+import MonsterJson from '../../Monsters.json'
 import Monster from './Monster.vue'
 export default {
     name: "notes",

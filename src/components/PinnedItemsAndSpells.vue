@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import Calculator from './Calculator.vue'
-import Note from './Note'
+import Calculator from './calculator_components/Calculator.vue'
+import Note from './note_components/Note'
 
 export default {
   name: "PinnedItemsAndSpells",

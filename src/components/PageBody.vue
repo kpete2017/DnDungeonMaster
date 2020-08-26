@@ -20,10 +20,10 @@
 
 <script>
 
-import PlayerCard from './PlayerCard.vue'
+import PlayerCard from './player_section_components/PlayerCard'
 import PinnedItemsAndSpells from './PinnedItemsAndSpells.vue'
-import NpcCard from './NpcCard.vue'
-import InformationTab from './InformationTab.vue'
+import NpcCard from './npc_section_components/NpcCard.vue'
+import InformationTab from './information_tab_components/InformationTab.vue'
 
 
 export default {
