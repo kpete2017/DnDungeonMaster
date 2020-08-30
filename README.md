@@ -45,7 +45,6 @@ In order to run the front-end of this project locally you will need Node.js
 ### Prerequisites
 
 In order to install this project you will need the latest version of Node Package Manager
-* npm
 ```sh
 npm install npm@latest -g
 ```
