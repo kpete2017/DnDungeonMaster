@@ -36,7 +36,7 @@ It does this by:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-There is a seperate repositiory for the ruby on rails backend
+There is a seperate repositiory for the Ruby on Rails backend
 
 [Backend](https://github.com/kpete2017/dndungeonmaster_backend.git)
 
