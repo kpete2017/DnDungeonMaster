@@ -352,6 +352,7 @@ export default {
         box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     }
 
+
     #close-button {
         position: absolute;
         color: var(--text-secondary);

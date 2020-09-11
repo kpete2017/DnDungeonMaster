@@ -29,8 +29,8 @@ export default {
     name: 'Login',
     data() {
         return {
-            username: "",
-            password: "",
+            username: "DefaultUser",
+            password: "Password2!",
             name: "",
             passwordMatch: "",
             userData: {},
@@ -42,8 +42,7 @@ export default {
             
             const username = this.username
             const password  = this.password
-            const name = this.name
-            const userData = { username, password, name}
+            const userData = { username, password}
 
             fetch("https://dndungeonmaster.herokuapp.com/login", {
                 method: 'POST',

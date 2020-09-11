@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-        <i id="Npc-exit-button" class="fa fa-times" @click="deleteNpc()"></i>
+        <i id="player-exit-button" class="fa fa-times" @click="deleteNpc()"></i>
         <div class="card-image" @click="handleClick()">
             <img :src="NpcImage" style='height: 100%; width: 100%; object-fit: cover; object-position:top; border-top-left-radius: 4.5px; border-top-right-radius: 4.5px;'/>
         </div>
@@ -87,6 +87,17 @@ export default {
         width: 16vw;
         margin:25px;
         margin-top: 1rem;
+    }
+
+    #npc-exit-button {
+        grid-area: image;
+        color: rgb(209, 38, 29);
+        position: relative;
+        height: 2vh;
+        width: 2vh;
+        top: 1vh;
+        right: 2vh;
+        cursor: pointer;
     }
 
     .card-text {
