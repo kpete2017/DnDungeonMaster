@@ -8,18 +8,27 @@
                 <h1 id="dungeon">ungeon</h1>
                 <h1 id="master">Master</h1>
             </div>
-            <h2 v-if="newAccount">Sign up</h2>
-            <h2 v-else id="login-screen-text">Login</h2>
-            <input id="login-username" v-model="username" type="username" placeholder="Username"/>
-            <input id="login-name" v-if="newAccount" v-model="name" type="username" placeholder="Name"/>
-            <input id="login-password" v-model="password" type="password" placeholder="Password"/>
-            <input v-if="newAccount" id="login-password-match" v-model="passwordMatch" type="password" placeholder="Re-type password"/>
-            <button v-if="newAccount" id="login-submit" @click.prevent="handleCreateNewUser" type="submit">Sign-Up</button>
-            <button v-else id="login-submit" @click.prevent="handleLogin" type="submit">Submit</button>
-            <p v-if="newAccount">Already have an account?</p>
-            <p v-else>New Here?</p>
-            <p v-if="newAccount" id="sign-up" @click="handleNewAccount(false)">Login</p>
-            <p v-else id="sign-up" @click="handleNewAccount(true)">Create Account</p>
+            <div class="login-type-title-text">
+                <h2 v-if="newAccount">Sign up</h2>
+                <h2 v-else id="login-screen-text">Login</h2>
+            </div>
+            <div class="login-form-inputs">
+                <input id="login-username" v-model="username" type="username" placeholder="Username"/>
+                <input id="login-name" v-if="newAccount" v-model="name" type="username" placeholder="Name"/>
+                <input id="login-password" v-model="password" type="password" placeholder="Password"/>
+                <input v-if="newAccount" id="login-password-match" v-model="passwordMatch" type="password" placeholder="Re-type password"/>
+            </div>
+            <div class="login-form-submit-buttons">
+                <button v-if="newAccount" id="login-submit" @click.prevent="handleCreateNewUser" type="submit">Sign-Up</button>
+                <button v-else id="login-submit" @click.prevent="handleLogin" type="submit">Submit</button>
+            </div>
+            <div class="login-section-footer-text">
+                <p v-if="newAccount">Already have an account?</p>
+                <p v-else>New Here?</p>
+                <p v-if="newAccount" id="sign-up" @click="handleNewAccount(false)">Login</p>
+                <p v-else id="sign-up" @click="handleNewAccount(true)">Create Account</p>
+            </div>
+            
         </form>
     </div>
 </template>
