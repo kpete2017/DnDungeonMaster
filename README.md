@@ -44,7 +44,7 @@ There is a seperate repositiory for the Ruby on Rails backend
 
 [Backend](https://github.com/kpete2017/dndungeonmaster_backend.git)
 
-In order to run the front-end of this project locally you will need Node.js
+In order to run the front-end of this project locally you will need [Node.js](nodejs.org)
 
 ### Prerequisites
 
